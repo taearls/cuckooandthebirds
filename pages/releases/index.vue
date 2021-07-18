@@ -39,7 +39,7 @@
 import ImageLink from "@/components/widgets/ImageLink.vue";
 import TextCard from "@/components/widgets/TextCard.vue";
 
-import releases from "../../assets/data/releases/releaseSlugData.json";
+import releases from "@/assets/data/releases/releaseSlugData.json";
 
 export default {
   components: {
