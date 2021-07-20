@@ -1,5 +1,5 @@
 <template>
-  <section class="px-4 mt-20 mx-auto max-w-none w-4/5 leading-8">
+  <section class="px-4 mx-auto max-w-none w-4/5 leading-8">
     <h1
       class="text-center mb-8 text-red-600 font-extrabold text-4xl leading-tight"
     >

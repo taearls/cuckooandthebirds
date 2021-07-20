@@ -35,16 +35,6 @@ export default {
       "isNavActive",
     ]),
   },
-  watch: {
-    isNavActive(newValue) {
-      const body = document.body;
-      if (newValue && body != null) {
-        body.classList.add("nav-active");
-      } else if (body != null) {
-        body.classList.remove("nav-active");
-      }
-    },
-  },
   methods: {
     handleToggle() {
       this.$store.commit("toggleNavActive");

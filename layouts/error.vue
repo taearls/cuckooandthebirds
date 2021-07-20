@@ -1,6 +1,5 @@
 <template>
   <main class="text-center text-white">
-    <div id="navbar-offset" />
     <text-card>
       <h1 class="text-2xl my-8">
         Whoaaaa there, pal.
@@ -31,11 +30,4 @@ export default {
 </script>
 
 <style>
-body #navbar-offset {
-  @apply mt-16;
-}
-body.nav-active #navbar-offset {
-  /* 4 items in nav, 28 mt difference. mt change = nav items * 7 */
-  @apply mt-48 sm:mt-20 sm:pt-0;
-}
 </style>

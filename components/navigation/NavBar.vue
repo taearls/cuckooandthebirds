@@ -1,9 +1,11 @@
 <template>
   <div
     id="nav-container"
-    ref="nav-container"
-    class="fixed z-100 flex items-center justify-end w-screen top-0 font-default text-white border border-gray-500 border-t-0 border-l-0 border-r-0 h-fit"
-    :class="{'border-b-1 bg-coolgray-900': isNavActive, 'border-0 border-b-0 h-16': !isNavActive}"
+    class="fixed z-100 flex items-center justify-end w-screen top-0 font-default text-white border-gray-500 h-fit sm:h-16"
+    :class="{
+      'border-b': isNavActive,
+      'border-b-0 h-16': !isNavActive
+    }"
   >
     <transition
       name="fade"
@@ -16,66 +18,26 @@
       >
         <ul class="flex flex-col h-auto justify-center sm:flex-row sm:justify-end">
           <li
-            v-for="(section, index) in sections"
-            :key="'section-' + index"
-            class="flex items-center mx-auto pt-2 sm:py-2 text-center w-1/3 border border-t-0 border-l-0 border-r-0 border-b-1 border-gray-600 sm:border-none sm:mx-0 sm:w-auto"
-            :class="{'border-none': index === sections.length - 1, 'pb-2': (section.childLinks && section.childLinks.length === 0) || !section.showChildren}"
+            v-for="(parent, index) in navigationData"
+            :key="'parent-' + index"
+            class="flex items-center mx-auto sm:py-2 text-center w-1/3 border border-t-0 border-l-0 border-r-0 border-b-1 border-gray-600 sm:border-none sm:mx-0 sm:w-auto"
+            :class="{
+              'border-none': index === navigationData.length - 1,
+            }"
           >
-            <router-link
-              v-if="section.childLinks && section.childLinks.length === 0"
-              :to="section.href"
+            <nuxt-link
+              v-if="parent.childLinks && parent.childLinks.length === 0"
+              :to="parent.href"
               :tabindex="isNavActive ? 0 : -1"
-              class="px-4 text-lg hover:text-cyan-300 hover:opacity-100 rounded-sm w-full sm:w-auto"
+              class="px-4 my-2 text-lg hover:text-cyan-300 hover:opacity-100 rounded-sm w-full sm:w-auto"
             >
-              {{ section.name }}
-            </router-link>
-            <div 
+              {{ parent.name }}
+            </nuxt-link>
+            <nav-child-links-container 
               v-else
-              class="w-full"
-            >
-              <div class="flex items-center">
-                <router-link
-                  :to="section.href"
-                  :tabindex="isNavActive ? 0 : -1"
-                  class="pl-4 pr-1 text-lg hover:text-cyan-300 hover:opacity-100 rounded-sm w-full sm:w-auto"
-                >
-                  {{ section.name }}
-                </router-link>
-                <button 
-                  v-if="section.childLinks && section.childLinks.length > 0"
-                  :ref="`section-dropdown-${index}`"
-                  class="inline-block arrow-right mx-2"
-                  :class="{'down': section.showChildren}"
-                  @click="handleDropdownClick(section)"
-                />
-              </div>
-              <div 
-                v-if="section.childLinks && section.childLinks.length > 0"
-                v-show="section.showChildren"
-              >
-                <ul class="static sm:absolute top-full z-20 flex flex-col sm:border sm:border-gray-600 bg-coolgray-900">
-                  <li 
-                    v-for="(childLink, childLinkIndex) in section.childLinks"
-                    :key="'section-child-link-' + childLinkIndex"
-                    class="inline-block text-center sm:text-left border-gray-700 w-full mx-auto sm:mx-0 sm:w-auto sm:border-gray-600"
-                    :class="{'sm:border-b': childLinkIndex < section.childLinks.length - 1}"
-                  >
-                    <hr 
-                      :class="{'mt-2': childLinkIndex === 0}"
-                      class="sm:hidden border-gray-700 w-4/5 mx-auto"
-                    >
-                    <router-link
-                      :to="childLink.href"
-                      :tabindex="isNavActive ? 0 : -1"
-                      :data-section="index"
-                      class="child-link block px-4 py-2 text-sm sm:text-md hover:text-cyan-300 hover:opacity-100 rounded-sm w-full"
-                    >
-                      {{ childLink.name }}
-                    </router-link>
-                  </li>
-                </ul>
-              </div>
-            </div>
+              :parent="parent"
+              @toggle="$emit('navbar-height-changed')"
+            />
           </li>
         </ul>
       </nav>
@@ -87,61 +49,17 @@
 <script>
 import { mapState } from "vuex";
 import NavBarToggle from "./NavBarToggle.vue";
-
-// TODO: add sections to setup hook when Vue 3.x is released
-/*
- * href: router-link url
- * name: route name that will appear on nav bar
- */
-const sections = [
-  {
-    href: "/",
-    name: "Bio",
-    childLinks: [],
-    showChildren: false,
-  },
-  {
-    href: "/releases",
-    name: "Releases",
-    childLinks: [
-      {
-        href: "/releases/twin-stars",
-        name: "Twin Stars",
-      },
-      {
-        href: "/releases/show-me-the-dark",
-        name: "Show Me The Dark",
-      },
-    ],
-    showChildren: false,
-  },
-  // {
-  //   href: "/shows",
-  //   name: "Shows",
-  //   childLinks: [],
-  // },
-  {
-    href: "/press",
-    name: "Press",
-    childLinks: [],
-    showChildren: false,
-  },
-  {
-    href: "/booking",
-    name: "Booking",
-    childLinks: [],
-    showChildren: false,
-  },
-];
+import NavChildLinksContainer from "./NavChildLinksContainer.vue";
+import navigationData from "@/assets/data/navigation/navigationData";
 
 export default {
   components: {
     NavBarToggle,
+    NavChildLinksContainer,
   },
   data() {
     return {
-      sections,
-      navHeight: 0,
+      navigationData,
     };
   },
   computed: {
@@ -154,20 +72,10 @@ export default {
       if (isActive) {
         this.initializeFocus();
       } else {
-        this.sections.map((section) => section.showChildren = false);
+        // if the nav is inactive, the child link lists should collapse, too.
+        this.navigationData.map((section) => section.showChildren = false);
       }
-      this.checkNavHeight();
     },
-    navHeight(navHeight) {
-      document.body.style.marginTop = `${navHeight + 20  }px`;
-    },
-  },
-  mounted() {
-    this.checkNavHeight();
-    window.addEventListener("resize", this.checkNavHeight);
-  },
-  destroyed() {
-    window.removeEventListener("resize", this.checkNavHeight);
   },
   methods: {
     initializeFocus() {
@@ -180,26 +88,27 @@ export default {
             firstRouterLink.focus();
           }
         } else if (activeRouterLink.classList.contains("child-link")) {
-          const sectionId = activeRouterLink.dataset.section;
-          const dropdownButton = this.$refs[`section-dropdown-${sectionId}`][0];
-          dropdownButton.click();
-          this.$nextTick(() => {
-            activeRouterLink.focus();
-          });
+          // grab parent subpath for child page, use it to match against the button with that path as a data attribute.
+          const path = window.location.pathname;
+          
+          // e.g., "/releases/twin-stars" will return ["/releases", "/twin-stars"]
+          const parentPathRegex = /\/[a-z-]*/gi;
+          const parentPath = path.match(parentPathRegex) ? path.match(parentPathRegex)[0] : "none";
+          
+          // NOTE: each button which opens a dropdown menu needs a `data-parent-path` attribute whose value is the parent path.
+          // it would be nice to find a better idiomatic Vue solution for this.
+          const dropdownButton = document.querySelector(`[data-parent-path='${parentPath}']`);
+
+          // rather than clicking this menu open then focusing on the specific child page, just focus on it. less of a side effect that way. 
+          if (dropdownButton != null) dropdownButton.focus();
         } else {
           activeRouterLink.focus();
         }
       });
     },
-    checkNavHeight() {
-      this.$nextTick(() => {
-        const navContainer = this.$refs["nav-container"];
-        this.navHeight = navContainer.offsetHeight;
-      });
-    },
     handleDropdownClick(section) {
       section.showChildren = !section.showChildren;
-      this.checkNavHeight();
+      this.$emit("navbar-height-changed");
     },
   },
 };

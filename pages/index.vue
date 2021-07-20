@@ -50,7 +50,7 @@
 <script>
 import TextCard from "@/components/widgets/TextCard.vue";
 import TextImageCard from "@/components/widgets/TextImageCard.vue";
-import textData from "../assets/data/homePageTextData.json";
+import textData from "@/assets/data/homePageTextData.json";
 
 export default {
   components: {

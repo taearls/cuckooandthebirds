@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <nav-bar />
+    <placeholder :height="navbarHeight" />
+    <nav-bar 
+      ref="nav-container" 
+      @navbar-height-changed="updateNavBarHeight" 
+    />
 
     <nuxt />
 
@@ -9,21 +13,54 @@
 </template>
 
 <script>
-import NavBar from "../components/navigation/NavBar.vue";
-import TheFooter from "../components/global/TheFooter.vue";
+import { mapState } from "vuex";
+
+import NavBar from "@/components/navigation/NavBar.vue";
+import TheFooter from "@/components/global/TheFooter.vue";
+import Placeholder from "@/components/widgets/Placeholder.vue";
+
+const NAV_ADDITIONAL_OFFSET = 20;
 
 export default {
-  name: "App",
   components: {
     NavBar,
     TheFooter,
+    Placeholder,
+  },
+  data() {
+    return {
+      navbarHeight: 84, // default value matches h-16 class + NAV_ADDITIONAL_OFFSET
+    };
+  },
+  computed: {
+    ...mapState(["isNavActive"]),
+  },
+  watch: {
+    isNavActive() {
+      this.updateNavBarHeight();
+    },
+  },
+  mounted() {
+    this.updateNavBarHeight();
+    window.addEventListener("resize", this.updateNavBarHeight);
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.updateNavBarHeight);
+  },
+  methods: {
+    updateNavBarHeight() {
+      this.$nextTick(() => {
+        const navContainer = this.$refs["nav-container"];
+        this.navbarHeight = navContainer.$el.offsetHeight + NAV_ADDITIONAL_OFFSET;
+      });
+    },
   },
 };
 </script>
 
 <style>
 body {
-  @apply bg-coolgray-900 font-default p-0 m-0 mt-21;
+  @apply bg-coolgray-900 font-default p-0 m-0;
 }
 body *:focus {
   outline: 0;

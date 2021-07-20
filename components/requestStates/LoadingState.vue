@@ -3,15 +3,15 @@
 </template>
 
 <script>
-  export default {
-    beforeCreate() {
-      // change style attribute directly so css in this component can be scoped
-      document.body.style.opacity = "75%";
-    },
-    beforeDestroy() {
-      document.body.style.opacity = "1";
-    },
-  };
+export default {
+  beforeCreate() {
+    // change style attribute directly so css in this component can be scoped
+    document.body.style.opacity = "75%";
+  },
+  beforeDestroy() {
+    document.body.style.opacity = "1";
+  },
+};
 </script>
 
 <style scoped>

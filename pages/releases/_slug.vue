@@ -105,7 +105,7 @@
 import { LazyYoutube } from "vue-lazytube";
 import ImageLink from "@/components/widgets/ImageLink.vue";
 import TextCard from "@/components/widgets/TextCard.vue";
-import releaseDetailsData from "../../assets/data/releases/releaseDetailsData.json";
+import releaseDetailsData from "@/assets/data/releases/releaseDetailsData.json";
 
 export default {
   components: {
