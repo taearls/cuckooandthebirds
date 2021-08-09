@@ -6,7 +6,8 @@
       Contact Cuckoo and the Birds
     </h1>
     <div class="my-4">
-      <p
+      <!-- COVID NOTICE: -->
+      <!-- <p
         class="w-full mx-auto text-white my-4 text-lg md:text-xl leading-normal"
       >
         <span class="text-red-600 font-semibold">NOTE:</span> With the ongoing Covid-19 pandemic in mind, Cuckoo and the Birds
@@ -18,6 +19,9 @@
       >
         Stay safe, friends. We look forward to seeing you again when this is
         over.
+      </p> -->
+      <p class="w-full mx-auto text-white my-4 text-lg md:text-xl leading-normal">
+        Cuckoo and the Birds is fully vaxxed and ready to rock!
       </p>
       <p
         class="w-full mx-auto text-white my-4 text-lg md:text-xl leading-normal"
@@ -28,7 +32,12 @@
           target="_blank"
           rel="noreferrer"
           href="mailto:cuckooandthebirds@gmail.com"
-        >cuckooandthebirds@gmail.com</a>. If you prefer, you can fill out the handy-dandy form below.
+        >cuckooandthebirds@gmail.com</a>.
+      </p> 
+      <p
+        class="w-full mx-auto text-white my-4 text-lg md:text-xl leading-normal"
+      >
+        If you prefer, you can fill out the handy-dandy form below.
       </p>
     </div>
     <form
