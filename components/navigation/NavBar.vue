@@ -1,7 +1,7 @@
 <template>
   <div
     id="nav-container"
-    class="fixed z-100 flex items-center justify-end w-screen top-0 font-default text-white border-gray-500 h-fit sm:h-16"
+    class="fixed z-100 bg-coolgray-900 flex items-center justify-end w-screen top-0 font-default text-white border-gray-500 h-fit sm:h-16"
     :class="{
       'border-b': isNavActive,
       'border-b-0 h-16': !isNavActive

@@ -1,6 +1,5 @@
 module.exports = {
-  mode: "jit",
-  purge: {
+  content: {
     content: ["./components/**/*.vue", "./layouts/**/*.vue", "./pages/**/*.vue"],
   },
   theme: {
