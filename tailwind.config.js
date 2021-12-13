@@ -1,7 +1,7 @@
 module.exports = {
-  content: {
-    content: ["./components/**/*.vue", "./layouts/**/*.vue", "./pages/**/*.vue"],
-  },
+  content: [
+    "./components/**/*.vue", "./layouts/**/*.vue", "./pages/**/*.vue",
+  ],
   theme: {
     extend: {
       margin: {
