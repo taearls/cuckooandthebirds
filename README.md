@@ -15,3 +15,7 @@ Cuckoo and the Birds is a Chicago rock band who play sad songs that flirt with h
 - [Instagram](https://www.instagram.com/cuckooandthebirds)
 - [Facebook](https://www.facebook.com/cuckooandthebirds)
 - [Twitter](https://www.twitter.com/cuckooandbirds)
+
+## Running the App
+
+If you're curious to run this app locally, feel free to clone this. After a fresh `npm install` you can serve the development version of the app by running `npm run serve`.
