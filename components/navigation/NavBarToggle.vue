@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed top-0 right-0 z-10 float-right p-4 h-16 sm:float-none sm:static"
+    class="fixed top-0 right-0 z-10 float-right p-4 pr-6 h-16 sm:float-none sm:static"
   >
     <button
       id="custom-toggler"
