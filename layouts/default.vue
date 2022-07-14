@@ -5,8 +5,9 @@
       ref="nav-container" 
       @navbar-height-changed="updateNavBarHeight" 
     />
-
-    <nuxt />
+    <div id="body-wrapper">
+      <nuxt />
+    </div>
 
     <the-footer />
   </div>
@@ -66,6 +67,10 @@ body *:focus {
   outline: 0;
   box-shadow: 0 0 3pt 2pt rgb(178, 245, 234);
   border-color: transparent;
+}
+
+#body-wrapper {
+  @apply w-4/5 mx-auto;
 }
 
 p {
