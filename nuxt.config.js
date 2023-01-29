@@ -26,7 +26,7 @@ export default defineNuxtConfig({
       },
     ],
     "@nuxtjs/tailwindcss",
-    "@nuxtjs/cloudinary",
+    // "@nuxtjs/cloudinary",
   ],
   cloudinary: {
     cloudName: process.env.CLOUDINARY_ID,

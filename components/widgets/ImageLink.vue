@@ -11,7 +11,7 @@
       @focus="isFocused = true"
       @blur="isFocused = false"
     >
-      <template v-if="isCloudinaryImage">
+      <!-- <template v-if="isCloudinaryImage">
         <client-only>
           <cld-image
             class="flex justify-center m-2 group-hover:opacity-80"
@@ -25,14 +25,14 @@
             />
           </cld-image>
         </client-only>
-      </template>
-      <template v-else>
+      </template> -->
+      <!-- <template v-else> -->
         <img
           class="flex justify-center m-2 group-hover:opacity-80"
           :src="imageSrc"
           :alt="imageAlt"
         >
-      </template>
+      <!-- </template> -->
     </a>
     <slot name="link-text" />
   </div>
