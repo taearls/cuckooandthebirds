@@ -152,7 +152,7 @@
         </div>
         <vue-recaptcha
           :key="shouldCompactRecaptcha"
-          :sitekey="$config.recaptchaSitekey"
+          :sitekey="$config.public.recaptchaSitekey"
           theme="dark"
           :size="shouldCompactRecaptcha ? 'compact' : 'normal'"
           :load-recaptcha-script="true"

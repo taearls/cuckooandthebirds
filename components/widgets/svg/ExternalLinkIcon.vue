@@ -30,9 +30,8 @@
 
 <script lang="ts">
 import { mapState } from "vuex";
-import { defineComponent } from "@vue/composition-api";
 
-export default defineComponent({
+export default {
   props: {
     ...mapState(["prefersDarkMode"]),
     // darkModeColor: {
@@ -44,7 +43,7 @@ export default defineComponent({
     //   required: true,
     // },
   },
-});
+};
 </script>
 
 <style scoped>

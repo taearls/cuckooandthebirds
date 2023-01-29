@@ -5,10 +5,9 @@
   "private": true,
   "scripts": {
     "prepare": "husky install",
-    "serve": "nuxt --port 8080",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate",
+    "dev": "nuxi dev --port 8080",
+    "build": "nuxi generate",
+    "start": "nuxi preview",
     "lint:check": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint:fix": "eslint --fix --ext .js,.vue --ignore-path .gitignore ."
   },
@@ -27,7 +26,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-methods": "^7.13.0",
-    "@nuxt/babel-preset-app": "^2.14.12",
+    "@nuxt/bridge": "npm:@nuxt/bridge-edge@^3.0.0-27909973.a4c5d19",
     "@nuxtjs/cloudinary": "^1.0.3-beta-4",
     "@nuxtjs/google-analytics": "^2.4.0",
     "@nuxtjs/tailwindcss": "^4.2.1",
@@ -40,6 +39,7 @@
     "eslint-plugin-vue": "^7.6.0",
     "husky": "^6.0.0",
     "postcss": "^8.4.5",
+    "std-env": "^3.3.1",
     "tailwindcss": "^3.0.1",
     "vue-template-compiler": "^2.6.12"
   }

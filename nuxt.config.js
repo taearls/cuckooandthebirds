@@ -1,19 +1,12 @@
-export default {
+import { defineNuxtConfig } from "@nuxt/bridge";
+
+export default defineNuxtConfig({
   target: "static",
   ssr: true,
   generate: {
     fallback: true,
   },
-  /////////////////////
-  // PUBLIC ENV VARS //
-  /////////////////////
-  publicRuntimeConfig: {
-    recaptchaSitekey: process.env.RECAPTCHA_SITEKEY,
-  },
-  //////////////////////
-  // PRIVATE ENV VARS //
-  //////////////////////
-  privateRuntimeConfig: {},
+  runtimeConfig: { public: { recaptchaSitekey: process.env.RECAPTCHA_SITEKEY } },
   build: {
     // allows webpack analyzer to run when doing npm run generate in development
     // analyze: process.env.NODE_ENV !== "production" ? true : false,
@@ -35,23 +28,6 @@ export default {
     "@nuxtjs/tailwindcss",
     "@nuxtjs/cloudinary",
   ],
-  babel: {
-    presets() {
-      return [
-        [
-          require.resolve("@nuxt/babel-preset-app"),
-          {
-            buildTarget: "server",
-            corejs: { version: 3 },
-          },
-        ],
-      ];
-    },
-  },
-  // https://github.com/tailwindlabs/tailwindcss/issues/4176
-  // tailwindcss: {
-  //   jit: true,
-  // },
   cloudinary: {
     cloudName: process.env.CLOUDINARY_ID,
     useComponent: true,
@@ -153,4 +129,4 @@ export default {
       },
     ],
   },
-};
+});
