@@ -5,7 +5,7 @@
     >
       Contact Cuckoo and the Birds
     </h1>
-    <div class="my-4">
+    <div class="my-4 text-center">
       <!-- COVID NOTICE: -->
       <!-- <p
         class="w-full mx-auto text-white my-4 text-lg md:text-xl leading-normal"

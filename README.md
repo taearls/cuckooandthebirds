@@ -2,7 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/abdd2aa8-87f4-4b80-9209-439b187d1056/deploy-status)](https://app.netlify.com/sites/cuckooandthebirds/deploys)
 
-Cuckoo and the Birds is a Chicago rock band who play sad songs that flirt with harmonies.
+Cuckoo and the Birds is a Chicago rock band who play sad songs that flirt with harmonies. For booking inquiries, please contact [cuckooandbirds@gmail.com](mailto:cuckooandbirds@gmail.com)
 
 ## Music: 
 

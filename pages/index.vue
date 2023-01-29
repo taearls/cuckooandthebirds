@@ -12,8 +12,6 @@
             v-for="(item, index) in textAndImageData"
             :key="'text-item-' + index"
             :image-first="index % 2 === 0"
-            class="my-8"
-            :class="{'mt-4': index === 0}"
           >
             <template
               v-if="item.cloudinaryUrl != null"
@@ -29,9 +27,7 @@
                 Photo by Sanjana Elina
               </p>
             </template>
-            <template 
-              #text
-            >
+            <template #text>
               <p
                 v-if="item.html != null"
                 v-html="item.html"
@@ -81,7 +77,7 @@ export default {
         if (photoGroupName == null) return item;
         
         const photoGroupLength = this.photoGroupLengths[photoGroupName];
-        const photoId = this.getRandomNumber(photoGroupLength);
+        const photoId = this.getRandomNumberInRange({ max: photoGroupLength });
         const cloudinaryUrl = this.$cloudinary.image.url(`Sanjana%20Quarantine%20Photoshoot/${photoGroupName}/${photoId}`, {
           width: "500",
           height: "700",
@@ -99,8 +95,8 @@ export default {
     },
   },
   methods: {
-    getRandomNumber(max, min = 1) {
-      return Math.floor(Math.random()*(max-min+1)+min);
+    getRandomNumberInRange({ max, min = 1 }) {
+      return Math.floor(Math.random() * (max - min + 1) + min);
     },
   },
 };
