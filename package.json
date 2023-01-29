@@ -6,7 +6,7 @@
   "scripts": {
     "prepare": "husky install",
     "dev": "nuxi dev --port 8080",
-    "build": "nuxt generate",
+    "build": "nuxi generate",
     "start": "nuxi preview",
     "lint:check": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint:fix": "eslint --fix --ext .js,.vue --ignore-path .gitignore ."

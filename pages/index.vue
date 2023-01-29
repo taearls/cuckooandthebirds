@@ -78,7 +78,7 @@ export default {
         
         const photoGroupLength = this.photoGroupLengths[photoGroupName];
         const photoId = this.getRandomNumberInRange({ max: photoGroupLength });
-        const cloudinaryUrl = this.$cloudinary.image.url(`Sanjana%20Quarantine%20Photoshoot/${photoGroupName}/${photoId}`, {
+        const cloudinaryUrl = this.$cloudinary?.image.url(`Sanjana%20Quarantine%20Photoshoot/${photoGroupName}/${photoId}`, {
           width: "500",
           height: "700",
           crop: "fill",
