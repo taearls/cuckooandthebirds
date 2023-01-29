@@ -27,11 +27,11 @@
         </client-only>
       </template> -->
       <!-- <template v-else> -->
-        <img
-          class="flex justify-center m-2 group-hover:opacity-80"
-          :src="imageSrc"
-          :alt="imageAlt"
-        >
+      <img
+        class="flex justify-center m-2 group-hover:opacity-80"
+        :src="imageSrc"
+        :alt="imageAlt"
+      >
       <!-- </template> -->
     </a>
     <slot name="link-text" />
