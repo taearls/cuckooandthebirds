@@ -17,17 +17,17 @@
             :image-alt="release.alt"
             :image-href="release.href"
           >
-            <cld-image
+            <nuxt-img
               class="flex justify-center m-2"
               format="jpg"
-              :public-id="release.imgsrc"
+              :src="release.imgsrc"
               :alt="release.alt"
             >
-              <cld-transformation
+              <!-- <cld-transformation
                 width="400"
                 quality="auto"
-              />
-            </cld-image>
+              /> -->
+            </nuxt-img>
             <span
               slot:link-text
               class="block text-center text-red-600 text-lg italic mx-2"
@@ -44,7 +44,7 @@
             <br>
           </template>
         </div>
-        <div
+        <!-- <div
           v-if="release.videosrc != null"
           class="flex flex-col text-center justify-center mx-auto mb-8"
         >
@@ -56,7 +56,7 @@
             class="mx-auto"
             :src="release.videosrc"
           />
-        </div>
+        </div> -->
       </div>
 
       <text-card>
@@ -101,7 +101,7 @@
 </template>
 
 <script>
-import { LazyYoutube } from "vue-lazytube";
+// import { LazyYoutube } from "vue-lazytube";
 import ImageLink from "@/components/widgets/ImageLink.vue";
 import TextCard from "@/components/widgets/TextCard.vue";
 import releaseDetailsData from "@/assets/data/releases/releaseDetailsData.json";
@@ -109,23 +109,24 @@ import releaseDetailsData from "@/assets/data/releases/releaseDetailsData.json";
 export default defineComponent({
   components: {
     ImageLink,
-    LazyYoutube,
+    // LazyYoutube,
     TextCard,
   },
-  asyncData ({ params, error }) {
-    const releaseId = params.slug;
-    if (releaseId in releaseDetailsData === false) {
-      return error({ statusCode: 404, message: `${releaseId} does not exist` });
-    }
-    return { releaseId };
-  },
+  // asyncData ({ params, error }) {
+  //   const releaseId = params.slug;
+  //   if (releaseId in releaseDetailsData === false) {
+  //     return error({ statusCode: 404, message: `${releaseId} does not exist` });
+  //   }
+  //   return { releaseId };
+  // },
   computed: {
     release () {
-      if (this.releaseId in releaseDetailsData) {
-        return releaseDetailsData[this.releaseId];
-      }
-      // in practice, this should never happen because asyncData creates the 404 response for us.
-      throw new Error(`${this.releaseId} is not a valid release id.`);
+      const { releaseId } = this.$route.params;
+      // if (releaseDetailsData.contains(releaseId)) {
+      return releaseDetailsData[releaseId];
+
+      // // in practice, this should never happen because asyncData creates the 404 response for us.
+      // throw new Error(`${releaseId} is not a valid release id.`);
     },
   },
   mounted () {

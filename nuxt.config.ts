@@ -5,16 +5,42 @@ export default defineNuxtConfig({
   // generate: {
   //   fallback: true,
   // },
+  pages: true,
   runtimeConfig: { public: { recaptchaSitekey: process.env.RECAPTCHA_SITEKEY } },
   // cloudinary: {
   //   cloudName: process.env.CLOUDINARY_ID,
   //   useComponent: true,
   // },
-  modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt"],
+  modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt", "@nuxt/image-edge"],
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
+    },
+  },
+  image: {
+    provider: "cloudinary",
+    domains: ["cloudinary.com"],
+    cloudinary: {
+      baseURL: "https://res.cloudinary.com/cuckooandthebirds",
+      modifiers: {
+        quality: "auto:best",
+        effect: "sharpen:100",
+      },
+      cloudName: "cuckooandthebirds",
+    },
+    presets: {
+      profile: {
+        modifiers: {
+          format: "jpg",
+          width: 400,
+        },
+      },
+      release: {
+        modifiers: {
+          format: "jpg",
+        },
+      },
     },
   },
   builder: "vite",

@@ -17,10 +17,10 @@
               v-if="item.cloudinaryUrl != null"
               #image
             >
-              <img
+              <nuxt-img
                 :src="item.cloudinaryUrl"
                 :alt="item.imageAlt"
-              >
+              />
             </template>
             <template #photo-credit>
               <p class="my-2">
@@ -76,21 +76,23 @@ export default defineComponent({
         const photoGroupName = photoGroups[i];
         if (photoGroupName == null) { return item; }
 
-        const photoGroupLength = this.photoGroupLengths[photoGroupName];
-        const photoId = this.getRandomNumberInRange({ max: photoGroupLength });
-        const cloudinaryUrl = this.$cloudinary?.image.url(`Sanjana%20Quarantine%20Photoshoot/${photoGroupName}/${photoId}`, {
-          width: "500",
-          height: "700",
-          crop: "fill",
-          gravity: "face",
-          quality: "60",
-          "fetch-format": "auto",
-        });
-        return {
-          ...item,
-          cloudinaryUrl,
-          imageAlt: `Sanjana Quarantine Photoshoot ${photoGroupName}-${photoId}`,
-        };
+        return item;
+
+        // const photoGroupLength = this.photoGroupLengths[photoGroupName];
+        // const photoId = this.getRandomNumberInRange({ max: photoGroupLength });
+        // const cloudinaryUrl = this.$cloudinary?.image.url(`Sanjana%20Quarantine%20Photoshoot/${photoGroupName}/${photoId}`, {
+        //   width: "500",
+        //   height: "700",
+        //   crop: "fill",
+        //   gravity: "face",
+        //   quality: "60",
+        //   "fetch-format": "auto",
+        // });
+        // return {
+        //   ...item,
+        //   cloudinaryUrl,
+        //   imageAlt: `Sanjana Quarantine Photoshoot ${photoGroupName}-${photoId}`,
+        // };
       });
     },
   },

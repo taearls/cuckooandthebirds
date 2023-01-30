@@ -11,6 +11,7 @@
       @focus="isFocused = true"
       @blur="isFocused = false"
     >
+      <!-- <nuxt-img :src="imageSrc" :alt="imageAlt" width="400" format="jpg" /> -->
       <!-- <template v-if="isCloudinaryImage">
         <client-only>
           <cld-image
@@ -27,11 +28,13 @@
         </client-only>
       </template> -->
       <!-- <template v-else> -->
-      <img
+      <nuxt-img
         class="flex justify-center m-2 group-hover:opacity-80"
         :src="imageSrc"
         :alt="imageAlt"
-      >
+        width="400"
+        format="jpg"
+      />
       <!-- </template> -->
     </a>
     <slot name="link-text" />
