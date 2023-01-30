@@ -11,23 +11,23 @@
       :aria-label="`Visit Cuckoo and the Birds's ${link.ariaLabel}`"
     >
       <span>
-        <font-awesome-icon
+        <!-- <font-awesome-icon
           v-show="pageLoaded"
           :icon="[link.icon.lib, link.icon.to]"
           size="2x"
-        />
+        /> -->
       </span>
     </a>
   </div>
 </template>
 
 <script>
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { faBandcamp, faSpotify, faYoutube, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+// import { library } from "@fortawesome/fontawesome-svg-core";
+// import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+// import { faBandcamp, faSpotify, faYoutube, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(faBandcamp, faSpotify, faYoutube, faEnvelope, faInstagram, faTwitter);
+// library.add(faBandcamp, faSpotify, faYoutube, faEnvelope, faInstagram, faTwitter);
 
 // TODO: add socialLinks to setup hook when Vue 3.x is released
 
@@ -90,20 +90,20 @@ const socialLinks = [
   },
 ];
 
-export default {
-  components: {
-    FontAwesomeIcon,
-  },
-  data() {
+export default defineComponent({
+  // components: {
+  //   FontAwesomeIcon,
+  // },
+  data () {
     return {
       socialLinks,
       pageLoaded: false,
     };
   },
-  mounted() {
+  mounted () {
     this.pageLoaded = true;
   },
-};
+});
 </script>
 
 <style scoped>

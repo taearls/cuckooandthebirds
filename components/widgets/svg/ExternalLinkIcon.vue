@@ -28,24 +28,6 @@
   </svg>
 </template>
 
-<script lang="ts">
-import { mapState } from "vuex";
-
-export default {
-  props: {
-    ...mapState(["prefersDarkMode"]),
-    // darkModeColor: {
-    //   type: String,
-    //   required: true,
-    // },
-    // lightModeColor: {
-    //   type: String,
-    //   required: true,
-    // },
-  },
-};
-</script>
-
 <style scoped>
 svg {
   @apply fill-current stroke-current text-purple-700;

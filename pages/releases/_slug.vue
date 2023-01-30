@@ -29,30 +29,29 @@
               />
             </cld-image>
             <span
-              slot="link-text"
+              slot:link-text
               class="block text-center text-red-600 text-lg italic mx-2"
             >Artwork by {{ release.artworkCredit }}</span>
           </image-link>
         </div>
         <div class="px-8">
-          <template v-for="(description, index) in release.descriptions">
+          <template v-for="(description, index) in release.descriptions" :key="'description-' + index">
             <p
-              :key="'description-' + index"
               class="text-xl"
             >
               {{ description }}
             </p>
-            <br :key="'description-break-' + index">
+            <br>
           </template>
         </div>
-        <div 
+        <div
           v-if="release.videosrc != null"
           class="flex flex-col text-center justify-center mx-auto mb-8"
         >
           <p class="text-lg my-2">
             Check out the official music video for {{ release.title }}!
           </p>
-          <lazy-youtube 
+          <lazy-youtube
             ref="releaseVideo"
             class="mx-auto"
             :src="release.videosrc"
@@ -107,13 +106,13 @@ import ImageLink from "@/components/widgets/ImageLink.vue";
 import TextCard from "@/components/widgets/TextCard.vue";
 import releaseDetailsData from "@/assets/data/releases/releaseDetailsData.json";
 
-export default {
+export default defineComponent({
   components: {
     ImageLink,
     LazyYoutube,
     TextCard,
   },
-  async asyncData({ params, error }) {
+  asyncData ({ params, error }) {
     const releaseId = params.slug;
     if (releaseId in releaseDetailsData === false) {
       return error({ statusCode: 404, message: `${releaseId} does not exist` });
@@ -121,7 +120,7 @@ export default {
     return { releaseId };
   },
   computed: {
-    release() {
+    release () {
       if (this.releaseId in releaseDetailsData) {
         return releaseDetailsData[this.releaseId];
       }
@@ -129,29 +128,29 @@ export default {
       throw new Error(`${this.releaseId} is not a valid release id.`);
     },
   },
-  mounted() {
+  mounted () {
     const releaseLinks = document.querySelectorAll(".release-link");
     for (let i = 0; i < releaseLinks.length; i++) {
-      let releaseLink = releaseLinks[i];
+      const releaseLink = releaseLinks[i];
       releaseLink.addEventListener("focus", this.addFocusStyleToParent);
       releaseLink.addEventListener("blur", this.removeFocusStyleFromParent);
     }
   },
-  destroyed() {
+  unmounted () {
     const releaseLinks = document.querySelectorAll(".release-link");
     for (let i = 0; i < releaseLinks.length; i++) {
-      let releaseLink = releaseLinks[i];
+      const releaseLink = releaseLinks[i];
       releaseLink.removeEventListener("focus", this.addFocusStyleToParent);
       releaseLink.removeEventListener("blur", this.removeFocusStyleFromParent);
     }
   },
   methods: {
-    addFocusStyleToParent(e) {
+    addFocusStyleToParent (e) {
       e.target.parentElement.style.boxShadow = "0 0 3pt 2pt rgb(178, 245, 234)";
     },
-    removeFocusStyleFromParent(e) {
+    removeFocusStyleFromParent (e) {
       e.target.parentElement.style.boxShadow = "";
     },
   },
-};
+});
 </script>

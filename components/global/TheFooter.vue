@@ -2,7 +2,7 @@
   <footer>
     <br>
     <social-media-icons />
-    <p 
+    <p
       class="mx-auto text-white font-default text-center text-sm font-thin tracking-wide"
       v-html="footerText"
     />
@@ -14,18 +14,18 @@
 import SocialMediaIcons from "@/components/widgets/SocialMediaIcons.vue";
 import TheEmbeddedPlayer from "@/components/global/TheEmbeddedPlayer.vue";
 
-export default {
+export default defineComponent({
   components: {
     SocialMediaIcons,
     TheEmbeddedPlayer,
   },
   computed: {
-    footerText() {
+    footerText () {
       const currentYear = new Date().getFullYear();
       return `&copy; 2019-${currentYear} &bull; Cuckoo and the Birds`;
     },
   },
-};
+});
 </script>
 
 <style scoped>

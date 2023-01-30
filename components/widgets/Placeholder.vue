@@ -3,12 +3,12 @@
 </template>
 
 <script>
-export default {
+export default defineComponent({
   props: {
     height: {
       type: Number,
       required: true,
     },
   },
-};
+});
 </script>

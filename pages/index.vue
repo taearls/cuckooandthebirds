@@ -48,12 +48,12 @@ import TextCard from "@/components/widgets/TextCard.vue";
 import TextImageCard from "@/components/widgets/TextImageCard.vue";
 import textData from "@/assets/data/homePageTextData.json";
 
-export default {
+export default defineComponent({
   components: {
     TextCard,
     TextImageCard,
   },
-  data() {
+  data () {
     return {
       textData,
       photoGroupLengths: {
@@ -67,15 +67,15 @@ export default {
     };
   },
   computed: {
-    shuffledPhotoGroups() {
+    shuffledPhotoGroups () {
       return Object.keys(this.photoGroupLengths).sort(() => 0.5 - Math.random());
     },
-    textAndImageData() {
+    textAndImageData () {
       const photoGroups = this.shuffledPhotoGroups;
       return textData.map((item, i) => {
         const photoGroupName = photoGroups[i];
-        if (photoGroupName == null) return item;
-        
+        if (photoGroupName == null) { return item; }
+
         const photoGroupLength = this.photoGroupLengths[photoGroupName];
         const photoId = this.getRandomNumberInRange({ max: photoGroupLength });
         const cloudinaryUrl = this.$cloudinary?.image.url(`Sanjana%20Quarantine%20Photoshoot/${photoGroupName}/${photoId}`, {
@@ -95,9 +95,9 @@ export default {
     },
   },
   methods: {
-    getRandomNumberInRange({ max, min = 1 }) {
+    getRandomNumberInRange ({ max, min = 1 }) {
       return Math.floor(Math.random() * (max - min + 1) + min);
     },
   },
-};
+});
 </script>

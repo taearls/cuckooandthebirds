@@ -27,20 +27,26 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { useNavBarStore } from "@/stores/navbar-store";
 
-export default {
-  computed: {
-    ...mapState([
-      "isNavActive",
-    ]),
+export default defineComponent({
+  setup () {
+    const navBarStore = useNavBarStore();
+
+    const isNavActive = computed(() => navBarStore.isNavActive);
+
+    return {
+      // you can also access the whole store in your component by returning it
+      navBarStore,
+      isNavActive,
+    };
   },
   methods: {
-    handleToggle() {
-      this.$store.commit("toggleNavActive");
+    handleToggle () {
+      this.navBarStore.toggleNavActive();
     },
   },
-};
+});
 </script>
 
 <style scoped>

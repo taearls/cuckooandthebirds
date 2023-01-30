@@ -33,7 +33,7 @@
           rel="noreferrer"
           href="mailto:cuckooandthebirds@gmail.com"
         >cuckooandthebirds@gmail.com</a>.
-      </p> 
+      </p>
       <p
         class="w-full mx-auto text-white my-4 text-lg md:text-xl leading-normal"
       >
@@ -150,7 +150,7 @@
             Please enter a message.
           </p>
         </div>
-        <vue-recaptcha
+        <!-- <vue-recaptcha
           :key="shouldCompactRecaptcha"
           :sitekey="$config.public.recaptchaSitekey"
           theme="dark"
@@ -158,7 +158,7 @@
           :load-recaptcha-script="true"
           @verify="recaptchaVerified = true"
           @expired="recaptchaVerified = false"
-        />
+        /> -->
 
         <div class="relative">
           <p
@@ -209,13 +209,12 @@
 <script>
 // NOTE: not converting this to TS until I can fully migrate to vue 3.
 // the type inferences are all fucked.
-import { mapState } from "vuex";
-import VueRecaptcha from "vue-recaptcha";
+// import VueRecaptcha from "vue-recaptcha";
 import axios from "axios";
-import {
-  required,
-  email as emailValidationRegex
-} from "vuelidate/lib/validators";
+// import {
+//   required,
+//   email as emailValidationRegex
+// } from "vuelidate/lib/validators";
 
 import RightArrowIcon from "@/components/widgets/svg/RightArrowIcon.vue";
 import LoadingState from "@/components/requestStates/LoadingState.vue";
@@ -228,13 +227,13 @@ const RequestState = {
   error: "error",
 };
 
-export default {
+export default defineComponent({
   components: {
-    VueRecaptcha,
+    // VueRecaptcha,
     RightArrowIcon,
     LoadingState,
   },
-  data() {
+  data () {
     return {
       recaptchaVerified: false,
       shouldCompactRecaptcha: false,
@@ -280,8 +279,7 @@ export default {
     },
   },
   computed: {
-    ...mapState(["prefersDarkMode"]),
-    saveDisabled() {
+    saveDisabled () {
       return (
         this.requestState !== RequestState.idle ||
         !this.recaptchaVerified ||
@@ -292,7 +290,7 @@ export default {
         !this.$v.message.text.required
       );
     },
-    mailToURL() {
+    mailToURL () {
       let mailToURL = "";
       if (process.env.NODE_ENV === "development") {
         mailToURL = "http://localhost:3000/send";
@@ -301,7 +299,7 @@ export default {
       }
       return mailToURL;
     },
-    emailBody() {
+    emailBody () {
       return {
         name: this.name.text,
         subject: this.subject.text,
@@ -310,30 +308,30 @@ export default {
       };
     },
   },
-  mounted() {
+  mounted () {
     // check on initial mount, add event listener to recheck when window resized
     this.checkCompactRecaptcha();
     window.addEventListener("resize", this.checkCompactRecaptcha);
   },
-  destroyed() {
+  unmounted () {
     // remove resize event listener, remove stale recaptcha container
     window.removeEventListener("resize", this.checkCompactRecaptcha);
     this.removeRecaptchaContainer();
   },
   methods: {
-    resetFieldValidation(fieldName) {
+    resetFieldValidation (fieldName) {
       if (fieldName != null) {
-        this.$v[fieldName]["text"].$reset();
+        this.$v[fieldName].text.$reset();
       }
       this.isUserTyping = true;
     },
-    touchFieldValidation(fieldName) {
+    touchFieldValidation (fieldName) {
       if (fieldName != null) {
-        this.$v[fieldName]["text"].$touch();
+        this.$v[fieldName].text.$touch();
       }
       this.isUserTyping = false;
     },
-    removeRecaptchaContainer() {
+    removeRecaptchaContainer () {
       // grab the container that is appended to the DOM from recaptcha script & remove it
       const { lastChild } = document.body;
 
@@ -343,7 +341,7 @@ export default {
         lastChild.remove();
       }
     },
-    checkCompactRecaptcha() {
+    checkCompactRecaptcha () {
       const compactRecaptchaBreakPoint = 560;
       const oldShouldCompactRecaptcha = this.shouldCompactRecaptcha;
       this.shouldCompactRecaptcha =
@@ -355,26 +353,25 @@ export default {
         this.removeRecaptchaContainer();
       }
     },
-    submitEmail() {
-      const vm = this;
+    submitEmail () {
       this.requestState = RequestState.loading;
       // show loading state, success state, failed state
       axios
-        .post(vm.mailToURL, vm.emailBody)
-        .then(response => {
+        .post(this.mailToURL, this.emailBody)
+        .then((response) => {
           if (response.status === 200) {
             this.requestState = RequestState.success;
           } else {
             this.requestState = RequestState.error;
           }
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(`error: ${error}`);
           this.requestState = RequestState.error;
         });
     },
   },
-};
+});
 </script>
 
 <style scoped>

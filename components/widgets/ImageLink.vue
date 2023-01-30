@@ -39,7 +39,7 @@
 </template>
 
 <script>
-export default {
+export default defineComponent({
   props: {
     imageHref: {
       type: String,
@@ -66,10 +66,10 @@ export default {
       default: "noreferrer",
     },
   },
-  data() {
+  data () {
     return {
       isFocused: false,
     };
   },
-};
+});
 </script>

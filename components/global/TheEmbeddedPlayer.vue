@@ -14,35 +14,35 @@
 </template>
 
 <script>
-export default {
+export default defineComponent({
   props: {
     prefersDarkMode: {
       type: Boolean,
       default: true,
     },
   },
-  data() {
+  data () {
     return {
       isMaxWidth: false,
     };
   },
   computed: {
-    embeddedPlayerSrc() {
+    embeddedPlayerSrc () {
       if (this.prefersDarkMode) {
         return "https://bandcamp.com/EmbeddedPlayer/track=409658071/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/";
       }
       return "https://bandcamp.com/EmbeddedPlayer/track=409658071/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/";
     },
   },
-  beforeMount() {
+  beforeMount () {
     this.checkIsMaxWidth();
     window.addEventListener("resize", this.checkIsMaxWidth);
   },
-  beforeDestroy() {
+  beforeUnmount () {
     window.removeEventListener("resize", this.checkIsMaxWidth);
   },
   methods: {
-    checkIsMaxWidth() {
+    checkIsMaxWidth () {
       // has to be 700px; that's the full width of the embedded player
       if (window.innerWidth >= 700) {
         this.isMaxWidth = true;
@@ -51,7 +51,7 @@ export default {
       }
     },
   },
-};
+});
 </script>
 
 <style scoped>

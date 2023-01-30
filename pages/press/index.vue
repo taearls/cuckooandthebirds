@@ -8,9 +8,8 @@
         Interviews:
       </h2>
       <div class="flex flex-col my-4">
-        <template v-for="(interview, index) in interviews">
+        <template v-for="(interview, index) in interviews" :key="'interview' + index">
           <a
-            :key="'interview' + index"
             :href="interview.href"
             rel="noreferrer"
             target="_blank"
@@ -25,9 +24,8 @@
         Reviews:
       </h2>
       <div class="flex flex-col my-4">
-        <template v-for="(review, index) in reviews">
+        <template v-for="(review, index) in reviews" :key="'review' + index">
           <a
-            :key="'review' + index"
             :href="review.href"
             rel="noreferrer"
             target="_blank"
@@ -43,14 +41,14 @@
 
 <script>
 import TextCard from "@/components/widgets/TextCard.vue";
-import { interviews } from "@/assets/data/press/interviewData";
-import { reviews } from "@/assets/data/press/reviewData";
+import { interviews } from "~~/assets/data/press/interviewData";
+import { reviews } from "~~/assets/data/press/reviewData";
 
-export default ({
+export default defineComponent({
   components: {
     TextCard,
   },
-  data() {
+  data () {
     return {
       interviews,
       reviews,

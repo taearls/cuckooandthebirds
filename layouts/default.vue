@@ -1,12 +1,12 @@
 <template>
   <div id="app">
     <placeholder :height="navbarHeight" />
-    <nav-bar 
-      ref="nav-container" 
-      @navbar-height-changed="updateNavBarHeight" 
+    <nav-bar
+      ref="nav-container"
+      @navbar-height-changed="updateNavBarHeight"
     />
     <div id="body-wrapper">
-      <nuxt />
+      <slot />
     </div>
 
     <the-footer />
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { useNavBarStore } from "@/stores/navbar-store";
 
 import NavBar from "@/components/navigation/NavBar.vue";
 import TheFooter from "@/components/global/TheFooter.vue";
@@ -28,28 +28,36 @@ export default {
     TheFooter,
     Placeholder,
   },
-  data() {
+  setup () {
+    const navBarStore = useNavBarStore();
+
+    const isNavActive = computed(() => navBarStore.isNavActive);
+
+    return {
+      // you can also access the whole store in your component by returning it
+      navBarStore,
+      isNavActive,
+    };
+  },
+  data () {
     return {
       navbarHeight: 84, // default value matches h-16 class + NAV_ADDITIONAL_OFFSET
     };
   },
-  computed: {
-    ...mapState(["isNavActive"]),
-  },
   watch: {
-    isNavActive() {
+    isNavActive () {
       this.updateNavBarHeight();
     },
   },
-  mounted() {
+  mounted () {
     this.updateNavBarHeight();
     window.addEventListener("resize", this.updateNavBarHeight);
   },
-  destroyed() {
+  unmounted () {
     window.removeEventListener("resize", this.updateNavBarHeight);
   },
   methods: {
-    updateNavBarHeight() {
+    updateNavBarHeight () {
       this.$nextTick(() => {
         const navContainer = this.$refs["nav-container"];
         this.navbarHeight = navContainer.$el.offsetHeight + NAV_ADDITIONAL_OFFSET;

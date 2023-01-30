@@ -1,7 +1,7 @@
 <template>
   <!-- TODO: implement more robust a11y for dropdown menu: -->
   <!-- https://www.w3.org/TR/wai-aria-practices-1.1/#menubutton -->
-  <div 
+  <div
     class="w-full"
   >
     <div class="flex items-center">
@@ -18,12 +18,12 @@
         />
       </button>
     </div>
-    <div 
+    <div
       v-if="parent.childLinks && parent.childLinks.length > 0"
       v-show="parent.showChildren"
     >
       <ul class="static sm:absolute top-full z-20 flex flex-col sm:border sm:border-gray-600 bg-coolgray-900">
-        <nav-child-link 
+        <nav-child-link
           v-for="(childLink, childLinkIndex) in parent.childLinks"
           :key="`nav-child-link-${childLinkIndex}`"
           :child-link="childLink"
@@ -38,7 +38,7 @@
 <script>
 import NavChildLink from "./NavChildLink.vue";
 
-export default {
+export default defineComponent({
   components: {
     NavChildLink,
   },
@@ -48,16 +48,17 @@ export default {
       required: true,
     },
   },
+  emits: ["toggle"],
   methods: {
-    handleDropdownClick(parent) {
+    handleDropdownClick (parent) {
       parent.showChildren = !parent.showChildren;
       this.$emit("toggle");
     },
-    getFullChildPath(childPath) {
+    getFullChildPath (childPath) {
       return this.parent.parentPath + childPath;
     },
   },
-};
+});
 </script>
 
 <style scoped>

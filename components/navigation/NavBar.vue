@@ -33,7 +33,7 @@
             >
               {{ parent.name }}
             </nuxt-link>
-            <nav-child-links-container 
+            <nav-child-links-container
               v-else
               :parent="parent"
               @toggle="$emit('navbar-height-changed')"
@@ -46,72 +46,76 @@
   </div>
 </template>
 
-<script>
-import { mapState } from "vuex";
+<script lang="ts">
+import { computed } from "vue";
 import NavBarToggle from "./NavBarToggle.vue";
 import NavChildLinksContainer from "./NavChildLinksContainer.vue";
-import navigationData from "@/assets/data/navigation/navigationData";
+import { useNavBarStore } from "@/stores/navbar-store";
+import navigationData from "~~/assets/data/navigation/navigationData";
 
-export default {
+export default defineComponent({
   components: {
     NavBarToggle,
     NavChildLinksContainer,
   },
-  data() {
+  emits: ["navbar-height-changed"],
+  setup () {
+    const navBarStore = useNavBarStore();
+
+    const isNavActive = computed(() => navBarStore.isNavActive);
+
+    return {
+      // you can also access the whole store in your component by returning it
+      navBarStore,
+      isNavActive,
+    };
+  },
+  data () {
     return {
       navigationData,
     };
   },
-  computed: {
-    ...mapState([
-      "isNavActive",
-    ]),
-  },
   watch: {
-    isNavActive(isActive) {
+    isNavActive (isActive) {
       if (isActive) {
         this.initializeFocus();
       } else {
         // if the nav is inactive, the child link lists should collapse, too.
-        this.navigationData.map((section) => section.showChildren = false);
+        this.navigationData.forEach((section) => { section.showChildren = false; });
       }
     },
   },
   methods: {
-    initializeFocus() {
+    initializeFocus () {
       // need to use next tick to ensure tabindex is set to 0 before attempting to focus
       this.$nextTick(() => {
-        const activeRouterLink = document.querySelector("a.nuxt-link-exact-active");
+        const activeRouterLink: HTMLAnchorElement | null = document.querySelector("a.nuxt-link-exact-active");
         if (activeRouterLink == null) {
-          const firstRouterLink = document.querySelector("#navbar ul li:first-child a");
+          const firstRouterLink: HTMLAnchorElement | null = document.querySelector("#navbar ul li:first-child a");
           if (firstRouterLink != null) {
             firstRouterLink.focus();
           }
         } else if (activeRouterLink.classList.contains("child-link")) {
           // grab parent subpath for child page, use it to match against the button with that path as a data attribute.
           const path = window.location.pathname;
-          
+
           // e.g., "/releases/twin-stars" will return ["/releases", "/twin-stars"]
           const parentPathRegex = /\/[a-z-]*/gi;
           const parentPath = path.match(parentPathRegex) ? path.match(parentPathRegex)[0] : "none";
-          
+
           // NOTE: each button which opens a dropdown menu needs a `data-parent-path` attribute whose value is the parent path.
           // it would be nice to find a better idiomatic Vue solution for this.
-          const dropdownButton = document.querySelector(`[data-parent-path='${parentPath}']`);
+          const dropdownButton: HTMLButtonElement | null = document.querySelector(`[data-parent-path='${parentPath}']`);
 
-          // rather than clicking this menu open then focusing on the specific child page, just focus on it. less of a side effect that way. 
-          if (dropdownButton != null) dropdownButton.focus();
+          // rather than clicking this menu open then focusing on the specific child page, just focus on it. less of a side effect that way.
+          if (dropdownButton != null) { dropdownButton.focus(); }
         } else {
           activeRouterLink.focus();
         }
       });
     },
-    handleDropdownClick(section) {
-      section.showChildren = !section.showChildren;
-      this.$emit("navbar-height-changed");
-    },
   },
-};
+});
 </script>
 
 <style scoped>
@@ -120,8 +124,8 @@ export default {
   transition: border-bottom-width 0.1s ease-in;
 }
 .arrow-right {
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
   border-left: 8px solid white;

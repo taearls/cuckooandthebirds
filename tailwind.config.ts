@@ -1,14 +1,14 @@
-module.exports = {
+export default {
   content: [
     "./components/**/*.vue", "./layouts/**/*.vue", "./pages/**/*.vue",
   ],
   theme: {
     extend: {
       margin: {
-        "21": "84px",
+        21: "84px",
       },
       zIndex: {
-        "100": 100,
+        100: 100,
       },
       maxWidth: {
         "65ch": "65ch",

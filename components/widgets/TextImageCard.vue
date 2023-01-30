@@ -14,12 +14,12 @@
 </template>
 
 <script>
-export default {
+export default defineComponent({
   props: {
     imageFirst: {
       type: Boolean,
       default: true,
     },
   },
-};
+});
 </script>

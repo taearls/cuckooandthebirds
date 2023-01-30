@@ -15,7 +15,7 @@
 </template>
 
 <script>
-export default {
+export default defineComponent({
   props: {
     childLink: {
       type: Object,
@@ -32,11 +32,11 @@ export default {
     },
   },
   methods: {
-    getFullChildPath(childPath) {
+    getFullChildPath (childPath) {
       return this.parentPath + childPath;
     },
   },
-};
+});
 </script>
 
 <style scoped>

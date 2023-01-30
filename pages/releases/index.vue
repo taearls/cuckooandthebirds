@@ -22,7 +22,7 @@
           :image-href="`releases/${release.releaseId}`"
         >
           <text-card
-            slot="link-text"
+            slot:link-text
             class="mx-auto text-center"
           >
             <p class="text-xl sm:text-lg">
@@ -36,27 +36,28 @@
 </template>
 
 <script>
+import { defineComponent } from "vue";
 import ImageLink from "@/components/widgets/ImageLink.vue";
 import TextCard from "@/components/widgets/TextCard.vue";
 
-import releases from "@/assets/data/releases/releaseSlugData.json";
+// import releases from "@/assets/data/releases/releaseSlugData.json";
 
-export default {
+export default defineComponent({
   components: {
     ImageLink,
     TextCard,
   },
-  data() {
+  data () {
     return {
-      releases,
+      releases: [],
     };
   },
   computed: {
-    sortedReleases() {
+    sortedReleases () {
       return [...this.releases].sort((a, b) => a.year > b.year);
     },
   },
-};
+});
 </script>
 
 <style>
