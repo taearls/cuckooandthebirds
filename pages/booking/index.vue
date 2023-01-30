@@ -211,10 +211,10 @@
 // the type inferences are all fucked.
 // import VueRecaptcha from "vue-recaptcha";
 import axios from "axios";
-// import {
-//   required,
-//   email as emailValidationRegex
-// } from "vuelidate/lib/validators";
+import {
+  required,
+  email as emailValidationRegex
+} from "@vuelidate/validators";
 
 import RightArrowIcon from "@/components/widgets/svg/RightArrowIcon.vue";
 import LoadingState from "@/components/requestStates/LoadingState.vue";

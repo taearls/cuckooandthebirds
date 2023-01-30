@@ -1,6 +1,6 @@
 <template>
   <main
-    :id="`${releaseId}-release`"
+    :id="`${$route.params.releaseId}-release`"
     class="font-default text-white"
   >
     <section>
@@ -18,16 +18,11 @@
             :image-href="release.href"
           >
             <nuxt-img
+              slot:link-image
               class="flex justify-center m-2"
-              format="jpg"
               :src="release.imgsrc"
               :alt="release.alt"
-            >
-              <!-- <cld-transformation
-                width="400"
-                quality="auto"
-              /> -->
-            </nuxt-img>
+            />
             <span
               slot:link-text
               class="block text-center text-red-600 text-lg italic mx-2"

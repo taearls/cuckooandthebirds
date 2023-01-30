@@ -20,14 +20,14 @@ export default defineNuxtConfig({
   },
   image: {
     provider: "cloudinary",
-    domains: ["cloudinary.com"],
+    domains: ["https://res.cloudinary.com"],
     cloudinary: {
       baseURL: "https://res.cloudinary.com/cuckooandthebirds",
       modifiers: {
         quality: "auto:best",
         effect: "sharpen:100",
       },
-      cloudName: "cuckooandthebirds",
+      // cloudName: "cuckooandthebirds",
     },
     presets: {
       profile: {

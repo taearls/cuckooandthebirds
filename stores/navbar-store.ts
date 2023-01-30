@@ -10,7 +10,6 @@ export const useNavBarStore = defineStore("navBar", {
   actions: {
     toggleNavActive () {
       this.isNavActive = !this.isNavActive;
-      console.log("this.isNavActive: ", this.isNavActive);
     },
   },
 });

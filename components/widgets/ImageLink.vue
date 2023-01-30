@@ -28,13 +28,7 @@
         </client-only>
       </template> -->
       <!-- <template v-else> -->
-      <nuxt-img
-        class="flex justify-center m-2 group-hover:opacity-80"
-        :src="imageSrc"
-        :alt="imageAlt"
-        width="400"
-        format="jpg"
-      />
+      <slot name="link-image" />
       <!-- </template> -->
     </a>
     <slot name="link-text" />

@@ -13,13 +13,12 @@
             :key="'text-item-' + index"
             :image-first="index % 2 === 0"
           >
-            <template
-              v-if="item.cloudinaryUrl != null"
-              #image
-            >
+            <template #image>
               <nuxt-img
-                :src="item.cloudinaryUrl"
-                :alt="item.imageAlt"
+                class="flex justify-center m-2 group-hover:opacity-80"
+                :src="item.src"
+                :alt="item.alt"
+                preset="profile"
               />
             </template>
             <template #photo-credit>
@@ -72,27 +71,17 @@ export default defineComponent({
     },
     textAndImageData () {
       const photoGroups = this.shuffledPhotoGroups;
-      return textData.map((item, i) => {
+      return this.textData.map((item, i) => {
         const photoGroupName = photoGroups[i];
         if (photoGroupName == null) { return item; }
 
-        return item;
-
-        // const photoGroupLength = this.photoGroupLengths[photoGroupName];
-        // const photoId = this.getRandomNumberInRange({ max: photoGroupLength });
-        // const cloudinaryUrl = this.$cloudinary?.image.url(`Sanjana%20Quarantine%20Photoshoot/${photoGroupName}/${photoId}`, {
-        //   width: "500",
-        //   height: "700",
-        //   crop: "fill",
-        //   gravity: "face",
-        //   quality: "60",
-        //   "fetch-format": "auto",
-        // });
-        // return {
-        //   ...item,
-        //   cloudinaryUrl,
-        //   imageAlt: `Sanjana Quarantine Photoshoot ${photoGroupName}-${photoId}`,
-        // };
+        const photoGroupLength = this.photoGroupLengths[photoGroupName];
+        const photoId = this.getRandomNumberInRange({ max: photoGroupLength });
+        return {
+          ...item,
+          src: `Sanjana%20Quarantine%20Photoshoot/${photoGroupName}/${photoId}`,
+          alt: `Sanjana Quarantine Photoshoot ${photoGroupName}-${photoId}`,
+        };
       });
     },
   },
