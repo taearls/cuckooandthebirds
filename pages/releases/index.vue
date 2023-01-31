@@ -11,24 +11,25 @@
     </text-card>
     <section class="flex flex-col md:flex-row justify-center">
       <div
-        v-for="release in sortedReleases"
+        v-for="release in releases"
         :key="release.id"
         class="mx-auto w-4/5"
       >
         <image-link
           class="mx-auto my-4 w-11/12"
-          :image-src="release.cldImgPath"
+          :image-src="release.src"
           :image-alt="release.alt"
           :image-href="`releases/${release.releaseId}`"
         >
-          <text-card
-            slot:link-text
-            class="mx-auto text-center"
-          >
-            <p class="text-xl sm:text-lg">
-              {{ release.title }} ({{ release.year }})
-            </p>
-          </text-card>
+          <template #link-text>
+            <text-card
+              class="mx-auto my-2 text-center"
+            >
+              <p class="text-lg sm:text-xl">
+                {{ release.title }} ({{ release.year }})
+              </p>
+            </text-card>
+          </template>
         </image-link>
       </div>
     </section>
@@ -39,8 +40,7 @@
 import { defineComponent } from "vue";
 import ImageLink from "@/components/widgets/ImageLink.vue";
 import TextCard from "@/components/widgets/TextCard.vue";
-
-// import releases from "@/assets/data/releases/releaseSlugData.json";
+import releases from "@/assets/data/releases/releaseSlugData.json";
 
 export default defineComponent({
   components: {
@@ -49,19 +49,14 @@ export default defineComponent({
   },
   data () {
     return {
-      releases: [],
+      releases,
     };
-  },
-  computed: {
-    sortedReleases () {
-      return [...this.releases].sort((a, b) => a.year > b.year);
-    },
   },
 });
 </script>
 
 <style>
 .release-header-text {
-  @apply my-4 text-xl mx-auto text-center max-w-65ch;
+  @apply my-4 text-xl sm:text-2xl mx-auto text-center max-w-65ch;
 }
 </style>

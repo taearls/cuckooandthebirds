@@ -11,7 +11,7 @@
       @focus="isFocused = true"
       @blur="isFocused = false"
     >
-      <!-- <nuxt-img :src="imageSrc" :alt="imageAlt" width="400" format="jpg" /> -->
+      <nuxt-img :src="imageSrc" :alt="imageAlt" format="jpg" />
       <!-- <template v-if="isCloudinaryImage">
         <client-only>
           <cld-image
@@ -28,7 +28,7 @@
         </client-only>
       </template> -->
       <!-- <template v-else> -->
-      <slot name="link-image" />
+      <!-- <slot name="link-image" /> -->
       <!-- </template> -->
     </a>
     <slot name="link-text" />
@@ -49,10 +49,6 @@ export default defineComponent({
     imageAlt: {
       type: String,
       required: true,
-    },
-    isCloudinaryImage: {
-      type: Boolean,
-      default: true,
     },
     target: {
       type: String,

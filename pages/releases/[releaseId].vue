@@ -17,17 +17,8 @@
             :image-alt="release.alt"
             :image-href="release.href"
           >
-            <template #link-image>
-              <nuxt-img
-                class="flex justify-center m-2"
-                :src="release.imgsrc"
-                :alt="release.alt"
-                preset="release"
-              />
-            </template>
             <template #link-text>
               <span
-
                 class="block text-center text-red-600 text-lg italic mx-2"
               >Artwork by {{ release.artworkCredit }}</span>
             </template>
