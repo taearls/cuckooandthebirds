@@ -28,8 +28,8 @@
             </template>
             <template #text>
               <p
-                v-if="item.html != null"
-                v-html="item.html"
+                v-if="item.parseHTML"
+                v-html="item.text"
               />
               <p v-else>
                 {{ item.text }}
@@ -45,7 +45,7 @@
 <script>
 import TextCard from "@/components/widgets/TextCard.vue";
 import TextImageCard from "@/components/widgets/TextImageCard.vue";
-import textData from "@/assets/data/homePageTextData.json";
+import { homePageTextData } from "@/assets/data/home";
 
 export default defineComponent({
   components: {
@@ -54,7 +54,7 @@ export default defineComponent({
   },
   data () {
     return {
-      textData,
+      textData: homePageTextData,
       photoGroupLengths: {
         // harmonica: 2,
         joy: 5,

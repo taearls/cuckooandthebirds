@@ -40,7 +40,7 @@
 import { defineComponent } from "vue";
 import ImageLink from "@/components/widgets/ImageLink.vue";
 import TextCard from "@/components/widgets/TextCard.vue";
-import releases from "@/assets/data/releases/releaseSlugData.json";
+import { releaseSlugData } from "@/assets/data/releases";
 
 export default defineComponent({
   components: {
@@ -49,7 +49,7 @@ export default defineComponent({
   },
   data () {
     return {
-      releases,
+      releases: releaseSlugData,
     };
   },
 });
