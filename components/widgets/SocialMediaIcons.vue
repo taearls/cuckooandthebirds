@@ -10,90 +10,71 @@
       :href="link.href"
       :aria-label="`Visit Cuckoo and the Birds's ${link.ariaLabel}`"
     >
-      <span>
-        <!-- <font-awesome-icon
-          v-show="pageLoaded"
-          :icon="[link.icon.lib, link.icon.to]"
-          size="2x"
-        /> -->
-      </span>
+      <icon :name="link.icon.name" size="32px" />
     </a>
   </div>
 </template>
 
-<script>
-// import { library } from "@fortawesome/fontawesome-svg-core";
-// import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-// import { faBandcamp, faSpotify, faYoutube, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons";
-// import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-
-// library.add(faBandcamp, faSpotify, faYoutube, faEnvelope, faInstagram, faTwitter);
-
-// TODO: add socialLinks to setup hook when Vue 3.x is released
-
+<script lang="ts">
 /*
  * href: link to social media site
  * ariaLabel: website name that will be attached to aria-label
  * icon: {
- *  lib: font-awesome class
- *  to: name of destination (lowercase)
+ *  name: identifying name of icon
  * }
  */
-const socialLinks = [
+export type SocialLink = {
+  href: string;
+  ariaLabel: string;
+  icon: { name: string };
+}
+
+const socialLinks: SocialLink[] = [
   {
     href: "https://cuckooandthebirds.bandcamp.com",
     ariaLabel: "Bandcamp",
     icon: {
-      lib: "fab",
-      to: "bandcamp",
+      name: "mdi:bandcamp",
     },
   },
   {
     href: "https://www.youtube.com/channel/UCoDdh8m-C8GPhGktauuuifQ",
     ariaLabel: "YouTube",
     icon: {
-      lib: "fab",
-      to: "youtube",
+      name: "mdi:youtube",
     },
   },
   {
     href: "https://open.spotify.com/artist/3JcmKe00eIMMsC0MRkKknD",
     ariaLabel: "Spotify",
     icon: {
-      lib: "fab",
-      to: "spotify",
+      name: "mdi:spotify",
     },
   },
   {
     href: "https://www.instagram.com/cuckooandthebirds",
     ariaLabel: "Instagram",
     icon: {
-      lib: "fab",
-      to: "instagram",
+      name: "mdi:instagram",
     },
   },
   {
     href: "https://www.twitter.com/cuckooandbirds",
     ariaLabel: "Twitter",
     icon: {
-      lib: "fab",
-      to: "twitter",
+      name: "mdi:twitter",
     },
   },
   {
     href: "mailto:cuckooandthebirds@gmail.com",
     ariaLabel: "Email",
     icon: {
-      lib: "fa",
-      to: "envelope",
+      name: "mdi:email",
     },
   },
 ];
 
 export default defineComponent({
-  // components: {
-  //   FontAwesomeIcon,
-  // },
   data () {
     return {
       socialLinks,
@@ -105,7 +86,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped>
-
-</style>

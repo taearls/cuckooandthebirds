@@ -11,7 +11,7 @@ export default defineNuxtConfig({
   //   cloudName: process.env.CLOUDINARY_ID,
   //   useComponent: true,
   // },
-  modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt", "@nuxt/image-edge"],
+  modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt", "@nuxt/image-edge", "nuxt-icon"],
   postcss: {
     plugins: {
       tailwindcss: {},
