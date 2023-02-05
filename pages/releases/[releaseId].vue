@@ -4,11 +4,11 @@
     class="font-default text-white"
   >
     <section>
-      <h1 class="text-red-600 text-center text-3xl font-semibold mx-4 mb-8">
+      <h1 class="text-red-600 text-center text-3xl md:text-4xl font-semibold mx-4 mb-8">
         {{ release.title }} ({{ release.year }})
       </h1>
       <div class="w-4/5 mx-auto">
-        <div class="mx-auto w-11/12 mb-4 md:w-1/2 md:float-left md:mr-8 md:mb-2">
+        <div class="mx-auto w-11/12 mb-4">
           <image-link
             target="_blank"
             rel="noreferrer"
@@ -19,7 +19,7 @@
           >
             <template #link-text>
               <span
-                class="block text-center text-red-600 text-lg italic mx-2"
+                class="block text-center text-red-600 text-lg md:text-xl italic m-4"
               >Artwork by {{ release.artworkCredit }}</span>
             </template>
           </image-link>
