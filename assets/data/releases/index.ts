@@ -64,7 +64,7 @@ export const releaseDetailsData: Record<string, ReleaseDetails> = {
   },
   "show-me-the-dark": {
     imgsrc: "Show%20Me%20The%20Dark/show-me-the-dark-artwork.jpg",
-    videosrc: "https://www.youtube.com/watch?v=W9NnCvO9xac",
+    videosrc: "https://www.youtube-nocookie.com/embed/W9NnCvO9xac",
     alt: "Album Artwork for Show Me The Dark",
     artworkCredit: "Mikal Bae and Alcides Diaz",
     year: 2021,

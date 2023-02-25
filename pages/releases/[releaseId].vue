@@ -34,19 +34,25 @@
             <br>
           </template>
         </div>
-        <!-- <div
+        <div
           v-if="release.videosrc != null"
           class="flex flex-col text-center justify-center mx-auto mb-8"
         >
           <p class="text-lg my-2">
             Check out the official music video for {{ release.title }}!
           </p>
-          <lazy-youtube
-            ref="releaseVideo"
-            class="mx-auto"
-            :src="release.videosrc"
-          />
-        </div> -->
+          <div class="mx-auto">
+            <iframe
+              width="560"
+              height="315"
+              :src="release.videosrc"
+              :title="`YouTube video player for ${release.title}`"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            />
+          </div>
+        </div>
       </div>
 
       <text-card>
@@ -91,7 +97,6 @@
 </template>
 
 <script>
-// import { LazyYoutube } from "vue-lazytube";
 import ImageLink from "@/components/widgets/ImageLink.vue";
 import TextCard from "@/components/widgets/TextCard.vue";
 import { releaseDetailsData } from "@/assets/data/releases";
@@ -99,24 +104,12 @@ import { releaseDetailsData } from "@/assets/data/releases";
 export default defineComponent({
   components: {
     ImageLink,
-    // LazyYoutube,
     TextCard,
   },
-  // asyncData ({ params, error }) {
-  //   const releaseId = params.slug;
-  //   if (releaseId in releaseDetailsData === false) {
-  //     return error({ statusCode: 404, message: `${releaseId} does not exist` });
-  //   }
-  //   return { releaseId };
-  // },
   computed: {
     release () {
       const { releaseId } = this.$route.params;
-      // if (releaseDetailsData.contains(releaseId)) {
       return releaseDetailsData[releaseId];
-
-      // // in practice, this should never happen because asyncData creates the 404 response for us.
-      // throw new Error(`${releaseId} is not a valid release id.`);
     },
   },
   mounted () {
