@@ -1,16 +1,7 @@
 export default defineNuxtConfig({
-  // target: "static",
-  // imports: {    autoImport: false  },
   ssr: true,
-  // generate: {
-  //   fallback: true,
-  // },
   pages: true,
   runtimeConfig: { public: { recaptchaSitekey: process.env.RECAPTCHA_SITEKEY } },
-  // cloudinary: {
-  //   cloudName: process.env.CLOUDINARY_ID,
-  //   useComponent: true,
-  // },
   modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt", "@nuxt/image-edge", "nuxt-icon"],
   postcss: {
     plugins: {
@@ -27,7 +18,6 @@ export default defineNuxtConfig({
         quality: "auto:best",
         effect: "sharpen:100",
       },
-      // cloudName: "cuckooandthebirds",
     },
     presets: {
       profile: {
