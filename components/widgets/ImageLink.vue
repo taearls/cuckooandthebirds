@@ -11,25 +11,7 @@
       @focus="isFocused = true"
       @blur="isFocused = false"
     >
-      <nuxt-img :src="imageSrc" :alt="imageAlt" format="jpg" />
-      <!-- <template v-if="isCloudinaryImage">
-        <client-only>
-          <cld-image
-            class="flex justify-center m-2 group-hover:opacity-80"
-            format="jpg"
-            :public-id="imageSrc"
-            :alt="imageAlt"
-          >
-            <cld-transformation
-              width="400"
-              quality="auto"
-            />
-          </cld-image>
-        </client-only>
-      </template> -->
-      <!-- <template v-else> -->
-      <!-- <slot name="link-image" /> -->
-      <!-- </template> -->
+      <nuxt-img class="mx-auto w-full max-w-3xl min-w-[150px]" :src="imageSrc" :alt="imageAlt" format="jpg" />
     </a>
     <slot name="link-text" />
   </div>
