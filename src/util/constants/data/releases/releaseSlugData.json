@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Show Me The Dark",
+    "releaseId": "show-me-the-dark",
+    "cldImgPath": "Show%20Me%20The%20Dark/show-me-the-dark-artwork",
+    "alt": "Artwork for Show Me The Dark",
+    "year": 2021
+  },
+  {
+    "title": "Twin Stars",
+    "releaseId": "twin-stars",
+    "cldImgPath": "Twin%20Stars/twin-stars-album-art.jpg",
+    "alt": "Album Artwork for Twin Stars",
+    "year": 2019
+  }
+]

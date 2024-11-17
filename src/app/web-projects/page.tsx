@@ -2,7 +2,7 @@ import InlineAnchor from "@/components/InlineAnchor";
 import WebProject from "@/components/WebProject/WebProject";
 import { Paragraph } from "@/components/layout/Paragraph";
 import { HeadingOne } from "@/components/layout/headings";
-import { WEB_PROJECTS } from "@/util/constants";
+import { WEB_PROJECTS } from "@/util/constants/constants";
 
 export default function WebProjects() {
   return (

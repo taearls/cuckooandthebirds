@@ -4,7 +4,7 @@ import { ExternalLinkIcon } from "../icons";
 export type InlineAnchorProps = {
   ariaLabel: string;
   href: string;
-  text: string;
+  children: string;
   isExternal?: boolean;
   bold?: boolean;
   noColor?: boolean;
@@ -13,7 +13,7 @@ export type InlineAnchorProps = {
 export default function InlineAnchor({
   ariaLabel,
   href,
-  text,
+  children,
   isExternal = false,
   bold = true,
   noColor = false,
@@ -33,7 +33,7 @@ export default function InlineAnchor({
         <span
           className={`${colorClass} inline-flex group-hover:text-cyan-400  dark:group-hover:text-cyan-300`}
         >
-          {text}
+          {children}
         </span>
         {isExternal && (
           <span className="ml-1 inline-flex">

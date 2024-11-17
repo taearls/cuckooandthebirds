@@ -1,5 +1,5 @@
+import { getCloudinarySrc } from "@/util";
 import Image from "next/image";
-import { getCloudinarySrc } from "./util";
 
 export type CloudinaryImageProps = {
   transformations?: Array<string>;
