@@ -1,17 +1,32 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/da37dd03-ace0-48d7-b79f-4193d97d05be/deploy-status)](https://app.netlify.com/sites/animated-toffee-13f6ad/deploys)
+# Cuckoo and the Birds
 
-# About Me
+Cuckoo and the Birds is a Chicago rock band who play sad songs that flirt with harmonies. For booking inquiries, please contact [cuckooandthebirds@gmail.com](mailto:cuckooandthebirds@gmail.com).
 
-I'm a fullstack developer and musician based in Chicago, IL. Outside of tech, I'm also a [musician](https://www.cuckooandthebirds.com) and an avid fan of Star Trek.
+## Links
 
-I have a passion for learning new technologies, and I'm always looking to learn more. For business inquiries, please email me at [tyler.a.earls@gmail.com](mailto:tyler.a.earls@gmail.com).
+### Music
 
-# Portfolio
+- [Bandcamp](https://cuckooandthebirds.bandcamp.com)
+- [YouTube](https://www.youtube.com/channel/UCoDdh8m-C8GPhGktauuuifQ)
+- [Spotify](https://open.spotify.com/artist/3JcmKe00eIMMsC0MRkKknD?si=KAG0Wnb2Sr6TYP5Rp3MWeA)
 
-This repository is the source code for my tech portfolio, built lovingly with [Next](https://nextjs.org), a modern web framework built with React. I also use [TailwindCSS](https://tailwindcss.com) in my components, and [Cloudinary](https://cloudinary.com) to serve images from a cloud-based data store that are optimized for the web.
+### Social Media
+
+- [Instagram](https://www.instagram.com/cuckooandthebirds)
+- [Facebook](https://www.facebook.com/cuckooandthebirds)
+
+## Development
+
+### Running the App
+
+If you're curious to run this app locally, feel free to clone this. After a fresh `npm install` you can serve the development version of the app by running `npm run serve`.
+
+### Linting
+
+This application is configured to run linting in a pre-commit hook.
+
+To check for linting violations, simply run `npm run lint:check`. To fix them, run `npm run lint:fix`
 
 # Previous Iterations
 
-1. The first [iteration](https://github.com/taearls/portfolio-nuxt) of this website was built with [Nuxt](https://nuxtjs.org) and [Vue](https://vuejs.org). I pivoted away from this stack because I was fascinated by Rust-based web frameworks.
-
-2. The second [iteration](https://github.com/taearls/portfolio-rs) was built with [Yew](https://yew.rs), a Rust-based web framework with React-inspired APIs. I pivoted away from this stack because over the course of a year, it seemed that this project was slow to progress and I wanted to stay sharp on the technologies I use in my day-to-day professional work.
+1. The first [iteration](https://github.com/taearls/cuckooandthebirds) of this website was built with [Nuxt](https://nuxtjs.org) and [Vue](https://vuejs.org). I pivoted away from this stack because I wanted to use React which I use it regularly at work.
