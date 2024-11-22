@@ -1,6 +1,6 @@
 "use client";
+
 import BandcampIcon from "./BandcampIcon";
-// if I don't add the "use client" directive, this component won't work.
 import BlueskyIcon from "./BlueskyIcon";
 
 export type SocialMediaIconLink = {
@@ -15,6 +15,11 @@ const SOCIAL_MEDIA_ICONS: Array<SocialMediaIconLink> = [
     ariaLabel: "Go to Cuckoo and the Birds's Bandcamp",
     href: "https://cuckooandthebirds.bandcamp.com",
     icon: <BandcampIcon />,
+  },
+  {
+    ariaLabel: "Go to Cuckoo and the Birds's Spotify",
+    href: "https://cuckooandthebirds.bandcamp.com",
+    icon: <></>, // <SpotifyIcon />,
   },
   {
     ariaLabel: "Go to Cuckoo and the Birds's Bluesky",
