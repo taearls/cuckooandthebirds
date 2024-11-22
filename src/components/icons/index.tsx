@@ -1,4 +1,5 @@
+import BandcampIcon from "./BandcampIcon";
+import BlueskyIcon from "./BlueskyIcon";
 import ExternalLinkIcon from "./ExternalLinkIcon";
-import SocialMediaIcons from "./SocialMediaIcons/SocialMediaIcons";
 
-export { ExternalLinkIcon, SocialMediaIcons };
+export { BandcampIcon, BlueskyIcon, ExternalLinkIcon };
