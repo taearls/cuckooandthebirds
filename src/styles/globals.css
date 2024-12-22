@@ -21,6 +21,9 @@ html {
   min-width: 100vw;
 }
 
+/* basic light / dark theme implementation 
+  TODO: clean up
+*/
 html, html * {
     background-color: var(--white);
     color: var(--soft-black);

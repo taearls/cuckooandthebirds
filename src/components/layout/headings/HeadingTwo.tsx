@@ -9,7 +9,7 @@ export default function HeadingTwo({
 
   return (
     <h2
-      className={`${alignmentClass} mb-8 text-3xl font-bold `}
+      className={`${alignmentClass} accent mb-8 text-3xl font-bold `}
     >
       {children}
     </h2>
