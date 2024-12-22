@@ -1,6 +1,6 @@
 "use client";
 
-import { BandcampIcon, BlueskyIcon } from "../icons/svg";
+import { BandcampIcon, BlueskyIcon } from "../icons";
 import SocialMediaIcon, { SocialMediaIconProps } from "./SocialMediaIcon";
 
 const SOCIAL_MEDIA_ICONS: Array<SocialMediaIconProps> = [

@@ -18,18 +18,20 @@ export default function WebProjects() {
         <InlineAnchor
           href="https://nextjs.org"
           ariaLabel="Go to Next's official documentation website"
-          text="Next.js"
           isExternal
-        />
+        >
+          Next.js
+        </InlineAnchor>
         {
           "(a React framework), my open sourced work includes the personal and freelance projects listed below. If you're interested to see more, feel free to stalk me on my "
         }
         <InlineAnchor
           href="https://github.com/taearls"
           ariaLabel="Go to Tyler's Github"
-          text="Github"
           isExternal
-        />
+        >
+          Github
+        </InlineAnchor>
         {"."}
       </Paragraph>
 
