@@ -3,27 +3,33 @@ import { NavigationBar, NavigationBarProps } from "@/components/navigation";
 const NAVIGATION_LINKS: NavigationBarProps["links"] = [
   {
     ariaLabel: "Visit Home Page",
-    text: "Home",
+    children: "Home",
     href: "/",
     isExternal: false,
+    bold: true,
   },
   {
     ariaLabel: "Visit Web Projects Page",
-    text: "Web",
+    children: "Web",
     href: "/web-projects",
     isExternal: false,
+    bold: true,
+
   },
   {
     ariaLabel: "Visit Contact Page",
-    text: "Contact",
+    children: "Contact",
     href: "/contact",
     isExternal: false,
+    bold: true,
+
   },
   {
     ariaLabel: "Listen to Tyler's music on Bandcamp",
-    text: "Music",
+    children: "Music",
     href: "https://cuckooandthebirds.bandcamp.com",
     isExternal: true,
+    bold: true,
   },
 ];
 
