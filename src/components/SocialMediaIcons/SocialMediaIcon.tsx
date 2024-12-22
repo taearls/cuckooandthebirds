@@ -1,8 +1,21 @@
+import { mergeClasses } from "@/util/styling/styling.utils";
+
+import styles from "./SocialMediaIcon.module.css";
+
+export const enum SocialMediaIconVariant {
+  BANDCAMP = "bandcamp",
+  BLUESKY = "bluesky",
+  GITHUB = "github",
+  INSTAGRAM = "instagram",
+  SPOTIFY = "spotify",
+  YOUTUBE = "youtube",
+}
+
 export type SocialMediaIconProps = {
   name: string;
   href: string;
   ariaLabel?: string;
-  icon: React.ReactNode | React.ReactNode[];
+  icon: SocialMediaIconVariant;
 };
 
 export default function SocialMediaIcon({
@@ -15,7 +28,7 @@ export default function SocialMediaIcon({
     <a
       href={href}
       aria-label={ariaLabel}
-      className="focus:shadow-outline-light dark:focus:shadow-outline-dark rounded-sm focus:outline-none"
+      className={mergeClasses(styles["icon-base"], styles["icon"])}
       target="_blank"
     >
       <span className="rounded-sm text-purple-700 hover:text-cyan-400 dark:text-purple-400 dark:hover:text-cyan-300">

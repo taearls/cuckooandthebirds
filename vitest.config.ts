@@ -1,9 +1,16 @@
-import { defineConfig } from "vitest/config";
-import react from "@vitejs/plugin-react";
+import { fileURLToPath } from "node:url";
 
-export default defineConfig({
-  plugins: [react()],
-  test: {
-    environment: "jsdom",
-  },
-});
+import { configDefaults, defineConfig, mergeConfig } from "vitest/config";
+
+import viteConfig from "./vite.config";
+
+export default mergeConfig(
+  viteConfig,
+  defineConfig({
+    test: {
+      environment: "jsdom",
+      exclude: [...configDefaults.exclude, "e2e/**"],
+      root: fileURLToPath(new URL("./", import.meta.url)),
+    },
+  }),
+);
