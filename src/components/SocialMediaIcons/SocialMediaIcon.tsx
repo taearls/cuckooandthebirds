@@ -32,7 +32,7 @@ export default function SocialMediaIcon({
       target="_blank"
       rel="noreferrer"
     >
-      <span className="rounded-sm text-purple-700 hover:text-cyan-400 dark:text-purple-400 dark:hover:text-cyan-300">
+      <span className="rounded-sm ">
         {icon}
       </span>
     </a>

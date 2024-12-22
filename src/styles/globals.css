@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "colors.css";
-
 :root {
   --expanded-nav-height: 191px;
   --collapsed-nav-height: 64px;
@@ -12,6 +10,8 @@
 
   --soft-black: #121212;
   --white: white;
+  --active-light: rgb(34 211 238 / var(--tw-text-opacity, 1)); /* tailwind-cyan-400 */
+  --active-dark: rgb(103 232 249 / var(--tw-text-opacity, 1)); /* tailwind cyan-300 */
   --accent-dark: rgb(192 132 252 / var(--tw-text-opacity, 1)); /* tailwind purple-400 */
   --accent-light: rgb(126 34 206 / var(--tw-text-opacity, 1)); /* tailwind purple-700 */
 }
@@ -26,10 +26,28 @@ html, html * {
     color: var(--soft-black);
     fill: var(--accent-light);
     stroke: var(--accent-light);
+    a:hover, a:hover * {
+      color: var(--active-light);
+      fill: var(--active-light);
+      stroke: var(--active-light);
+    }
+
+    .accent, .accent * {
+      color: var(--accent-light);
+    }
   @media (prefers-color-scheme: dark) {
     background-color: var(--soft-black);
     color: var(--white);
     fill: var(--accent-dark);
     stroke: var(--accent-dark);
+    a:hover, a:hover * {
+      color: var(--active-dark);
+      fill: var(--active-dark);
+      stroke: var(--active-dark);
+    }
+
+    .accent, .accent * {
+      color: var(--accent-dark);
+    }
   }
 }

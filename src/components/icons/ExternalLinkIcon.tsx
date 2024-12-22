@@ -3,7 +3,6 @@ export type ExternalLinkIconProps = {
   id?: string;
   title?: string;
   description?: string;
-  noColor?: boolean;
 };
 
 const DEFAULT_PROP_VALUES: ExternalLinkIconProps = {
@@ -17,14 +16,10 @@ export default function ExternalLinkIcon({
   id = DEFAULT_PROP_VALUES.id,
   title = DEFAULT_PROP_VALUES.title,
   description = DEFAULT_PROP_VALUES.description,
-  noColor = false,
 }: ExternalLinkIconProps) {
-  const colorClass = noColor
-    ? "text-soft-black dark:text-white"
-    : "text-purple-700 dark:text-purple-400";
   return (
     <svg
-      className={`${colorClass} inline-flex group-hover:text-cyan-400 dark:group-hover:text-cyan-300`}
+      className={`inline-flex`}
       height="24px"
       width="24px"
       strokeWidth="5"

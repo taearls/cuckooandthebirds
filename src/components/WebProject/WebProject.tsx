@@ -61,12 +61,12 @@ export default function WebProject({
             </a>
           </div>
           <a
-            className="focus:shadow-outline-light dark:focus:shadow-outline-dark mt-1 block cursor-pointer rounded-sm font-semibold text-purple-700 focus:outline-none dark:text-purple-400"
+            className="focus:shadow-outline-light dark:focus:shadow-outline-dark mt-1 block cursor-pointer rounded-sm font-semibold focus:outline-none"
             target="_blank"
             rel="noreferrer"
             href={href}
           >
-            <span className="text-purple-700 md:text-lg dark:text-purple-400">
+            <span className="md:text-lg">
               {tagline}
             </span>
             {emoji != null && <span>{emoji}</span>}

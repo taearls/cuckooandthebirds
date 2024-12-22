@@ -16,28 +16,24 @@ export default function InlineAnchor({
   children,
   isExternal = false,
   bold = true,
-  noColor = false,
 }: InlineAnchorProps) {
   const boldClass = bold ? "font-extrabold" : "font-normal";
-  const colorClass = noColor
-    ? "text-soft-black dark:text-white"
-    : "text-purple-700 dark:text-purple-400";
   return (
-    <span className="group inline-block">
+    <span className="inline-block">
       <a
-        className={`${boldClass} focus:shadow-outline-light dark:focus:shadow-outline-dark group inline-flex items-center rounded-sm  text-lg focus:outline-none sm:items-center sm:justify-center`}
+        className={`${boldClass} accent focus:shadow-outline-light dark:focus:shadow-outline-dark inline-flex items-center rounded-sm text-lg focus:outline-none sm:items-center sm:justify-center group`}
         href={href}
         aria-label={ariaLabel}
         target={isExternal ? "_blank" : undefined} rel="noreferrer"
       >
         <span
-          className={`${colorClass} inline-flex group-hover:text-cyan-400  dark:group-hover:text-cyan-300`}
+          className={`inline-flex`}
         >
           {children}
         </span>
         {isExternal && (
           <span className="ml-1 inline-flex">
-            <ExternalLinkIcon noColor={noColor} />
+            <ExternalLinkIcon />
           </span>
         )}
       </a>
