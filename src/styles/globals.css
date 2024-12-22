@@ -2,12 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "colors.css";
+
 :root {
   --expanded-nav-height: 191px;
   --collapsed-nav-height: 64px;
   --footer-height: 80px;
   --body-padding-y: 16px;
+
+  --soft-black: #121212;
+  --white: white;
+  --accent-dark: rgb(192 132 252 / var(--tw-text-opacity, 1)); /* tailwind purple-400 */
+  --accent-light: rgb(126 34 206 / var(--tw-text-opacity, 1)); /* tailwind purple-700 */
 }
 
-@media (prefers-color-scheme: dark) {
+html {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+html, html * {
+    background-color: var(--white);
+    color: var(--soft-black);
+    fill: var(--accent-light);
+    stroke: var(--accent-light);
+  @media (prefers-color-scheme: dark) {
+    background-color: var(--soft-black);
+    color: var(--white);
+    fill: var(--accent-dark);
+    stroke: var(--accent-dark);
+  }
 }

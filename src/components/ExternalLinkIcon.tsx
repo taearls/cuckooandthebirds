@@ -25,7 +25,7 @@ export default function ExternalLinkIcon({
     : "text-purple-700 dark:text-purple-400";
   return (
     <svg
-      className={`${colorClass} inline-flex fill-current stroke-current group-hover:text-cyan-400 dark:group-hover:text-cyan-300`}
+      className={`${colorClass} inline-flex group-hover:text-cyan-400 dark:group-hover:text-cyan-300`}
       height="24px"
       width="24px"
       strokeWidth="5"
