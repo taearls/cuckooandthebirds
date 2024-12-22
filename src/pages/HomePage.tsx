@@ -1,5 +1,5 @@
-import InlineAnchor from "@/components/InlineAnchor";
-import { Paragraph } from "@/components/layout/Paragraph";
+// import InlineAnchor from "@/components/InlineAnchor";
+// import { Paragraph } from "@/components/layout/Paragraph";
 import HeadingOne from "@/components/layout/headings/HeadingOne";
 import { homePageTextData } from "@/util/constants/constants";
 

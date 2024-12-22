@@ -1,4 +1,4 @@
-import Link from "next/link";
+// import Link from "next/link";
 import { ExternalLinkIcon } from "../icons";
 
 export type InlineAnchorProps = {
@@ -24,11 +24,11 @@ export default function InlineAnchor({
     : "text-purple-700 dark:text-purple-400";
   return (
     <span className="group inline-block">
-      <Link
+      <a
         className={`${boldClass} focus:shadow-outline-light dark:focus:shadow-outline-dark group inline-flex items-center rounded-sm  text-lg focus:outline-none sm:items-center sm:justify-center`}
         href={href}
         aria-label={ariaLabel}
-        target={isExternal ? "_blank" : undefined}
+        target={isExternal ? "_blank" : undefined} rel="noreferrer"
       >
         <span
           className={`${colorClass} inline-flex group-hover:text-cyan-400  dark:group-hover:text-cyan-300`}
@@ -40,7 +40,7 @@ export default function InlineAnchor({
             <ExternalLinkIcon noColor={noColor} />
           </span>
         )}
-      </Link>
+      </a>
     </span>
   );
 }

@@ -66,17 +66,17 @@ export const EMAIL_REGEX = new RegExp(
 // class=\"text-red-600 hover:text-cyan-300 rounded-sm\"
 
 export const homePageTextData = [
-  <Paragraph>
+  <Paragraph key="desc-1">
     Cuckoo and the Birds is a three-piece, Midwest rock band from Chicago. Their
     songs experiment with extended harmonies, blending power pop sensibility
     with a meditative bent.
   </Paragraph>,
-  <Paragraph>
+  <Paragraph key="desc-2">
     Historically, they have operated as a solo project from songwriter and
-    guitarist Tyler Earls, but now they're a full band, featuring Dominic Glimco
+    guitarist Tyler Earls, but now they&apos;re a full band, featuring Dominic Glimco
     on bass and Zachary Taylor on drums.
   </Paragraph>,
-  <Paragraph>
+  <Paragraph key="desc-3">
     Cuckoo and the Birds released their first EP,{" "}
     <InlineAnchor
       ariaLabel="Go to Cuckoo and the Birds's Release Page"
@@ -88,11 +88,11 @@ export const homePageTextData = [
     live at the Tonic Room in Chicago. In February 2020, they recruited Dominic
     Glimco on bass.
   </Paragraph>,
-  <Paragraph>
-    They've played a handful of shows in Chicago, and are always looking for
+  <Paragraph key="desc-4">
+    They&apos;ve played a handful of shows in Chicago, and are always looking for
     more!
   </Paragraph>,
-  <Paragraph>
+  <Paragraph key="desc-5">
     For booking inquiries, please email{" "}
     <InlineAnchor
       ariaLabel="Send Cuckoo and the Birds an email"
@@ -102,4 +102,4 @@ export const homePageTextData = [
     </InlineAnchor>
     .
   </Paragraph>,
-];
+].map(ele => ({...ele, key: ''}));

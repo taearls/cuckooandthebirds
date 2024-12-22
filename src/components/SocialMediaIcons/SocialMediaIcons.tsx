@@ -1,23 +1,27 @@
 "use client";
 
-import { BandcampIcon, BlueskyIcon } from "../icons";
-import SocialMediaIcon, { SocialMediaIconProps } from "./SocialMediaIcon";
+import SocialMediaIcon, { SocialMediaIconProps, SocialMediaIconVariant } from "./SocialMediaIcon";
 
 const SOCIAL_MEDIA_ICONS: Array<SocialMediaIconProps> = [
   {
     name: "Bandcamp",
     href: "https://cuckooandthebirds.bandcamp.com",
-    icon: <BandcampIcon />,
+    icon: SocialMediaIconVariant.BANDCAMP,
   },
   {
     name: "Spotify",
     href: "https://open.spotify.com/artist/3JcmKe00eIMMsC0MRkKknD?si=KAG0Wnb2Sr6TYP5Rp3MWeA",
-    icon: <></>, // <SpotifyIcon />,
+    icon: SocialMediaIconVariant.SPOTIFY, // <SpotifyIcon />,
   },
   {
-    name: "Bluesky",
-    href: "https://bsky.app/profile/tylerearls.com",
-    icon: <BlueskyIcon />,
+    name: "Instagram",
+    href: "https://bsky.app/profile/tylerearls.com",// TODO: update link
+    icon: SocialMediaIconVariant.INSTAGRAM,
+  },
+  {
+    name: "Instagram",
+    href: "https://bsky.app/profile/tylerearls.com", // TODO: update link
+    icon: SocialMediaIconVariant.YOUTUBE,
   },
 ];
 
@@ -26,7 +30,7 @@ export default function SocialMediaIcons() {
     <div className="flex justify-center gap-x-1">
       {SOCIAL_MEDIA_ICONS.map(({ name, href, icon, ariaLabel }, index) => (
         <SocialMediaIcon
-          key={index}
+          key={`${icon}-${index}`}
           name={name}
           href={href}
           icon={icon}

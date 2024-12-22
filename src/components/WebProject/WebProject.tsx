@@ -46,8 +46,9 @@ export default function WebProject({
               className="focus:shadow-outline-light dark:focus:shadow-outline-dark block rounded-sm focus:outline-none"
               target="_blank"
               href={getLinkWithAnalytics(href, analytics)}
-              rel={analytics != null ? "noopener" : "noreferrer"}
+              rel={"noreferrer"}
               style={{ cursor: cursorStyle }}
+              
             >
               <CloudinaryImage
                 alt={alt}

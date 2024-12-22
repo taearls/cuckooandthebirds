@@ -2,9 +2,9 @@ import {
   capitalizeText,
   getSingularOrPlural,
   mergeClasses,
-} from "@/util/styling/styling.utils";
+} from "../../../src/util/styling/styling.utils";
 import styles from "./styling-test.module.css";
-import { describe, expect, it } from "vitest";
+import { describe, it, expect } from "vitest";
 
 describe("Styling util testing", () => {
   describe("mergeClasses", () => {

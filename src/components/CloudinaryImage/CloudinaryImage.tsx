@@ -1,5 +1,5 @@
 import { getCloudinarySrc } from "@/util";
-import Image from "next/image";
+// import Image from "next/image";
 
 export type CloudinaryImageProps = {
   transformations?: Array<string>;
@@ -19,7 +19,7 @@ export default function CloudinaryImage({
   height,
 }: CloudinaryImageProps) {
   return (
-    <Image
+    <img
       src={getCloudinarySrc(publicId, extension, transformations)}
       alt={alt}
       width={width}

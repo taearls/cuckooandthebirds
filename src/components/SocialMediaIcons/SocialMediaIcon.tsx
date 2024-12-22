@@ -30,6 +30,7 @@ export default function SocialMediaIcon({
       aria-label={ariaLabel}
       className={mergeClasses(styles["icon-base"], styles["icon"])}
       target="_blank"
+      rel="noreferrer"
     >
       <span className="rounded-sm text-purple-700 hover:text-cyan-400 dark:text-purple-400 dark:hover:text-cyan-300">
         {icon}
