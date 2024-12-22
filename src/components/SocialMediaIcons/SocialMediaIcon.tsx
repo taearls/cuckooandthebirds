@@ -1,21 +1,13 @@
 import { mergeClasses } from "@/util/styling/styling.utils";
 
 import styles from "./SocialMediaIcon.module.css";
-
-export const enum SocialMediaIconVariant {
-  BANDCAMP = "bandcamp",
-  BLUESKY = "bluesky",
-  GITHUB = "github",
-  INSTAGRAM = "instagram",
-  SPOTIFY = "spotify",
-  YOUTUBE = "youtube",
-}
+import { ReactNode } from "react";
 
 export type SocialMediaIconProps = {
   name: string;
   href: string;
   ariaLabel?: string;
-  icon: SocialMediaIconVariant;
+  icon: ReactNode;
 };
 
 export default function SocialMediaIcon({
@@ -32,7 +24,7 @@ export default function SocialMediaIcon({
       target="_blank"
       rel="noreferrer"
     >
-      <span className="rounded-sm ">
+      <span className="rounded-sm">
         {icon}
       </span>
     </a>
