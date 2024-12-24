@@ -24,13 +24,10 @@ export default function InlineAnchor({
         className={`${boldClass} accent focus:shadow-outline-light dark:focus:shadow-outline-dark inline-flex items-center rounded-sm text-lg focus:outline-none sm:items-center sm:justify-center group`}
         href={href}
         aria-label={ariaLabel}
-        target={isExternal ? "_blank" : undefined} rel="noreferrer"
+        target={isExternal ? "_blank" : undefined}
+        rel="noreferrer"
       >
-        <span
-          className={`inline-flex`}
-        >
-          {children}
-        </span>
+        <span className={`inline-flex`}>{children}</span>
         {isExternal && (
           <span className="ml-1 inline-flex">
             <ExternalLinkIcon />

@@ -14,7 +14,6 @@ const NAVIGATION_LINKS: NavigationBarProps["links"] = [
     href: "/web-projects",
     isExternal: false,
     bold: true,
-
   },
   {
     ariaLabel: "Visit Contact Page",
@@ -22,7 +21,6 @@ const NAVIGATION_LINKS: NavigationBarProps["links"] = [
     href: "/contact",
     isExternal: false,
     bold: true,
-
   },
   {
     ariaLabel: "Listen to Tyler's music on Bandcamp",

@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
-import { Header, Footer, PageContainer } from "@/components/layout";
+
+import { Footer, Header, PageContainer } from "@/components/layout";
 
 // export const metadata: Metadata = {
 //   openGraph: {
@@ -29,10 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <>
-        <Header />
-        <PageContainer>{children}</PageContainer>
-        <Footer />
-        </>
-
+      <Header />
+      <PageContainer>{children}</PageContainer>
+      <Footer />
+    </>
   );
 }

@@ -73,8 +73,8 @@ export const homePageTextData = [
   </Paragraph>,
   <Paragraph key="desc-2">
     Historically, they have operated as a solo project from songwriter and
-    guitarist Tyler Earls, but now they&apos;re a full band, featuring Dominic Glimco
-    on bass and Zachary Taylor on drums.
+    guitarist Tyler Earls, but now they&apos;re a full band, featuring Dominic
+    Glimco on bass and Zachary Taylor on drums.
   </Paragraph>,
   <Paragraph key="desc-3">
     Cuckoo and the Birds released their first EP,{" "}
@@ -89,8 +89,8 @@ export const homePageTextData = [
     Glimco on bass.
   </Paragraph>,
   <Paragraph key="desc-4">
-    They&apos;ve played a handful of shows in Chicago, and are always looking for
-    more!
+    They&apos;ve played a handful of shows in Chicago, and are always looking
+    for more!
   </Paragraph>,
   <Paragraph key="desc-5">
     For booking inquiries, please email{" "}
@@ -102,4 +102,4 @@ export const homePageTextData = [
     </InlineAnchor>
     .
   </Paragraph>,
-].map(ele => ({...ele, key: ''}));
+].map((ele) => ({ ...ele, key: "" }));

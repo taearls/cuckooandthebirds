@@ -1,7 +1,7 @@
 import { mergeClasses } from "@/util/styling/styling.utils";
+import { ReactNode } from "react";
 
 import styles from "./SocialMediaIcon.module.css";
-import { ReactNode } from "react";
 
 export type SocialMediaIconProps = {
   name: string;
@@ -24,9 +24,7 @@ export default function SocialMediaIcon({
       target="_blank"
       rel="noreferrer"
     >
-      <span className="rounded-sm">
-        {icon}
-      </span>
+      <span className="rounded-sm">{icon}</span>
     </a>
   );
 }

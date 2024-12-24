@@ -1,7 +1,8 @@
-import { CloudinaryImage } from "../CloudinaryImage";
-import { Paragraph } from "../layout/Paragraph";
-import { HeadingTwo } from "../layout/headings";
 import { getLinkWithAnalytics } from "@/util";
+
+import { CloudinaryImage } from "../CloudinaryImage";
+import { HeadingTwo } from "../layout/headings";
+import { Paragraph } from "../layout/Paragraph";
 
 export type WebProjectProps = {
   analytics?: WebProjectAnalytics;
@@ -48,7 +49,6 @@ export default function WebProject({
               href={getLinkWithAnalytics(href, analytics)}
               rel={"noreferrer"}
               style={{ cursor: cursorStyle }}
-              
             >
               <CloudinaryImage
                 alt={alt}
@@ -66,9 +66,7 @@ export default function WebProject({
             rel="noreferrer"
             href={href}
           >
-            <span className="md:text-lg">
-              {tagline}
-            </span>
+            <span className="md:text-lg">{tagline}</span>
             {emoji != null && <span>{emoji}</span>}
           </a>
         </div>

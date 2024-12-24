@@ -1,6 +1,7 @@
 import { WebProjectAnalytics } from "@/components/WebProject/WebProject";
-import { TextAlignment } from ".";
 import { ReactNode } from "react";
+
+import { TextAlignment } from ".";
 
 export const cloneDeep = <T extends object>(item: T) =>
   JSON.parse(JSON.stringify(item));

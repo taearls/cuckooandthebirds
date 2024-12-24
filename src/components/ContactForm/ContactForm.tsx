@@ -450,10 +450,7 @@ export default function ContactForm() {
     >
       <fieldset className="px-4 py-2">
         <div>
-          <label
-            className="mb-1 block pr-4 font-bold "
-            htmlFor="contactName"
-          >
+          <label className="mb-1 block pr-4 font-bold " htmlFor="contactName">
             {"Name"}
             <span>{" *"}</span>
           </label>

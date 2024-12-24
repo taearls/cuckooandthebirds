@@ -1,4 +1,5 @@
 import { getCloudinarySrc } from "@/util";
+
 // import Image from "next/image";
 
 export type CloudinaryImageProps = {

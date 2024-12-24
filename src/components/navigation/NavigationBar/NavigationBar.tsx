@@ -1,4 +1,5 @@
 import InlineAnchor, { InlineAnchorProps } from "@/components/InlineAnchor";
+
 import NavigationBarListItem from "./NavigationBarListItem";
 
 export type NavigationBarProps = {
@@ -18,10 +19,7 @@ export default function NavigationBar({ links }: NavigationBarProps) {
               key={index}
               isLast={index === links.length - 1}
             >
-              <InlineAnchor
-                bold={false}
-                {...link}
-              />
+              <InlineAnchor bold={false} {...link} />
             </NavigationBarListItem>
           ))}
         </ul>

@@ -1,11 +1,11 @@
+import { TextAlignment } from "./types";
 import {
   cloneDeep,
-  getCurrentYear,
-  getTextAlignmentClass,
   getCloudinarySrc,
+  getCurrentYear,
   getLinkWithAnalytics,
+  getTextAlignmentClass,
 } from "./utils";
-import { TextAlignment } from "./types";
 
 export {
   cloneDeep,

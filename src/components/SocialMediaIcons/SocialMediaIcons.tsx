@@ -18,12 +18,12 @@ const SOCIAL_MEDIA_ICONS: Array<SocialMediaIconProps> = [
   {
     name: "Instagram",
     href: "https://www.instagram.com/cuckooandthebirds",
-    icon: <InstagramIcon />
+    icon: <InstagramIcon />,
   },
   {
     name: "YouTube",
     href: "https://www.youtube.com/@cuckooandthebirdsmusic",
-    icon: <YoutubeIcon />
+    icon: <YoutubeIcon />,
   },
 ];
 

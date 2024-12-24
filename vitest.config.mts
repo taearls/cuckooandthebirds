@@ -12,7 +12,7 @@ export default mergeConfig(
       environment: "jsdom",
       exclude: [...configDefaults.exclude, "e2e/**"],
       root: fileURLToPath(new URL("./", import.meta.url)),
-      setupFiles: ['./setupTests.ts'],
+      setupFiles: ["./setupTests.ts"],
       // alias: {'@/': new URL('./src/', import.meta.url).pathname, }
     },
   }),

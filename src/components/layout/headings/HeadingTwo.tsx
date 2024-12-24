@@ -1,5 +1,6 @@
-import { HeadingProps } from "./types";
 import { getTextAlignmentClass } from "@/util";
+
+import { HeadingProps } from "./types";
 
 export default function HeadingTwo({
   children,
@@ -8,9 +9,7 @@ export default function HeadingTwo({
   const alignmentClass = getTextAlignmentClass(align);
 
   return (
-    <h2
-      className={`${alignmentClass} accent mb-8 text-3xl font-bold `}
-    >
+    <h2 className={`${alignmentClass} accent mb-8 text-3xl font-bold `}>
       {children}
     </h2>
   );
