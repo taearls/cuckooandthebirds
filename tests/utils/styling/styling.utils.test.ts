@@ -5,6 +5,7 @@ import {
   getSingularOrPlural,
   mergeClasses,
 } from "../../../src/util/styling/styling.utils";
+// @ts-expect-error css module import should work but it doesn't here for some annoying reason
 import styles from "./styling-test.module.css";
 
 describe("Styling util testing", () => {
