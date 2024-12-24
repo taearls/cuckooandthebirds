@@ -1,4 +1,4 @@
-import { getCloudinarySrc } from "@/util";
+import { getCloudinarySrc } from "@/util/utils";
 
 // import Image from "next/image";
 

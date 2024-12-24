@@ -11,7 +11,7 @@
     "jsx": "react-jsx",
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "typeRoots": ["vite/client", "src/types/globals.d.ts"],
+    "types": ["vite/client"],
     "lib": ["dom", "es2022"]
   }
 }

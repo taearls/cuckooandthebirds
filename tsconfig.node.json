@@ -14,16 +14,11 @@
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "types": [
-      "node",
-      "vitest/globals",
-      "vite/client",
-      "./src/types/globals.d.ts"
-    ],
+    "types": ["node", "vitest/globals", "vite/client"],
     "jsx": "react-jsx",
-    "baseUrl": "."
-    // "paths": {
-    //   "@/*": ["./src/*"]
-    // }
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   }
 }

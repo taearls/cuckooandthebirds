@@ -5,8 +5,9 @@ import { fileURLToPath } from "node:url";
 
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
-import { patchCssModules } from "vite-css-modules";
-import tsconfigPaths from "vite-tsconfig-paths";
+
+// import { patchCssModules } from "vite-css-modules";
+// import tsconfigPaths from "vite-tsconfig-paths";
 
 export type ViteConfigInput = {
   mode: "development" | "production";
@@ -19,8 +20,8 @@ export default (args: ViteConfigInput) => {
   return defineConfig({
     plugins: [
       react(),
-      tsconfigPaths({ loose: true }),
-      patchCssModules(),
+      // tsconfigPaths({ loose: true }),
+      // patchCssModules(),
       // {
       //   name: "custom-css-import",
       //   enforce: "pre",
@@ -63,8 +64,8 @@ export default (args: ViteConfigInput) => {
     base: "./",
     build: {
       target: "es2022",
-      outDir: "./dist",
-      emptyOutDir: true,
+      // outDir: "./dist",
+      // emptyOutDir: true,
     },
     css: {
       modules: {
