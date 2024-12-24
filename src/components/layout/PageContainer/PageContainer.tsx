@@ -7,7 +7,7 @@ export type PageContainerProps = {
 export default function PageContainer({ children }: PageContainerProps) {
   return (
     <div
-      className={`${styles["page-container"]} top-0 mx-auto mt-48 w-full bg-none p-4 leading-8 sm:mt-16`}
+      className={`${styles["page-container"]} top-0 mx-auto mt-48 w-full bg-none px-24 py-4 leading-8 sm:mt-16`}
     >
       {children}
     </div>
