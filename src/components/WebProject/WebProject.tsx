@@ -1,4 +1,4 @@
-import { getLinkWithAnalytics } from "@/util";
+import { getLinkWithAnalytics } from "@/util/utils";
 
 import { CloudinaryImage } from "../CloudinaryImage";
 import { HeadingTwo } from "../layout/headings";

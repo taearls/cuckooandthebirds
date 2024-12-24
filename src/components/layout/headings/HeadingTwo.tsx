@@ -1,4 +1,4 @@
-import { getTextAlignmentClass } from "@/util";
+import { getTextAlignmentClass } from "@/util/utils";
 
 import { HeadingProps } from "./types";
 
