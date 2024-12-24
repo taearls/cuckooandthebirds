@@ -1,4 +1,6 @@
-import { NavigationBar, NavigationBarProps } from "@/components/navigation";
+import NavigationBar, {
+  NavigationBarProps,
+} from "@/components/navigation/NavigationBar/NavigationBar";
 
 const NAVIGATION_LINKS: NavigationBarProps["links"] = [
   {

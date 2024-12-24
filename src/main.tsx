@@ -4,7 +4,9 @@ import { BrowserRouter, Route, Routes } from "react-router";
 
 import "./styles/globals.css";
 
-import { Footer, Header, PageContainer } from "./components/layout";
+import Footer from "./components/layout/Footer/Footer";
+import Header from "./components/layout/Header/Header";
+import PageContainer from "./components/layout/PageContainer/PageContainer";
 import ContactPage from "./pages/ContactPage";
 import HomePage from "./pages/HomePage";
 import WebProjectsPage from "./pages/WebProjectsPage";

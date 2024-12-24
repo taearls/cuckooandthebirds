@@ -1,4 +1,6 @@
-import InlineAnchor, { InlineAnchorProps } from "@/components/InlineAnchor";
+import InlineAnchor, {
+  InlineAnchorProps,
+} from "@/components/InlineAnchor/InlineAnchor";
 
 import NavigationBarListItem from "./NavigationBarListItem";
 

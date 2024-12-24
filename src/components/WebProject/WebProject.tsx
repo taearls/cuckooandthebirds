@@ -1,8 +1,8 @@
 import { getLinkWithAnalytics } from "@/util/utils";
 
-import { CloudinaryImage } from "../CloudinaryImage";
-import { HeadingTwo } from "../layout/headings";
-import { Paragraph } from "../layout/Paragraph";
+import CloudinaryImage from "../CloudinaryImage/CloudinaryImage";
+import HeadingTwo from "../layout/headings/HeadingTwo";
+import Paragraph from "../layout/Paragraph/Paragraph";
 
 export type WebProjectProps = {
   analytics?: WebProjectAnalytics;

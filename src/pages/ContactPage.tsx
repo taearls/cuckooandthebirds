@@ -1,6 +1,6 @@
-import InlineAnchor from "@/components/InlineAnchor";
-import { HeadingOne } from "@/components/layout/headings";
-import { Paragraph } from "@/components/layout/Paragraph";
+import InlineAnchor from "@/components/InlineAnchor/InlineAnchor";
+import HeadingOne from "@/components/layout/headings/HeadingOne";
+import Paragraph from "@/components/layout/Paragraph/Paragraph";
 import { PORTFOLIO_EMAIL } from "@/util/constants/constants";
 
 export default function Contact() {

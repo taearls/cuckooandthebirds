@@ -1,5 +1,4 @@
-// import Link from "next/link";
-import { ExternalLinkIcon } from "../icons";
+import ExternalLinkIcon from "../icons/ExternalLinkIcon";
 
 export type InlineAnchorProps = {
   ariaLabel: string;

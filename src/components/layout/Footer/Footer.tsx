@@ -1,4 +1,4 @@
-import { SocialMediaIcons } from "@/components/SocialMediaIcons";
+import SocialMediaIcons from "@/components/SocialMediaIcons/SocialMediaIcons";
 import { getCurrentYear } from "@/util/utils";
 
 export default function Footer() {

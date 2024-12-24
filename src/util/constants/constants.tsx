@@ -1,5 +1,5 @@
-import InlineAnchor from "@/components/InlineAnchor";
-import { Paragraph } from "@/components/layout/Paragraph";
+import InlineAnchor from "@/components/InlineAnchor/InlineAnchor";
+import Paragraph from "@/components/layout/Paragraph/Paragraph";
 import { WebProjectProps } from "@/components/WebProject/WebProject";
 
 export const WEB_PROJECTS: Array<Omit<WebProjectProps, "isLast">> = [

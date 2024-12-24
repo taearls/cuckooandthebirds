@@ -1,6 +1,8 @@
-import "@/styles/globals.css";
+import Footer from "@/components/layout/Footer/Footer";
+import Header from "@/components/layout/Header/Header";
+import PageContainer from "@/components/layout/PageContainer/PageContainer";
 
-import { Footer, Header, PageContainer } from "@/components/layout";
+import "@/styles/globals.css";
 
 // export const metadata: Metadata = {
 //   openGraph: {
