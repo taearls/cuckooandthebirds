@@ -1,5 +1,6 @@
 import pluginJs from "@eslint/js";
 import eslintConfigPrettier from "eslint-config-prettier";
+import noBarrelFiles from "eslint-plugin-no-barrel-files";
 import pluginReact from "eslint-plugin-react";
 import globals from "globals";
 import tseslint from "typescript-eslint";
@@ -36,5 +37,7 @@ export default [
       },
     },
   },
+  { ignores: ["dist/*"] },
+  noBarrelFiles.flat,
   eslintConfigPrettier,
 ];
