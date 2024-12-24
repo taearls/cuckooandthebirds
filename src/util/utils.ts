@@ -83,7 +83,7 @@ export const jsxOrEmptyString = (value?: ReactNode | string): typeof value => {
 // });
 // };
 
-const getRandomNumberInRange = ({
+export const getRandomNumberInRange = ({
   max,
   min = 1,
 }: {

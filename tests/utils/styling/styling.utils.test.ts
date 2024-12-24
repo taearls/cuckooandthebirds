@@ -37,6 +37,7 @@ describe("Styling util testing", () => {
     });
 
     it("will merge classes together and filter out classes which dont match a condition", () => {
+      // eslint-disable-next-line no-constant-binary-expression
       const input = ["class1", false && "class2", "class3"];
 
       const actual = mergeClasses(...input);
@@ -57,6 +58,7 @@ describe("Styling util testing", () => {
     });
 
     it("will merge classes together and not filter out classes which match a condition", () => {
+      // eslint-disable-next-line no-constant-binary-expression
       const input = ["class1", true && "class2", "class3"];
 
       const actual = mergeClasses(...input);

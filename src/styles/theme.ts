@@ -26,7 +26,7 @@ export interface SizeVariant {
   "2XL": string;
 }
 
-const getThemeColor = () => {
+export const getThemeColor = () => {
   return {
     emphasis: "text-red-600",
     normal: "white",
