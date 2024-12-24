@@ -1,5 +1,5 @@
 {
-  "include": ["env.d.ts", "src/**/*", "globals.d.ts", "public"],
+  "include": ["src/**/*", "public"],
   "exclude": [],
   "compilerOptions": {
     "composite": true,
@@ -10,6 +10,8 @@
     },
     "jsx": "react-jsx",
     "module": "ESNext",
-    "moduleResolution": "Bundler"
+    "moduleResolution": "Bundler",
+    "typeRoots": ["vite/client", "src/types/globals.d.ts"],
+    "lib": ["dom", "es2022"]
   }
 }

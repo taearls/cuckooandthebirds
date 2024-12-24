@@ -51,6 +51,7 @@
     "typescript": "^5.4.3",
     "typescript-eslint": "^8.18.1",
     "vite": "^5.3.4",
+    "vite-css-modules": "^1.8.0",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^2.0.1"
   }
