@@ -8,28 +8,24 @@ const NAVIGATION_LINKS: NavigationBarProps["links"] = [
     children: "Home",
     href: "/",
     isExternal: false,
-    bold: true,
   },
   {
-    ariaLabel: "Visit Web Projects Page",
-    children: "Web",
-    href: "/web-projects",
+    ariaLabel: "Visit Music Page",
+    children: "Music",
+    href: "/music",
     isExternal: false,
-    bold: true,
   },
   {
     ariaLabel: "Visit Contact Page",
     children: "Contact",
     href: "/contact",
     isExternal: false,
-    bold: true,
   },
   {
     ariaLabel: "Listen to Tyler's music on Bandcamp",
-    children: "Music",
+    children: "Bandcamp",
     href: "https://cuckooandthebirds.bandcamp.com",
     isExternal: true,
-    bold: true,
   },
 ];
 
