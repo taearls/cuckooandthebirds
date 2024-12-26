@@ -29,3 +29,6 @@ yarn-error.log*
 
 # cloudflare pages wrangler output
 .wrangler
+
+# react router output
+.react-router/

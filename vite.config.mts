@@ -3,8 +3,8 @@
 
 import { fileURLToPath } from "node:url";
 
-import { reactRouter } from "@react-router/dev/vite";
-// import react from "@vitejs/plugin-react";
+// import { reactRouter } from "@react-router/dev/vite";
+import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
 // import { patchCssModules } from "vite-css-modules";
@@ -20,7 +20,7 @@ export default (args: ViteConfigInput) => {
     args.mode === "development" ? "[local]_[hash:base64:4]" : "[hash:base64:4]";
   return defineConfig({
     plugins: [
-      reactRouter(),
+      react(),
       // tsconfigPaths({ loose: true }),
       // patchCssModules(),
       // {
