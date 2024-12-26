@@ -31,7 +31,8 @@ export default [
   {
     rules: {
       "react/react-in-jsx-scope": "off",
-      "react/no-array-index-key": "error",
+      // not currently supported in eslint-react-plugin with eslint v9
+      // "react/no-array-index-key": "error",
     },
     linterOptions: {
       reportUnusedDisableDirectives: "warn",

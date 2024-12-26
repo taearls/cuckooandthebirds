@@ -1,4 +1,4 @@
-import InlineAnchor, {
+import {
   InlineAnchorContent,
   InlineAnchorProps,
 } from "@/components/InlineAnchor/InlineAnchor";
