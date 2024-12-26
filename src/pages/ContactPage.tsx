@@ -3,7 +3,7 @@ import HeadingOne from "@/components/layout/headings/HeadingOne";
 import Paragraph from "@/components/layout/Paragraph/Paragraph";
 import { PORTFOLIO_EMAIL } from "@/util/constants/constants";
 
-export default function Contact() {
+export default function ContactPage() {
   return (
     <main>
       <HeadingOne>{"Contact Tyler Earls"}</HeadingOne>
