@@ -37,7 +37,7 @@ export default [
       },
     },
   },
-  { ignores: ["dist/*"] },
+  { ignores: ["dist/*", ".react-router/*", "node_modules"] },
   noBarrelFiles.flat,
   eslintConfigPrettier,
 ];
