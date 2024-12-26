@@ -55,7 +55,9 @@ html * {
     fill: var(--accent-dark);
     stroke: var(--accent-dark);
     a:hover,
-    a:hover * {
+    a.active,
+    a:hover *,
+    a.active * {
       color: var(--active-dark);
       fill: var(--active-dark);
       stroke: var(--active-dark);

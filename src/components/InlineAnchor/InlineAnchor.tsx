@@ -16,23 +16,39 @@ export default function InlineAnchor({
   isExternal = false,
   bold = true,
 }: InlineAnchorProps) {
-  const boldClass = bold ? "font-extrabold" : "font-normal";
   return (
     <span className="inline-block">
       <a
-        className={`${boldClass} accent focus:shadow-outline-light dark:focus:shadow-outline-dark inline-flex items-center rounded-sm text-lg focus:outline-none sm:items-center sm:justify-center group`}
         href={href}
         aria-label={ariaLabel}
         target={isExternal ? "_blank" : undefined}
         rel="noreferrer"
       >
-        <span className={`inline-flex`}>{children}</span>
-        {isExternal && (
-          <span className="ml-1 inline-flex">
-            <ExternalLinkIcon />
-          </span>
-        )}
+        <InlineAnchorContent isExternal={isExternal} bold={bold}>
+          {children}
+        </InlineAnchorContent>
       </a>
+    </span>
+  );
+}
+
+export function InlineAnchorContent({
+  children,
+  isExternal = false,
+  bold = true,
+}: Pick<InlineAnchorProps, "children" | "isExternal" | "bold">) {
+  const boldClass = bold ? "font-extrabold" : "font-normal";
+
+  return (
+    <span
+      className={`${boldClass} accent focus:shadow-outline-light dark:focus:shadow-outline-dark inline-flex items-center rounded-sm text-lg focus:outline-none sm:items-center sm:justify-center group`}
+    >
+      <span className={`inline-flex`}>{children}</span>
+      {isExternal && (
+        <span className="ml-1 inline-flex">
+          <ExternalLinkIcon />
+        </span>
+      )}
     </span>
   );
 }

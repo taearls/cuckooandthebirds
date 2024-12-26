@@ -1,6 +1,8 @@
 import InlineAnchor, {
+  InlineAnchorContent,
   InlineAnchorProps,
 } from "@/components/InlineAnchor/InlineAnchor";
+import { NavLink } from "react-router";
 
 import NavigationBarListItem from "./NavigationBarListItem";
 
@@ -16,14 +18,20 @@ export default function NavigationBar({ links }: NavigationBarProps) {
           role="menu"
           className="flex h-auto w-40 flex-col items-center justify-center sm:h-16 sm:w-full sm:flex-row"
         >
-          {links.map((link, index) => (
-            <NavigationBarListItem
-              key={index}
-              isLast={index === links.length - 1}
-            >
-              <InlineAnchor bold={false} {...link} />
-            </NavigationBarListItem>
-          ))}
+          {links.map((link, index) => {
+            return (
+              <NavigationBarListItem
+                key={index}
+                isLast={index === links.length - 1}
+              >
+                <NavLink to={link.href}>
+                  <InlineAnchorContent isExternal={Boolean(link.isExternal)}>
+                    {link.children}
+                  </InlineAnchorContent>
+                </NavLink>
+              </NavigationBarListItem>
+            );
+          })}
         </ul>
       </nav>
     </div>

@@ -20,21 +20,21 @@ export default [
   },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
-
-  {
-    rules: {
-      "react/react-in-jsx-scope": "off",
-    },
-    linterOptions: {
-      reportUnusedDisableDirectives: "warn",
-    },
-  },
   {
     plugins: {
       react: {
         ...pluginReact.configs.flat.recommended,
         version: "detect",
       },
+    },
+  },
+  {
+    rules: {
+      "react/react-in-jsx-scope": "off",
+      "react/no-array-index-key": "error",
+    },
+    linterOptions: {
+      reportUnusedDisableDirectives: "warn",
     },
   },
   { ignores: ["dist/*", ".react-router/*", "node_modules"] },

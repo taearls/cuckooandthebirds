@@ -2,12 +2,12 @@ import { Route, Routes } from "react-router";
 
 import ContactPage from "./pages/ContactPage";
 import HomePage from "./pages/HomePage";
-import WebProjectsPage from "./pages/WebProjectsPage";
+import MusicPage from "./pages/MusicPage";
 
 export default (
   <Routes>
     <Route path="/" element={<HomePage />} />
-    <Route path="/web-projects" element={<WebProjectsPage />} />
+    <Route path="/music" element={<MusicPage />} />
     <Route path="/contact" element={<ContactPage />} />
   </Routes>
 );
