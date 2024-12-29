@@ -1,4 +1,3 @@
-import { WebProjectAnalytics } from "@/components/WebProject/WebProject";
 import { TextAlignment } from "@/types/layout";
 import { ReactNode } from "react";
 
@@ -30,20 +29,6 @@ export const getCloudinarySrc = (
   }
   const transformationString = transformations.join(",");
   return `https://res.cloudinary.com/cuckooandthebirds/image/upload/${transformationString}/v1/${publicId}.${extension}`;
-};
-
-export const getLinkWithAnalytics = (
-  href: string,
-  analytics?: WebProjectAnalytics,
-): string => {
-  let urlString = href;
-
-  if (analytics != null) {
-    const { campaign, medium, source } = analytics;
-    urlString += `?utm_campaign=${campaign}&utm_medium=${medium}&source=${source}`;
-  }
-
-  return urlString;
 };
 
 export const getCurrentYear = () => {
