@@ -1,13 +1,11 @@
 import { Route, Routes } from "react-router";
 
-import ContactPage from "./pages/ContactPage";
-import HomePage from "./pages/HomePage";
-import MusicPage from "./pages/MusicPage";
+import routes from "./util/constants/data/navigation/navigationData";
 
 export default (
   <Routes>
-    <Route path="/" element={<HomePage />} />
-    <Route path="/music" element={<MusicPage />} />
-    <Route path="/contact" element={<ContactPage />} />
+    {routes.map((route) => (
+      <Route key={route.name} path={route.href} element={route.component} />
+    ))}
   </Routes>
 );

@@ -4,14 +4,10 @@ import HeadingOne from "@/components/layout/headings/HeadingOne";
 import { TextAlignment } from "@/types/layout";
 import { homePageTextData } from "@/util/constants/constants";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <main>
-      <HeadingOne align={TextAlignment.CENTER}>
-        {/* <h1 class="text-center font-default text-4xl font-bold mb-8"> */}
-        Our Story
-        {/* </h1>{" "} */}
-      </HeadingOne>
+      <HeadingOne align={TextAlignment.CENTER}>Our Story</HeadingOne>
 
       {homePageTextData}
     </main>

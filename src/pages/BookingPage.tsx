@@ -3,10 +3,10 @@ import HeadingOne from "@/components/layout/headings/HeadingOne";
 import Paragraph from "@/components/layout/Paragraph/Paragraph";
 import { PORTFOLIO_EMAIL } from "@/util/constants/constants";
 
-export default function ContactPage() {
+export default function BookingPage() {
   return (
     <main>
-      <HeadingOne>{"Contact Tyler Earls"}</HeadingOne>
+      <HeadingOne>{"Booking"}</HeadingOne>
       <Paragraph>
         {
           "If you're interested in hiring me for coding work, my music, or just want to say hello—I'd love to hear from you. I'm a voracious learner, and nothing is too nerdy or niche for my taste."

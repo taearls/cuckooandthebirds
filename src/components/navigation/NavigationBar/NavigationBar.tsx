@@ -1,13 +1,11 @@
-import {
-  InlineAnchorContent,
-  InlineAnchorProps,
-} from "@/components/InlineAnchor/InlineAnchor";
+import { InlineAnchorContent } from "@/components/InlineAnchor/InlineAnchor";
+import { RouteDataItem } from "@/util/constants/data/navigation/navigationData";
 import { NavLink } from "react-router";
 
 import NavigationBarListItem from "./NavigationBarListItem";
 
 export type NavigationBarProps = {
-  links: Array<InlineAnchorProps>;
+  links: Array<RouteDataItem>;
 };
 
 export default function NavigationBar({ links }: NavigationBarProps) {
@@ -27,9 +25,9 @@ export default function NavigationBar({ links }: NavigationBarProps) {
                 <NavLink to={link.href} aria-label={link.ariaLabel}>
                   <InlineAnchorContent
                     isExternal={Boolean(link.isExternal)}
-                    bold={link.bold}
+                    bold
                   >
-                    {link.children}
+                    {link.name}
                   </InlineAnchorContent>
                 </NavLink>
               </NavigationBarListItem>
