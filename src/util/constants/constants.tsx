@@ -1,10 +1,11 @@
 import InlineAnchor from "@/components/InlineAnchor/InlineAnchor";
 import Paragraph from "@/components/layout/Paragraph/Paragraph";
+import { Cloudinary } from "@cloudinary/url-gen";
 
 export const WEBSITE_EMAIL = "cuckooandthebirds@gmail.com";
 
 export const EMAIL_REGEX = new RegExp(
-  "^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$",
+  "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$",
   "gi",
 );
 
@@ -46,3 +47,9 @@ export const homePageTextData = [
     .
   </Paragraph>,
 ].map((ele) => ({ ...ele, key: "" }));
+
+export const CLOUDINARY_INSTANCE = new Cloudinary({
+  cloud: {
+    cloudName: "demo",
+  },
+});
