@@ -1,7 +1,7 @@
 import InlineAnchor from "@/components/InlineAnchor/InlineAnchor";
 import HeadingOne from "@/components/layout/headings/HeadingOne";
 import Paragraph from "@/components/layout/Paragraph/Paragraph";
-import { PORTFOLIO_EMAIL } from "@/util/constants/constants";
+import { WEBSITE_EMAIL } from "@/util/constants/constants";
 
 export default function BookingPage() {
   return (
@@ -15,10 +15,10 @@ export default function BookingPage() {
       <Paragraph>
         {"The best way to reach me is via email at "}
         <InlineAnchor
-          href={`mailto:${PORTFOLIO_EMAIL}`}
+          href={`mailto:${WEBSITE_EMAIL}`}
           ariaLabel="Send an email to Tyler Earls"
         >
-          {PORTFOLIO_EMAIL}
+          {WEBSITE_EMAIL}
         </InlineAnchor>
         {"."}
       </Paragraph>
