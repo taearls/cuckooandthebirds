@@ -19,7 +19,7 @@ export default [
     },
   },
   pluginJs.configs.recommended,
-  { ...tseslint.configs.recommended, "no-unused-vars": "warn" },
+  ...tseslint.configs.recommended,
   {
     plugins: {
       react: {
@@ -31,6 +31,8 @@ export default [
   {
     rules: {
       "react/react-in-jsx-scope": "off",
+      "no-unused-vars": "warn",
+      "@typescript-eslint/no-unused-vars": "warn",
       // not currently supported in eslint-react-plugin with eslint v9
       // "react/no-array-index-key": "error",
     },

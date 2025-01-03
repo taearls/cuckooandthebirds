@@ -1,7 +1,4 @@
-import {
-  IMAGE_GROUPS,
-  SHUFFLED_IMAGE_GROUPS,
-} from "@/util/constants/constants";
+import { IMAGE_GROUPS } from "@/util/constants/constants";
 import { capitalizeText } from "@/util/styling/styling.utils";
 import { getRandomNumberInRange } from "@/util/utils";
 
