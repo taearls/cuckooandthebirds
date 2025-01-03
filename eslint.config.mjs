@@ -19,7 +19,7 @@ export default [
     },
   },
   pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
+  { ...tseslint.configs.recommended, "no-unused-vars": "warn" },
   {
     plugins: {
       react: {
