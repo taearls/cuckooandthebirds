@@ -9,6 +9,20 @@ export const EMAIL_REGEX = new RegExp(
   "gi",
 );
 
+export const IMAGE_GROUPS = {
+  // harmonica: 2,
+  joy: 5,
+  martin: 11,
+  profile: 7,
+  rickenbacker: 6,
+  telecaster: 2,
+} as const;
+
+export const SHUFFLED_IMAGE_GROUPS = Object.keys(IMAGE_GROUPS).sort(
+  () => 0.5 - Math.random(),
+);
+
+// TODO: refactor this.
 export const homePageTextData = [
   <Paragraph key="desc-1">
     Cuckoo and the Birds is a three-piece, Midwest rock band from Chicago. Their

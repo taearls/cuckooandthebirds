@@ -73,7 +73,7 @@ export const getRandomNumberInRange = ({
   min = 1,
 }: {
   max: number;
-  min: number;
+  min?: number;
 }): number => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };

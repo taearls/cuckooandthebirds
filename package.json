@@ -16,7 +16,6 @@
     "deploy": "npm run pages:build && wrangler pages deploy"
   },
   "dependencies": {
-    "@cloudinary/react": "^1.13.1",
     "@cloudinary/url-gen": "^1.21.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
