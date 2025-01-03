@@ -65,8 +65,8 @@ export default (args: ViteConfigInput) => {
     base: "./",
     build: {
       target: "es2022",
-      // outDir: "./dist",
-      // emptyOutDir: true,
+      outDir: "./dist",
+      emptyOutDir: true,
     },
     css: {
       modules: {
