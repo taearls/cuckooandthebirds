@@ -3,9 +3,5 @@ export type ParagraphProps = {
 };
 
 export default function Paragraph({ children }: ParagraphProps) {
-  return (
-    <p className="my-4 text-lg leading-normal text-soft-black md:text-xl dark:text-white">
-      {children}
-    </p>
-  );
+  return <p className="my-4 text-lg leading-normal md:text-xl">{children}</p>;
 }
