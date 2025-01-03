@@ -65,5 +65,6 @@ export const homePageTextData = [
 export const CLOUDINARY_INSTANCE = new Cloudinary({
   cloud: {
     cloudName: "cuckooandthebirds",
+    // TODO: set up API key
   },
 });

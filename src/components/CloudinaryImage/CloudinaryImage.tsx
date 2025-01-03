@@ -28,8 +28,6 @@ export default function CloudinaryImage({
 }: CloudinaryImageProps) {
   const img = CLOUDINARY_INSTANCE.image(publicId);
 
-  console.log({ img });
-
   img.resize(fill().width(width).height(height));
 
   return <img src={img.toURL()} alt={alt} />;
