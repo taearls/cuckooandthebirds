@@ -8,20 +8,19 @@ export default function BookingPage() {
     <main>
       <HeadingOne>{"Booking"}</HeadingOne>
       <Paragraph>
-        {
-          "If you're interested in hiring me for coding work, my music, or just want to say hello—I'd love to hear from you. I'm a voracious learner, and nothing is too nerdy or niche for my taste."
-        }
+        Cuckoo and the Birds is fully vaxxed and ready to rock!
       </Paragraph>
       <Paragraph>
-        {"The best way to reach me is via email at "}
+        {"The best way to contact us is via email at "}
         <InlineAnchor
           href={`mailto:${WEBSITE_EMAIL}`}
-          ariaLabel="Send an email to Tyler Earls"
+          ariaLabel="Send an email to Cuckoo and the Birds"
         >
           {WEBSITE_EMAIL}
         </InlineAnchor>
         {"."}
       </Paragraph>
+      {/* TODO: add Contact Form */}
       {/* <ContactForm /> */}
     </main>
   );
