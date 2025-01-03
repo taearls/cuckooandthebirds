@@ -22,5 +22,5 @@ export default function RandomCloudinaryImage() {
 
   const publicId = `Sanjana Quarantine Photoshoot/${imageGroup}/${photoId}`;
 
-  return <CloudinaryImage publicId={publicId} />;
+  return <CloudinaryImage publicId={publicId} alt="image" />;
 }

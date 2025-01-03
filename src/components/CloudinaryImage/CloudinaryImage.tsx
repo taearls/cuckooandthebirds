@@ -1,35 +1,36 @@
 import { CLOUDINARY_INSTANCE } from "@/util/constants/constants";
-import {
-  accessibility,
-  AdvancedImage,
-  lazyload,
-  placeholder,
-  responsive,
-} from "@cloudinary/react";
+import { fill } from "@cloudinary/url-gen/actions/resize";
+
+// import {
+//   accessibility,
+//   AdvancedImage,
+//   lazyload,
+//   placeholder,
+//   responsive,
+// } from "@cloudinary/react";
 
 export type CloudinaryImageProps = {
   // transformations?: Array<string>;
-  // alt: string;
+  alt: string;
   // extension: string;
   publicId: string;
-  // width: number;
-  // height: number;
+  width?: number;
+  height?: number;
 };
 
 export default function CloudinaryImage({
   // transformations = [],
-  // alt,
+  alt,
   // extension,
   publicId,
-  // width,
-  // height,
+  width = 500,
+  height = 500,
 }: CloudinaryImageProps) {
   const img = CLOUDINARY_INSTANCE.image(publicId);
 
-  return (
-    <AdvancedImage
-      cldImg={img}
-      plugins={[lazyload(), responsive(), accessibility(), placeholder()]}
-    />
-  );
+  console.log({ img });
+
+  img.resize(fill().width(width).height(height));
+
+  return <img src={img.toURL()} alt={alt} />;
 }

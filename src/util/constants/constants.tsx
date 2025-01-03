@@ -54,9 +54,9 @@ export const homePageTextData = [
     For booking inquiries, please email{" "}
     <InlineAnchor
       ariaLabel="Send Cuckoo and the Birds an email"
-      href="mailto:cuckooandthebirds@gmail.com"
+      href={`mailto:${WEBSITE_EMAIL}`}
     >
-      cuckooandthebirds@gmail.com
+      {WEBSITE_EMAIL}
     </InlineAnchor>
     .
   </Paragraph>,
@@ -64,6 +64,6 @@ export const homePageTextData = [
 
 export const CLOUDINARY_INSTANCE = new Cloudinary({
   cloud: {
-    cloudName: "demo",
+    cloudName: "cuckooandthebirds",
   },
 });
