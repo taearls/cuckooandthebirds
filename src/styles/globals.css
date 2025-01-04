@@ -7,9 +7,10 @@
   --collapsed-nav-height: 64px;
   --footer-height: 80px;
   --body-padding-y: 16px;
-
-  --soft-black: #121212;
-  --white: white;
+  --text-light: #4e4b66;
+  --text-dark: white;
+  --background-light: white;
+  --background-dark: #121212;
   --active-light: rgb(
     34 211 238 / var(--tw-text-opacity, 1)
   ); /* tailwind-cyan-400 */
@@ -40,10 +41,11 @@ html {
 */
 html,
 html * {
-  background-color: var(--white);
-  color: #475569; /* tailwind-slate-600 */
-  fill: var(--accent-light);
-  stroke: var(--accent-light);
+  background-color: var(--background-light);
+  color: var(--text-light);
+  fill: var(--text-light);
+  stroke: var(--text-light);
+  /* color: #475569; tailwind-slate-600 */
   a:hover,
   a:hover * {
     color: var(--active-light);
@@ -54,12 +56,15 @@ html * {
   .accent,
   .accent * {
     color: var(--accent-light);
+    fill: var(--accent-light);
+    stroke: var(--accent-light);
   }
+
   @media (prefers-color-scheme: dark) {
-    background-color: var(--soft-black);
-    color: var(--white);
-    fill: var(--accent-dark);
-    stroke: var(--accent-dark);
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+    fill: var(--text-dark);
+    stroke: var(--text-dark);
     a:hover,
     a.active,
     a:hover *,
@@ -72,6 +77,8 @@ html * {
     .accent,
     .accent * {
       color: var(--accent-dark);
+      fill: var(--accent-light);
+      stroke: var(--accent-light);
     }
   }
 }
