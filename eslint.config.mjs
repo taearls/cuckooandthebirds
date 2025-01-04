@@ -31,8 +31,11 @@ export default [
   {
     rules: {
       "react/react-in-jsx-scope": "off",
-      "no-unused-vars": "warn",
-      "@typescript-eslint/no-unused-vars": "warn",
+      "no-unused-vars": ["warn", { varsIgnorePattern: "_*" }],
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        { varsIgnorePattern: "_*" },
+      ],
       // not currently supported in eslint-react-plugin with eslint v9
       // "react/no-array-index-key": "error",
     },

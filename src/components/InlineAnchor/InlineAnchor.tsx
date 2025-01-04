@@ -1,11 +1,12 @@
 import { mergeClasses } from "@/util/styling/styling.utils";
+import { JSX } from "react";
 
 import ExternalLinkIcon from "../icons/ExternalLinkIcon";
 
 export type InlineAnchorProps = {
   ariaLabel: string;
   href: string;
-  children: string;
+  children: JSX.Element | string;
   accent?: boolean;
   isExternal?: boolean;
   bold?: boolean;

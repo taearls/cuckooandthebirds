@@ -51,39 +51,3 @@ export default function MusicPage() {
     </main>
   );
 }
-
-{
-  /* <template>
-  
-</template>
-
-<script>
-import ImageLink from "@/components/widgets/ImageLink.vue";
-import TextCard from "@/components/widgets/TextCard.vue";
-
-import releases from "@/assets/data/releases/releaseSlugData.json";
-
-export default {
-  components: {
-    ImageLink,
-    TextCard,
-  },
-  data() {
-    return {
-      releases,
-    };
-  },
-  computed: {
-    sortedReleases() {
-      return [...this.releases].sort((a, b) => a.year > b.year);
-    },
-  },
-};
-</script>
-
-<style>
-.release-header-text {
-  @apply my-4 text-xl mx-auto text-center max-w-65ch;
-}
-</style> */
-}

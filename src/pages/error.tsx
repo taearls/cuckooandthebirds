@@ -1,27 +1,34 @@
-import { useEffect } from "react";
+import HeadingOne from "@/components/layout/headings/HeadingOne";
+import Paragraph from "@/components/layout/Paragraph/Paragraph";
+import { useLocation, useNavigate } from "react-router";
 
 export type ErrorProps = {
   error: Error & { digest?: string };
   reset: () => void;
 };
 
-export default function Error({ error, reset }: ErrorProps) {
-  useEffect(() => {
-    // Log the error to an error reporting service
-    console.error(error);
-  }, [error]);
+export default function Error() {
+  const location = useLocation();
+  const navigate = useNavigate();
 
   return (
-    <div>
-      <h2>Something went wrong!</h2>
+    <main>
+      <HeadingOne>Oh no!</HeadingOne>
+      <Paragraph>
+        <code>
+          {`${window.location.host}${location.pathname}${location.search}${location.hash}`}
+        </code>{" "}
+        does not exist.
+      </Paragraph>
       <button
+        className={"accent text-xl underline"}
         onClick={
-          // Attempt to recover by trying to re-render the segment
-          () => reset()
+          // Attempt to recover by navigating to previous page
+          () => navigate(-1)
         }
       >
-        Try again
+        Return to Previous Page
       </button>
-    </div>
+    </main>
   );
 }
