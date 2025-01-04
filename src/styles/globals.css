@@ -37,6 +37,13 @@ html {
   min-width: 100vw;
 }
 
+.dark-theme {
+  color-scheme: dark;
+}
+.light-theme {
+  color-scheme: light;
+}
+
 html,
 html * {
   background-color: light-dark(var(--background-light), var(--background-dark));
