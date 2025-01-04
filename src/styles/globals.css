@@ -41,7 +41,7 @@ html {
 html,
 html * {
   background-color: var(--white);
-  color: var(--soft-black);
+  color: #475569; /* tailwind-slate-600 */
   fill: var(--accent-light);
   stroke: var(--accent-light);
   a:hover,
