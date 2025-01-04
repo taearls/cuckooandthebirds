@@ -61,7 +61,9 @@ html * {
   stroke: var(--text-color);
 
   a:hover,
-  a:hover * {
+  a:hover *,
+  .active,
+  .active * {
     color: var(--active-color);
     fill: var(--active-color);
     stroke: var(--active-color);

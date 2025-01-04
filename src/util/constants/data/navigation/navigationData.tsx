@@ -4,6 +4,7 @@ import MusicDetailsPage from "@/pages/MusicPage/MusicDetailsPage";
 import MusicPage from "@/pages/MusicPage/MusicPage";
 import MusicPageOutlet from "@/pages/MusicPage/MusicPageOutlet";
 import NotFoundPage from "@/pages/NotFoundPage";
+import PressPage from "@/pages/PressPage";
 import { JSX } from "react";
 
 export type RouteDataChildItem = {
@@ -22,7 +23,6 @@ export type RouteDataItem = {
   childLinks?: Array<RouteDataChildItem>;
 };
 
-// TODO: add type definition for this
 const routes: Array<RouteDataItem> = [
   {
     href: "/",
@@ -51,13 +51,13 @@ const routes: Array<RouteDataItem> = [
   //   href: "/shows",
   //   name: "Shows",
   //   childLinks: [],
-  //   showChildren: false,
   // },
-  // {
-  //   href: "/press",
-  //   name: "Press",
-  //   childLinks: [],
-  // },
+  {
+    href: "/press",
+    name: "Press",
+    ariaLabel: "Visit Press Page",
+    component: <PressPage />,
+  },
   {
     href: "/booking",
     ariaLabel: "Visit Booking Page",

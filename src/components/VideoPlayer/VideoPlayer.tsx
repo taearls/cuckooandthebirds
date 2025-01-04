@@ -13,7 +13,7 @@ export type VideoPlayerProps = {
 };
 
 export default function VideoPlayer({
-  title = "Embedded Bandcamp Music Player",
+  title = "Embedded Video Player",
   srcVideo,
   anchor,
 }: VideoPlayerProps) {

@@ -31,7 +31,13 @@ export default function NavigationBar({ links }: NavigationBarProps) {
                   key={index}
                   isLast={index === links.length - 1}
                 >
-                  <NavLink to={link.href} aria-label={link.ariaLabel}>
+                  <NavLink
+                    to={link.href}
+                    aria-label={link.ariaLabel}
+                    className={({ isActive }) =>
+                      mergeClasses(isActive && "active")
+                    }
+                  >
                     <InlineAnchorContent
                       isExternal={Boolean(link.isExternal)}
                       bold
