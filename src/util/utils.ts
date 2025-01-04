@@ -1,21 +1,19 @@
-import { TextAlignment } from "@/types/layout";
+import { TextAlignment, TextAlignmentType } from "@/types/layout";
 import { ReactNode } from "react";
 
 export const cloneDeep = <T extends object>(item: T) =>
   JSON.parse(JSON.stringify(item));
 
-export const getTextAlignmentClass = (alignment: TextAlignment): string => {
+export const getTextAlignmentClass = (alignment: TextAlignmentType): string => {
   switch (alignment) {
-    case "left": {
+    case TextAlignment.LEFT: {
       return "text-left";
     }
-    case "center": {
+    case TextAlignment.CENTER: {
       return "text-center";
     }
-    case "right":
+    case TextAlignment.RIGHT:
       return "text-right";
-    default:
-      return "text-center";
   }
 };
 

@@ -1,11 +1,8 @@
-import { TextAlignment } from "@/types/layout";
+import { TextAlignmentType } from "@/types/layout";
 
 export type HeadingProps = {
   children: React.ReactNode | React.ReactNode[];
   // TODO: find better way to express this
-  align?:
-    | typeof TextAlignment.LEFT
-    | typeof TextAlignment.CENTER
-    | typeof TextAlignment.RIGHT;
+  align?: TextAlignmentType;
   accent?: boolean;
 };
