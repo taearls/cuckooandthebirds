@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  /* https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark */
   color-scheme: light dark;
   --expanded-nav-height: 191px;
   --collapsed-nav-height: 64px;
