@@ -28,6 +28,13 @@
   /* --accent-dark: #fb7185; tailwind-rose-400 */
   /* --accent-dark: #f43f5e; tailwind-rose-500 */
   --accent-light: #e11d48; /* tailwind-rose-600 */
+  --active-color: light-dark(var(--active-light), var(--active-dark));
+  --accent-color: light-dark(var(--accent-light), var(--accent-dark));
+  --text-color: light-dark(var(--text-light), var(--text-dark));
+  --background-color: light-dark(
+    var(--background-light),
+    var(--background-dark)
+  );
   /* --accent-light: rgb(
     126 34 206 / var(--tw-text-opacity, 1)
   ); tailwind purple-700 */
@@ -47,23 +54,23 @@ html {
 
 html,
 html * {
-  background-color: light-dark(var(--background-light), var(--background-dark));
+  background-color: var(--background-color);
 
-  color: light-dark(var(--text-light), var(--text-dark));
-  fill: light-dark(var(--text-light), var(--text-dark));
-  stroke: light-dark(var(--text-light), var(--text-dark));
+  color: var(--text-color);
+  fill: var(--text-color);
+  stroke: var(--text-color);
 
   a:hover,
   a:hover * {
-    color: light-dark(var(--active-light), var(--active-dark));
-    fill: light-dark(var(--active-light), var(--active-dark));
-    stroke: light-dark(var(--active-light), var(--active-dark));
+    color: var(--active-color);
+    fill: var(--active-color);
+    stroke: var(--active-color);
   }
 
   .accent,
   .accent * {
-    color: light-dark(var(--accent-light), var(--accent-dark));
-    fill: light-dark(var(--accent-light), var(--accent-dark));
-    stroke: light-dark(var(--accent-light), var(--accent-dark));
+    color: var(--accent-color);
+    fill: var(--accent-color);
+    stroke: var(--accent-color);
   }
 }

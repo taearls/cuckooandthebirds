@@ -1,29 +1,26 @@
 import { mergeClasses } from "@/util/styling/styling.utils";
-import { useState } from "react";
 
 import styles from "./NavigationToggle.module.css";
 
-export default function NavigationToggle() {
-  const [active, setActive] = useState<boolean>(false);
+export type NavigationToggleProps = {
+  active: boolean;
+  onClick: () => void;
+};
+
+export default function NavigationToggle({
+  active,
+  onClick,
+}: NavigationToggleProps) {
   return (
     <button
-      id="custom-toggler"
-      className={mergeClasses(active && "active", "group pt-1 px-1 rounded-sm")}
+      id={styles["custom-toggler"]}
+      className={mergeClasses(active && styles["active"])}
       aria-Label={`${active ? "Close Navigation" : "Open Navigation"}`}
-      onClick={() => setActive(!active)}
+      onClick={onClick}
     >
-      <div
-        id={styles["toggler-top"]}
-        className="bg-red-600 group-hover:bg-cyan-300"
-      />
-      <div
-        id={styles["toggler-middle"]}
-        className="bg-red-600 group-hover:bg-cyan-300"
-      />
-      <div
-        id={styles["toggler-bottom"]}
-        className="bg-red-600 group-hover:bg-cyan-300"
-      />
+      <div id={styles["toggler-top"]} />
+      <div id={styles["toggler-middle"]} />
+      <div id={styles["toggler-bottom"]} />
     </button>
   );
 }
