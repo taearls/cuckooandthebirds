@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  color-scheme: light dark;
   --expanded-nav-height: 191px;
   --collapsed-nav-height: 64px;
   --footer-height: 80px;
@@ -36,49 +37,23 @@ html {
   min-width: 100vw;
 }
 
-/* basic light / dark theme implementation 
-  TODO: clean up
-*/
 html,
 html * {
-  background-color: var(--background-light);
-  color: var(--text-light);
-  fill: var(--text-light);
-  stroke: var(--text-light);
-  /* color: #475569; tailwind-slate-600 */
+  background-color: light-dark(var(--background-light), var(--background-dark));
+  color: light-dark(var(--text-light), var(--text-dark));
+  fill: light-dark(var(--text-light), var(--text-dark));
+  stroke: light-dark(var(--text-light), var(--text-dark));
   a:hover,
   a:hover * {
-    color: var(--active-light);
-    fill: var(--active-light);
-    stroke: var(--active-light);
+    color: light-dark(var(--active-light), var(--active-dark));
+    fill: light-dark(var(--active-light), var(--active-dark));
+    stroke: light-dark(var(--active-light), var(--active-dark));
   }
 
   .accent,
   .accent * {
-    color: var(--accent-light);
-    fill: var(--accent-light);
-    stroke: var(--accent-light);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    background-color: var(--background-dark);
-    color: var(--text-dark);
-    fill: var(--text-dark);
-    stroke: var(--text-dark);
-    a:hover,
-    a.active,
-    a:hover *,
-    a.active * {
-      color: var(--active-dark);
-      fill: var(--active-dark);
-      stroke: var(--active-dark);
-    }
-
-    .accent,
-    .accent * {
-      color: var(--accent-dark);
-      fill: var(--accent-light);
-      stroke: var(--accent-light);
-    }
+    color: light-dark(var(--accent-light), var(--accent-dark));
+    fill: light-dark(var(--accent-light), var(--accent-dark));
+    stroke: light-dark(var(--accent-light), var(--accent-dark));
   }
 }

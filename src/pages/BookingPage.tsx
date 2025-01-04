@@ -15,6 +15,7 @@ export default function BookingPage() {
         <InlineAnchor
           href={`mailto:${WEBSITE_EMAIL}`}
           ariaLabel="Send an email to Cuckoo and the Birds"
+          accent
         >
           {WEBSITE_EMAIL}
         </InlineAnchor>

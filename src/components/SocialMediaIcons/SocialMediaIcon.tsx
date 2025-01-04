@@ -20,7 +20,7 @@ export default function SocialMediaIcon({
     <a
       href={href}
       aria-label={ariaLabel}
-      className={mergeClasses(styles["icon-base"], styles["icon"])}
+      className={mergeClasses(styles["icon-base"], styles["icon"], "accent")}
       target="_blank"
       rel="noreferrer"
     >

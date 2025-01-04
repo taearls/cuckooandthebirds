@@ -38,6 +38,7 @@ export default function HomePage() {
         Cuckoo and the Birds released their first EP,{" "}
         <InlineAnchor
           ariaLabel="Go to Cuckoo and the Birds's Release Page"
+          accent
           href="./releases"
         >
           Twin Stars
@@ -61,6 +62,7 @@ export default function HomePage() {
         For booking inquiries, please email{" "}
         <InlineAnchor
           ariaLabel="Send Cuckoo and the Birds an email"
+          accent
           href={`mailto:${WEBSITE_EMAIL}`}
         >
           {WEBSITE_EMAIL}
