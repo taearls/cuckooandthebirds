@@ -4,9 +4,9 @@ import { BrowserRouter } from "react-router";
 
 import "./styles/globals.css";
 
+import PageContainer from "./components/layout/containers/PageContainer/PageContainer";
 import Footer from "./components/layout/Footer/Footer";
 import Header from "./components/layout/Header/Header";
-import PageContainer from "./components/layout/PageContainer/PageContainer";
 import routes from "./routes";
 
 // export const metadata: Metadata = {

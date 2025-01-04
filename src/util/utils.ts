@@ -1,21 +1,26 @@
 import { TextAlignment, TextAlignmentType } from "@/types/layout";
 import { ReactNode } from "react";
 
-export const cloneDeep = <T extends object>(item: T) =>
+export const cloneDeep = <T extends object>(item: T): T =>
   JSON.parse(JSON.stringify(item));
 
-export const getTextAlignmentClass = (alignment: TextAlignmentType): string => {
-  switch (alignment) {
-    case TextAlignment.LEFT: {
-      return "text-left";
-    }
-    case TextAlignment.CENTER: {
-      return "text-center";
-    }
-    case TextAlignment.RIGHT:
-      return "text-right";
-  }
+export const getKeysOfTFromConstObj = <T extends object>(constObj: T) => {
+  return typeof constObj;
 };
+
+export type ValueOf<T> = T[keyof T];
+
+type Enumerate<
+  N extends number,
+  Acc extends number[] = [],
+> = Acc["length"] extends N
+  ? Acc[number]
+  : Enumerate<N, [...Acc, Acc["length"]]>;
+
+export type IntRange<F extends number, T extends number> = Exclude<
+  Enumerate<T>,
+  Enumerate<F>
+>;
 
 export const getCloudinarySrc = (
   publicId: string,

@@ -16,7 +16,7 @@ export default function Paragraph({
       className={mergeClasses(
         accent && "accent",
         italic && "italic",
-        "my-4 text-lg leading-normal md:text-xl",
+        "text-lg leading-normal md:text-xl",
       )}
     >
       {children}

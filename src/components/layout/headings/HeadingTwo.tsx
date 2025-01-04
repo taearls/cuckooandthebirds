@@ -1,6 +1,8 @@
 import { TextAlignment } from "@/types/layout";
-import { mergeClasses } from "@/util/styling/styling.utils";
-import { getTextAlignmentClass } from "@/util/utils";
+import {
+  getTextAlignmentClass,
+  mergeClasses,
+} from "@/util/styling/styling.utils";
 
 import { HeadingProps } from "./types";
 
@@ -16,7 +18,7 @@ export default function HeadingTwo({
       className={mergeClasses(
         alignmentClass,
         accent && "accent",
-        "mb-8 text-3xl font-bold",
+        "text-3xl font-bold",
       )}
     >
       {children}

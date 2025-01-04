@@ -1,5 +1,6 @@
 import CloudinaryImage from "@/components/CloudinaryImage/CloudinaryImage";
 import InlineAnchor from "@/components/InlineAnchor/InlineAnchor";
+import FlexContainer from "@/components/layout/containers/FlexContainer/FlexContainer";
 import HeadingOne from "@/components/layout/headings/HeadingOne";
 import HeadingTwo from "@/components/layout/headings/HeadingTwo";
 import Paragraph from "@/components/layout/Paragraph/Paragraph";
@@ -100,66 +101,73 @@ export default function MusicDetailsPage() {
 
   return (
     <main>
-      <HeadingOne>
-        {releaseData.title} ({releaseData.year})
-      </HeadingOne>
-      <div>
-        <InlineAnchor
-          ariaLabel={`Click the image and listen to ${releaseData.title}`}
-          href={releaseData.href}
-        >
-          <CloudinaryImage
-            alt={releaseData.alt}
-            publicId={releaseData.imgsrc}
-          />
-        </InlineAnchor>
-        <Paragraph italic accent>
-          Artwork by {releaseData.artworkCredit}
-        </Paragraph>
-      </div>
-      <div>
-        {releaseData.descriptions.map((description, index) => (
-          <Paragraph key={`${releaseData.title}-description-${index + 1}`}>
-            {description}
-          </Paragraph>
-        ))}
-      </div>
+      <FlexContainer flexFlow="column" gapY={8}>
+        <FlexContainer flexFlow="column" gapY={8}>
+          <HeadingOne>
+            {releaseData.title} ({releaseData.year})
+          </HeadingOne>
+          <div>
+            <InlineAnchor
+              ariaLabel={`Click the image and listen to ${releaseData.title}`}
+              href={releaseData.href}
+            >
+              <CloudinaryImage
+                alt={releaseData.alt}
+                publicId={releaseData.imgsrc}
+              />
+            </InlineAnchor>
+            <Paragraph italic accent>
+              Artwork by {releaseData.artworkCredit}
+            </Paragraph>
+          </div>
+          <div>
+            {releaseData.descriptions.map((description, index) => (
+              <Paragraph key={`${releaseData.title}-description-${index + 1}`}>
+                {description}
+              </Paragraph>
+            ))}
+          </div>
+        </FlexContainer>
 
-      <RenderIf condition={releaseData.videosrc != null}>
-        <div className="flex flex-col gap-y-8 mb-8">
-          <Paragraph>
-            Check out the official music video for {releaseData.title}!
-          </Paragraph>
-          <VideoPlayer
-            title={`${releaseData.title} Video`}
-            src={releaseData.videosrc}
-          />
-        </div>
-      </RenderIf>
-      <div>
-        <HeadingTwo accent>Credits:</HeadingTwo>
-        <div className="my-4">
-          {releaseData.performingCredits.map((performerCredit, index) => (
-            <Paragraph key={`performer-credit-${index + 1}`}>
-              {performerCredit}
-            </Paragraph>
-          ))}
-        </div>
-        <div v-if="release.videoCredits.length > 0" className="my-4">
-          {releaseData.videoCredits.map((videoCredit, index) => (
-            <Paragraph key={`video-credit-${index + 1}`}>
-              {videoCredit}
-            </Paragraph>
-          ))}
-        </div>
-        <div className="my-4">
-          {releaseData.recordingCredits.map((recordingCredit, index) => (
-            <Paragraph key={`recordng-credit-${index + 1}`}>
-              {recordingCredit}
-            </Paragraph>
-          ))}
-        </div>
-      </div>
+        <FlexContainer>
+          <RenderIf condition={releaseData.videosrc != null}>
+            <FlexContainer flexFlow={"column"} gapY={8}>
+              <Paragraph>
+                Check out the official music video for {releaseData.title}!
+              </Paragraph>
+              <VideoPlayer
+                title={`${releaseData.title} Video`}
+                src={releaseData.videosrc}
+              />
+            </FlexContainer>
+          </RenderIf>
+        </FlexContainer>
+
+        <FlexContainer flexFlow="column" gapY={8}>
+          <HeadingTwo accent>Credits:</HeadingTwo>
+          <div>
+            {releaseData.performingCredits.map((performerCredit, index) => (
+              <Paragraph key={`performer-credit-${index + 1}`}>
+                {performerCredit}
+              </Paragraph>
+            ))}
+          </div>
+          <div>
+            {releaseData.videoCredits.map((videoCredit, index) => (
+              <Paragraph key={`video-credit-${index + 1}`}>
+                {videoCredit}
+              </Paragraph>
+            ))}
+          </div>
+          <div>
+            {releaseData.recordingCredits.map((recordingCredit, index) => (
+              <Paragraph key={`recording-credit-${index + 1}`}>
+                {recordingCredit}
+              </Paragraph>
+            ))}
+          </div>
+        </FlexContainer>
+      </FlexContainer>
     </main>
   );
 }
