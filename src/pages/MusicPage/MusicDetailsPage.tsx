@@ -3,11 +3,27 @@ import InlineAnchor from "@/components/InlineAnchor/InlineAnchor";
 import HeadingOne from "@/components/layout/headings/HeadingOne";
 import HeadingTwo from "@/components/layout/headings/HeadingTwo";
 import Paragraph from "@/components/layout/Paragraph/Paragraph";
+import RenderIf from "@/components/layout/RenderIf";
+import VideoPlayer from "@/components/VideoPlayer/VideoPlayer";
 import { useParams } from "react-router";
 
 import NotFoundPage from "../NotFoundPage";
 
-export const RELEASE_DETAILS_DATA = {
+export type ReleaseDataType = {
+  imgsrc: string;
+  videosrc: string | null;
+  alt: string;
+  artworkCredit: string;
+  year: number;
+  title: string;
+  href: string;
+  descriptions: string[];
+  videoCredits: string[];
+  performingCredits: string[];
+  recordingCredits: string[];
+};
+
+export const RELEASE_DETAILS_DATA: Record<string, ReleaseDataType> = {
   "twin-stars": {
     imgsrc: "Twin Stars/twin-stars-album-art.jpg",
     videosrc: null,
@@ -35,7 +51,7 @@ export const RELEASE_DETAILS_DATA = {
   },
   "show-me-the-dark": {
     imgsrc: "Show Me The Dark/show-me-the-dark-artwork.jpg",
-    videosrc: "https://www.youtube.com/watch?v=W9NnCvO9xac",
+    videosrc: "https://www.youtube.com/embed/W9NnCvO9xac",
     alt: "Album Artwork for Show Me The Dark",
     artworkCredit: "Mikal Bae and Alcides Diaz",
     year: 2021,
@@ -108,20 +124,18 @@ export default function MusicDetailsPage() {
           </Paragraph>
         ))}
       </div>
-      {/* TODO: get video working */}
-      {/* <div
-          v-if="release.videosrc != null"
-          class="flex flex-col text-center justify-center mx-auto mb-8"
-        >
-          <p class="text-lg my-2">
-            Check out the official music video for {{ release.title }}!
-          </p>
-          <lazy-youtube
-            ref="releaseVideo"
-            class="mx-auto"
-            :src="release.videosrc"
+
+      <RenderIf condition={releaseData.videosrc != null}>
+        <div className="flex flex-col gap-y-8 mb-8">
+          <Paragraph>
+            Check out the official music video for {releaseData.title}!
+          </Paragraph>
+          <VideoPlayer
+            title={`${releaseData.title} Video`}
+            src={releaseData.videosrc}
           />
-        </div> */}
+        </div>
+      </RenderIf>
       <div>
         <HeadingTwo accent>Credits:</HeadingTwo>
         <div className="my-4">
