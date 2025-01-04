@@ -16,12 +16,18 @@
   --active-dark: rgb(
     103 232 249 / var(--tw-text-opacity, 1)
   ); /* tailwind cyan-300 */
-  --accent-dark: rgb(
+  /* --accent-dark: rgb(
     192 132 252 / var(--tw-text-opacity, 1)
-  ); /* tailwind purple-400 */
-  --accent-light: rgb(
+  ); tailwind purple-400 */
+  /* --accent-dark: #f87171; tailwind-red-400 */
+  --accent-dark: #ef4444; /* tailwind-red-500 */
+  /* --accent-dark: #dc2626; tailwind-red-600 */
+  /* --accent-dark: #fb7185; tailwind-rose-400 */
+  /* --accent-dark: #f43f5e; tailwind-rose-500 */
+  --accent-light: #e11d48; /* tailwind-rose-600 */
+  /* --accent-light: rgb(
     126 34 206 / var(--tw-text-opacity, 1)
-  ); /* tailwind purple-700 */
+  ); tailwind purple-700 */
 }
 
 html {
