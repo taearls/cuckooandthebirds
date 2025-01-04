@@ -1,9 +1,10 @@
 #custom-toggler {
   width: 36px;
-  height: max-content;
+  height: 36px;
   display: flex;
   flex-flow: column;
   gap: 0.5rem 0;
+  justify-content: center;
 }
 
 #custom-toggler > div {

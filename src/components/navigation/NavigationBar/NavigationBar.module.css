@@ -1,0 +1,19 @@
+.navigation-bar {
+  display: grid;
+  position: fixed;
+  top: 0;
+  min-height: 4rem;
+  width: 100%;
+  border-bottom: 1px;
+  border-style: solid;
+  grid-template-columns: 1fr min-content;
+  grid-template-areas: "list toggle";
+}
+
+.navigation-list-container {
+  grid-area: list;
+}
+
+.navigation-toggle-container {
+  grid-area: toggle;
+}
