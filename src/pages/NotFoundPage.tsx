@@ -2,12 +2,7 @@ import HeadingOne from "@/components/layout/headings/HeadingOne";
 import Paragraph from "@/components/layout/Paragraph/Paragraph";
 import { useLocation, useNavigate } from "react-router";
 
-export type ErrorProps = {
-  error: Error & { digest?: string };
-  reset: () => void;
-};
-
-export default function Error() {
+export default function NotFoundPage() {
   const location = useLocation();
   const navigate = useNavigate();
 

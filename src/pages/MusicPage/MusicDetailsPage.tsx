@@ -5,6 +5,8 @@ import HeadingTwo from "@/components/layout/headings/HeadingTwo";
 import Paragraph from "@/components/layout/Paragraph/Paragraph";
 import { useParams } from "react-router";
 
+import NotFoundPage from "../NotFoundPage";
+
 export const RELEASE_DETAILS_DATA = {
   "twin-stars": {
     imgsrc: "Twin Stars/twin-stars-album-art.jpg",
@@ -68,9 +70,17 @@ export const RELEASE_DETAILS_DATA = {
 export default function MusicDetailsPage() {
   const { releaseId } = useParams();
 
-  const [_, releaseData] = Object.entries(RELEASE_DETAILS_DATA).find(
+  const result = Object.entries(RELEASE_DETAILS_DATA).find(
     ([id]) => id === releaseId,
-  )!;
+  );
+
+  // if the user navigates to a /music subpath that doesn't exist, redirect them to the 404 page.
+  // e.g., /music/blah
+  if (!result) {
+    return <NotFoundPage />;
+  }
+
+  const [_, releaseData] = result;
 
   return (
     <main>

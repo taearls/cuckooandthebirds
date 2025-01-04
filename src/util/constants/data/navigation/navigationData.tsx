@@ -1,9 +1,9 @@
 import BookingPage from "@/pages/BookingPage";
-import ErrorPage from "@/pages/error";
 import HomePage from "@/pages/HomePage";
 import MusicDetailsPage from "@/pages/MusicPage/MusicDetailsPage";
 import MusicPage from "@/pages/MusicPage/MusicPage";
 import MusicPageOutlet from "@/pages/MusicPage/MusicPageOutlet";
+import NotFoundPage from "@/pages/NotFoundPage";
 import { JSX } from "react";
 
 export type RouteDataChildItem = {
@@ -75,7 +75,7 @@ const routes: Array<RouteDataItem> = [
     name: "404",
     ariaLabel: "Navigate To 404 Page",
     hidden: true,
-    component: <ErrorPage />,
+    component: <NotFoundPage />,
   },
 ];
 
