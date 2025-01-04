@@ -40,9 +40,11 @@ html {
 html,
 html * {
   background-color: light-dark(var(--background-light), var(--background-dark));
+
   color: light-dark(var(--text-light), var(--text-dark));
   fill: light-dark(var(--text-light), var(--text-dark));
   stroke: light-dark(var(--text-light), var(--text-dark));
+
   a:hover,
   a:hover * {
     color: light-dark(var(--active-light), var(--active-dark));
