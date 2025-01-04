@@ -3,7 +3,10 @@ import HeadingOne from "@/components/layout/headings/HeadingOne";
 import Paragraph from "@/components/layout/Paragraph/Paragraph";
 import RandomCloudinaryImage from "@/components/RandomCloudinaryImage/RandomCloudinaryImage";
 import { TextAlignment } from "@/types/layout";
-import { WEBSITE_EMAIL } from "@/util/constants/constants";
+import {
+  SHUFFLED_IMAGE_GROUPS,
+  WEBSITE_EMAIL,
+} from "@/util/constants/constants";
 
 export default function HomePage() {
   return (
@@ -15,7 +18,10 @@ export default function HomePage() {
         sensibility with a meditative bent.
       </Paragraph>
 
-      <RandomCloudinaryImage />
+      <RandomCloudinaryImage
+        imageGroups={SHUFFLED_IMAGE_GROUPS}
+        groupNumber={1}
+      />
 
       <Paragraph>
         Historically, they have operated as a solo project from songwriter and
@@ -23,7 +29,10 @@ export default function HomePage() {
         Dominic Glimco on bass and Zachary Taylor on drums.
       </Paragraph>
 
-      <RandomCloudinaryImage />
+      <RandomCloudinaryImage
+        imageGroups={SHUFFLED_IMAGE_GROUPS}
+        groupNumber={2}
+      />
 
       <Paragraph>
         Cuckoo and the Birds released their first EP,{" "}
@@ -38,7 +47,10 @@ export default function HomePage() {
         Dominic Glimco on bass.
       </Paragraph>
 
-      <RandomCloudinaryImage />
+      <RandomCloudinaryImage
+        imageGroups={SHUFFLED_IMAGE_GROUPS}
+        groupNumber={3}
+      />
 
       <Paragraph>
         They&apos;ve played a handful of shows in Chicago, and are always
