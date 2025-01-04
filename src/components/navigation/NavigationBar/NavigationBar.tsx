@@ -17,7 +17,6 @@ export default function NavigationBar({ links }: NavigationBarProps) {
   const [active, setActive] = useState<boolean>(false);
 
   return (
-    // <div className="h-fit w-full">
     <nav className={mergeClasses(styles["navigation-bar"])}>
       <ul
         role="menu"
@@ -49,6 +48,5 @@ export default function NavigationBar({ links }: NavigationBarProps) {
         <NavigationToggle active={active} onClick={() => setActive(!active)} />
       </div>
     </nav>
-    // </div>
   );
 }
