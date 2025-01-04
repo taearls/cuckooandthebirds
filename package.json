@@ -12,10 +12,7 @@
     "format:check": "prettier --check --ignore-path .gitignore .",
     "format:fix": "prettier --write --list-different --ignore-path .gitignore .",
     "test": "vitest run",
-    "test:watch": "vitest watch",
-    "pages:build": "npx @cloudflare/next-on-pages",
-    "preview": "npm run pages:build && wrangler pages dev",
-    "deploy": "npm run pages:build && wrangler pages deploy"
+    "test:watch": "vitest watch"
   },
   "dependencies": {
     "@cloudinary/url-gen": "^1.21.0",
