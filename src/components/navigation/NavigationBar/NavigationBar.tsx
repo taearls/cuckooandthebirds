@@ -23,24 +23,26 @@ export default function NavigationBar({ links }: NavigationBarProps) {
         className={mergeClasses(styles["navigation-list-container"])}
       >
         <RenderIf condition={active}>
-          {links.map((link, index) => {
-            return (
-              <NavigationBarListItem
-                key={index}
-                isLast={index === links.length - 1}
-              >
-                <NavLink to={link.href} aria-label={link.ariaLabel}>
-                  <InlineAnchorContent
-                    isExternal={Boolean(link.isExternal)}
-                    bold
-                    underline={false}
-                  >
-                    {link.name}
-                  </InlineAnchorContent>
-                </NavLink>
-              </NavigationBarListItem>
-            );
-          })}
+          {links
+            .filter((link) => !link.hidden)
+            .map((link, index) => {
+              return (
+                <NavigationBarListItem
+                  key={index}
+                  isLast={index === links.length - 1}
+                >
+                  <NavLink to={link.href} aria-label={link.ariaLabel}>
+                    <InlineAnchorContent
+                      isExternal={Boolean(link.isExternal)}
+                      bold
+                      underline={false}
+                    >
+                      {link.name}
+                    </InlineAnchorContent>
+                  </NavLink>
+                </NavigationBarListItem>
+              );
+            })}
         </RenderIf>
       </ul>
 

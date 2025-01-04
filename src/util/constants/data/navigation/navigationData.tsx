@@ -18,6 +18,7 @@ export type RouteDataItem = {
   ariaLabel: string;
   isExternal?: boolean;
   component?: JSX.Element;
+  hidden?: boolean;
   childLinks?: Array<RouteDataChildItem>;
 };
 
@@ -73,6 +74,7 @@ const routes: Array<RouteDataItem> = [
     href: "*",
     name: "404",
     ariaLabel: "Navigate To 404 Page",
+    hidden: true,
     component: <ErrorPage />,
   },
 ];
