@@ -21,13 +21,7 @@ export default function NavigationBar({ links }: NavigationBarProps) {
     <nav className={mergeClasses(styles["navigation-bar"])}>
       <ul
         role="menu"
-        className={mergeClasses(
-          // !active && "hidden",
-          active &&
-            "sm:h-16 sm:flex-row flex-col justify-self-center self-center",
-          styles["navigation-list-container"],
-          "inline-flex h-auto w-40 items-center justify-center sm:w-full",
-        )}
+        className={mergeClasses(styles["navigation-list-container"])}
       >
         <RenderIf condition={active}>
           {links.map((link, index) => {
@@ -51,13 +45,7 @@ export default function NavigationBar({ links }: NavigationBarProps) {
         </RenderIf>
       </ul>
 
-      <div
-        className={mergeClasses(
-          !active && "",
-          styles["navigation-toggle-container"],
-          "inline-block self-start m-4 w-fit ml-[calc(-36px-1rem)]",
-        )}
-      >
+      <div className={mergeClasses(styles["navigation-toggle-container"])}>
         <NavigationToggle active={active} onClick={() => setActive(!active)} />
       </div>
     </nav>
