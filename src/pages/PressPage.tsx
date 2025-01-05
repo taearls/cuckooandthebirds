@@ -1,4 +1,5 @@
 import InlineAnchor from "@/components/InlineAnchor/InlineAnchor";
+import FlexContainer from "@/components/layout/containers/FlexContainer/FlexContainer";
 import HeadingOne from "@/components/layout/headings/HeadingOne";
 import HeadingTwo from "@/components/layout/headings/HeadingTwo";
 import { TextAlignment } from "@/types/layout";
@@ -43,47 +44,53 @@ export const REVIEW_DATA: Array<PressData> = [
 export default function PressPage() {
   return (
     <main>
-      <HeadingOne>Press</HeadingOne>
+      <FlexContainer flexFlow="column" gapY={8}>
+        <HeadingOne>Press</HeadingOne>
 
-      <div className="flex flex-col gap-y-4">
         <div>
-          <HeadingTwo align={TextAlignment.LEFT}>Reviews</HeadingTwo>
+          <FlexContainer flexFlow="column" gapY={4}>
+            <HeadingTwo align={TextAlignment.LEFT}>Reviews</HeadingTwo>
 
-          {REVIEW_DATA.map((review) => {
-            const displayedText = `${review.text} (${review.month} ${review.year.toString()})`;
-            return (
-              <div key={displayedText}>
-                <InlineAnchor
-                  isExternal
-                  href={review.href}
-                  ariaLabel={review.ariaLabel}
-                >
-                  {displayedText}
-                </InlineAnchor>
-              </div>
-            );
-          })}
+            <>
+              {REVIEW_DATA.map((review) => {
+                const displayedText = `${review.text} (${review.month} ${review.year.toString()})`;
+                return (
+                  <InlineAnchor
+                    key={displayedText}
+                    isExternal
+                    href={review.href}
+                    ariaLabel={review.ariaLabel}
+                  >
+                    {displayedText}
+                  </InlineAnchor>
+                );
+              })}
+            </>
+          </FlexContainer>
         </div>
 
         <div>
-          <HeadingTwo align={TextAlignment.LEFT}>Interviews</HeadingTwo>
+          <FlexContainer flexFlow="column" gapY={4}>
+            <HeadingTwo align={TextAlignment.LEFT}>Interviews</HeadingTwo>
 
-          {INTERVIEW_DATA.map((interview) => {
-            const displayedText = `${interview.text} (${interview.month} ${interview.year.toString()})`;
-            return (
-              <div key={displayedText}>
-                <InlineAnchor
-                  isExternal
-                  href={interview.href}
-                  ariaLabel={interview.ariaLabel}
-                >
-                  {displayedText}
-                </InlineAnchor>
-              </div>
-            );
-          })}
+            <>
+              {INTERVIEW_DATA.map((interview) => {
+                const displayedText = `${interview.text} (${interview.month} ${interview.year.toString()})`;
+                return (
+                  <InlineAnchor
+                    key={displayedText}
+                    isExternal
+                    href={interview.href}
+                    ariaLabel={interview.ariaLabel}
+                  >
+                    {displayedText}
+                  </InlineAnchor>
+                );
+              })}
+            </>
+          </FlexContainer>
         </div>
-      </div>
+      </FlexContainer>
     </main>
   );
 }

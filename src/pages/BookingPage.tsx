@@ -7,8 +7,8 @@ import { WEBSITE_EMAIL } from "@/util/constants/constants";
 export default function BookingPage() {
   return (
     <main>
-      <FlexContainer flexFlow="column" gapY={4}>
-        <HeadingOne>{"Booking"}</HeadingOne>
+      <FlexContainer flexFlow="column" gapY={8}>
+        <HeadingOne>Booking</HeadingOne>
         <Paragraph>
           Cuckoo and the Birds is fully vaxxed and ready to rock!
         </Paragraph>

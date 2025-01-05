@@ -106,7 +106,7 @@ export default function MusicDetailsPage() {
           <HeadingOne>
             {releaseData.title} ({releaseData.year})
           </HeadingOne>
-          <div>
+          <FlexContainer flexFlow="column" alignItems="center">
             <InlineAnchor
               ariaLabel={`Click the image and listen to ${releaseData.title}`}
               href={releaseData.href}
@@ -119,27 +119,25 @@ export default function MusicDetailsPage() {
             <Paragraph italic accent>
               Artwork by {releaseData.artworkCredit}
             </Paragraph>
-          </div>
-          <div>
+          </FlexContainer>
+          <FlexContainer flexFlow="column" gapY={4}>
             {releaseData.descriptions.map((description, index) => (
               <Paragraph key={`${releaseData.title}-description-${index + 1}`}>
                 {description}
               </Paragraph>
             ))}
-          </div>
+          </FlexContainer>
         </FlexContainer>
 
-        <FlexContainer>
+        <FlexContainer flexFlow={"column"} gapY={8} alignItems="center">
           <RenderIf condition={releaseData.videosrc != null}>
-            <FlexContainer flexFlow={"column"} gapY={8}>
-              <Paragraph>
-                Check out the official music video for {releaseData.title}!
-              </Paragraph>
-              <VideoPlayer
-                title={`${releaseData.title} Video`}
-                src={releaseData.videosrc}
-              />
-            </FlexContainer>
+            <VideoPlayer
+              title={`${releaseData.title} Video`}
+              src={releaseData.videosrc}
+            />
+            <Paragraph>
+              Check out the official music video for {releaseData.title}!
+            </Paragraph>
           </RenderIf>
         </FlexContainer>
 

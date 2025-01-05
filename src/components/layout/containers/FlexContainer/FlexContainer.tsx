@@ -6,7 +6,7 @@ import {
   mergeClasses,
 } from "@/util/styling/styling.utils";
 import { IntRange } from "@/util/utils";
-import { JSX } from "react";
+import { JSX, ReactElement } from "react";
 
 import styles from "./FlexContainer.module.css";
 
@@ -60,7 +60,7 @@ export type FlexContainerProps = {
   gapY?: GapCSSType["value"];
   justifyContent?: JustifyContentCSSType;
   alignItems?: AlignItemsCSSType;
-  children: JSX.Element | JSX.Element[];
+  children: ReactElement | ReactElement[];
 };
 
 export default function FlexContainer({
