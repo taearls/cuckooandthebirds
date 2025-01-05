@@ -30,5 +30,11 @@ export default function CloudinaryImage({
 
   img.resize(fill().width(width).height(height));
 
-  return <img src={img.toURL()} alt={alt} />;
+  return (
+    <img
+      src={img.toURL()}
+      alt={alt}
+      style={{ maxWidth: width, maxHeight: height }}
+    />
+  );
 }
