@@ -30,30 +30,41 @@ export default function MusicPage() {
 
   return (
     <main>
-      <HeadingOne>Music</HeadingOne>
-      <Paragraph>
-        Click on the album artwork below to learn more about it!
-      </Paragraph>
-      <section className="flex flex-col md:flex-row justify-center">
-        <FlexContainer
-          flexFlow="column"
-          responsive={{ flexFlow: { prefix: "md", value: "row" } }}
-        >
-          {sortedReleases.map((release) => (
-            <div key={release.releaseId} className="mx-auto w-4/5">
-              <Link to={`/music/${release.releaseId}`}>
-                <CloudinaryImage
-                  alt={release.alt}
-                  publicId={release.cldImgPath}
-                />
-              </Link>
-              <p className="text-xl sm:text-lg">
-                {release.title} ({release.year})
-              </p>
-            </div>
-          ))}
-        </FlexContainer>
-      </section>
+      <FlexContainer flexFlow="column" gapY={8}>
+        <HeadingOne>Music</HeadingOne>
+        <Paragraph>
+          Click on the album artwork below to learn more about it!
+        </Paragraph>
+        <section>
+          <FlexContainer
+            flexFlow="column"
+            gapX={4}
+            gapY={4}
+            responsive={{ flexFlow: { prefix: "md", value: "row" } }}
+          >
+            {sortedReleases.map((release) => (
+              <FlexContainer
+                key={release.releaseId}
+                flexFlow="column"
+                alignItems="center"
+                gapY={2}
+              >
+                <Link to={`/music/${release.releaseId}`}>
+                  <div className="hover:opacity-75">
+                    <CloudinaryImage
+                      alt={release.alt}
+                      publicId={release.cldImgPath}
+                    />
+                  </div>
+                </Link>
+                <Paragraph>
+                  {release.title} ({release.year})
+                </Paragraph>
+              </FlexContainer>
+            ))}
+          </FlexContainer>
+        </section>
+      </FlexContainer>
     </main>
   );
 }
