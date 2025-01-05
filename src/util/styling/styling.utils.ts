@@ -5,7 +5,6 @@ import {
   GapCSSType,
   JustifyContentCSSType,
   JustifyContentCSSValue,
-  MediaQueryPrefix,
 } from "@/components/layout/containers/FlexContainer/FlexContainer";
 import { TextAlignment, TextAlignmentType } from "@/types/layout";
 import { ValueOf } from "@/types/util";
@@ -39,48 +38,84 @@ export const getJustifyContentClass = (
   val: JustifyContentCSSType,
   responsive?: FlexContainerProps["responsive"]["justifyContent"],
 ): ValueOf<JustifyContentCSSType> => {
-  const responsivePrefix = responsive ? responsive + ":" : "";
+  let baseClass = "";
 
   // https://tailwindcss.com/docs/justify-content
   switch (val) {
     case JustifyContentCSSValue.CENTER:
-      return `${responsivePrefix}justify-center`;
+      baseClass = "justify-center";
+      break;
     case JustifyContentCSSValue.END:
-      return `${responsivePrefix}justify-end`;
+      baseClass = "justify-end";
+      break;
     case JustifyContentCSSValue.NORMAL:
-      return `${responsivePrefix}justify-normal`;
+      baseClass = "justify-normal";
+      break;
     case JustifyContentCSSValue.SPACE_AROUND:
-      return `${responsivePrefix}justify-around`;
+      baseClass = "justify-around";
+      break;
     case JustifyContentCSSValue.SPACE_BETWEEN:
-      return `${responsivePrefix}justify-between`;
+      baseClass = "justify-between";
+      break;
     case JustifyContentCSSValue.SPACE_EVENLY:
-      return `${responsivePrefix}justify-evenly`;
+      baseClass = "justify-evenly";
+      break;
     case JustifyContentCSSValue.START:
-      return `${responsivePrefix}justify-start`;
+      baseClass = "justify-start";
+      break;
     case JustifyContentCSSValue.STRETCH:
-      return `${responsivePrefix}justify-stretch`;
+      baseClass = "justify-stretch";
+      break;
   }
+
+  const responsiveClass = getResponsiveClass(baseClass, responsive, val);
+
+  return combineBaseAndResponsiveClasses(baseClass, [responsiveClass]);
 };
 
 export const getAlignItemsClass = (
   val: AlignItemsCSSType,
   responsive?: FlexContainerProps["responsive"]["alignItems"],
 ): ValueOf<AlignItemsCSSType> => {
-  const responsivePrefix = responsive ? responsive + ":" : "";
+  let baseClass = "";
 
   // https://tailwindcss.com/docs/align-items
   switch (val) {
     case AlignItemsCSSValue.BASELINE:
-      return `${responsivePrefix}items-baseline`;
+      baseClass = "items-baseline";
+      break;
     case AlignItemsCSSValue.CENTER:
-      return `${responsivePrefix}items-center`;
+      baseClass = "items-center";
+      break;
     case AlignItemsCSSValue.END:
-      return `${responsivePrefix}items-end`;
+      baseClass = "items-end";
+      break;
     case AlignItemsCSSValue.START:
-      return `${responsivePrefix}items-start`;
+      baseClass = "items-start";
+      break;
     case AlignItemsCSSValue.STRETCH:
-      return `${responsivePrefix}items-stretch`;
+      baseClass = "items-stretch";
+      break;
   }
+
+  const responsiveClass = getResponsiveClass(baseClass, responsive, val);
+
+  return combineBaseAndResponsiveClasses(baseClass, [responsiveClass]);
+};
+
+export const getFlexFlowClass = (
+  val: "row" | "column",
+  responsive?: FlexContainerProps["responsive"]["flexFlow"],
+) => {
+  const baseClass = val === "column" ? "flex-col" : "flex-row";
+  const valToReplace = val === "column" ? "col" : "row";
+  const responsiveClass = getResponsiveClass(
+    baseClass,
+    responsive,
+    valToReplace,
+  );
+
+  return combineBaseAndResponsiveClasses(baseClass, [responsiveClass]);
 };
 
 export const getGapClass = (
@@ -89,12 +124,46 @@ export const getGapClass = (
     | FlexContainerProps["responsive"]["gapX"]
     | FlexContainerProps["responsive"]["gapY"],
 ) => {
-  // TODO: clean this up, apply to all other fns
-  const responsiveClass = responsive
-    ? responsive.prefix + ":" + "gap-" + val.direction + "-" + responsive.value
-    : "";
+  const baseClass = `gap-${val.direction}-${val.value}`;
+  const responsiveClass = getResponsiveClass(baseClass, responsive, val.value);
 
-  return `${responsiveClass} gap-${val.direction}-${val.value}`;
+  return combineBaseAndResponsiveClasses(baseClass, [responsiveClass]);
+};
+
+export const getResponsiveClass = (
+  baseClass: string,
+  val?: FlexContainerProps["responsive"][keyof FlexContainerProps["responsive"]],
+  valToReplace?:
+    | GapCSSType["value"]
+    | AlignItemsCSSType
+    | JustifyContentCSSType
+    | "row"
+    | "col",
+) => {
+  if (val == null) return "";
+
+  let responsiveBaseClass = baseClass;
+  if (
+    Boolean(valToReplace) &&
+    Boolean(val?.value) &&
+    !baseClass.includes(val.value.toString())
+  ) {
+    responsiveBaseClass = baseClass.replace(
+      valToReplace.toString(),
+      val.value.toString(),
+    );
+  }
+
+  const responsiveClass = `${val.prefix}:${responsiveBaseClass}`;
+
+  return responsiveClass;
+};
+
+export const combineBaseAndResponsiveClasses = (
+  baseClass: string,
+  responsiveClasses: Array<string>,
+): string => {
+  return `${responsiveClasses.join(" ")} ${baseClass}`.trim();
 };
 
 /**

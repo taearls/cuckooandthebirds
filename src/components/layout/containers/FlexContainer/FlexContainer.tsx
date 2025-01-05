@@ -1,5 +1,6 @@
 import {
   getAlignItemsClass,
+  getFlexFlowClass,
   getGapClass,
   getJustifyContentClass,
   mergeClasses,
@@ -72,12 +73,7 @@ export default function FlexContainer({
   alignItems,
   children,
 }: FlexContainerProps) {
-  const flexFlowClass = mergeClasses(
-    flexFlow === "column" &&
-      responsive?.flexFlow &&
-      `${responsive?.flexFlow}:flex-col`,
-    flexFlow === "column" && responsive?.flexFlow == null && "flex-col",
-  );
+  const flexFlowClass = getFlexFlowClass(flexFlow, responsive?.flexFlow);
   const justifyContentClass = getJustifyContentClass(
     justifyContent,
     responsive?.justifyContent,
