@@ -1,6 +1,8 @@
-import { TextAlignment } from "@/util";
+import { TextAlignmentType } from "@/types/layout";
 
 export type HeadingProps = {
   children: React.ReactNode | React.ReactNode[];
-  align?: TextAlignment;
+  // TODO: find better way to express this
+  align?: TextAlignmentType;
+  accent?: boolean;
 };

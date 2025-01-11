@@ -4,8 +4,6 @@ export type BodyProps = {
 
 export default function Body({ children }: BodyProps) {
   return (
-    <body className="w-full overflow-y-auto overflow-x-hidden bg-white dark:bg-soft-black">
-      {children}
-    </body>
+    <body className="w-full overflow-y-auto overflow-x-hidden">{children}</body>
   );
 }

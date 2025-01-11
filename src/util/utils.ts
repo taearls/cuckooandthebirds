@@ -1,24 +1,25 @@
-import { WebProjectAnalytics } from "@/components/WebProject/WebProject";
-import { TextAlignment } from ".";
 import { ReactNode } from "react";
 
-export const cloneDeep = <T extends object>(item: T) =>
+export const cloneDeep = <T extends object>(item: T): T =>
   JSON.parse(JSON.stringify(item));
 
-export const getTextAlignmentClass = (alignment: TextAlignment): string => {
-  switch (alignment) {
-    case "left": {
-      return "text-left";
-    }
-    case "center": {
-      return "text-center";
-    }
-    case "right":
-      return "text-right";
-    default:
-      return "text-center";
-  }
+export const getKeysOfTFromConstObj = <T extends object>(constObj: T) => {
+  return typeof constObj;
 };
+
+export type ValueOf<T> = T[keyof T];
+
+type Enumerate<
+  N extends number,
+  Acc extends number[] = [],
+> = Acc["length"] extends N
+  ? Acc[number]
+  : Enumerate<N, [...Acc, Acc["length"]]>;
+
+export type IntRange<F extends number, T extends number> = Exclude<
+  Enumerate<T>,
+  Enumerate<F>
+>;
 
 export const getCloudinarySrc = (
   publicId: string,
@@ -30,20 +31,6 @@ export const getCloudinarySrc = (
   }
   const transformationString = transformations.join(",");
   return `https://res.cloudinary.com/cuckooandthebirds/image/upload/${transformationString}/v1/${publicId}.${extension}`;
-};
-
-export const getLinkWithAnalytics = (
-  href: string,
-  analytics?: WebProjectAnalytics,
-): string => {
-  let urlString = href;
-
-  if (analytics != null) {
-    const { campaign, medium, source } = analytics;
-    urlString += `?utm_campaign=${campaign}&utm_medium=${medium}&source=${source}`;
-  }
-
-  return urlString;
 };
 
 export const getCurrentYear = () => {
@@ -83,12 +70,12 @@ export const jsxOrEmptyString = (value?: ReactNode | string): typeof value => {
 // });
 // };
 
-const getRandomNumberInRange = ({
+export const getRandomNumberInRange = ({
   max,
   min = 1,
 }: {
   max: number;
-  min: number;
+  min?: number;
 }): number => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };

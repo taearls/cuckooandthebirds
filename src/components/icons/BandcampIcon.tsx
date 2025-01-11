@@ -3,29 +3,10 @@ export type BandcampIconProps = {
   hoverFillColor?: string;
 };
 
-export default function BandcampIcon({
-  fillColor = "fill-purple-700 dark:fill-purple-400",
-  hoverFillColor = "group-hover:fill-cyan-400 dark:group-hover:fill-cyan-300",
-}: BandcampIconProps) {
+export default function BandcampIcon() {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="40px"
-      height="40px"
-      viewBox="0 0 48 48"
-      fill="none"
-      className="group"
-    >
-      <circle
-        className={`${fillColor} ${hoverFillColor}`}
-        cx="24"
-        cy="24"
-        r="20"
-      />
-      <path
-        d="M28.36 31.1025H12L19.6398 16.9999H36L28.36 31.1025Z"
-        className="fill-white dark:fill-soft-black"
-      />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <path d="M256,8C119,8,8,119,8,256S119,504,256,504,504,393,504,256,393,8,256,8Zm48.2,326.1h-181L207.9,178h181Z" />
     </svg>
   );
 }

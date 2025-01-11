@@ -1,34 +1,77 @@
-import InlineAnchor, { InlineAnchorProps } from "@/components/InlineAnchor";
+import { InlineAnchorContent } from "@/components/InlineAnchor/InlineAnchor";
+import FlexContainer from "@/components/layout/containers/FlexContainer/FlexContainer";
+import RenderIf from "@/components/layout/RenderIf";
+import { navigationMachine } from "@/state/navigationMachine";
+import { RouteDataItem } from "@/util/constants/data/navigation/navigationData";
+import { mergeClasses } from "@/util/styling/styling.utils";
+import { useMachine } from "@xstate/react";
+import { NavLink } from "react-router";
+
+import NavigationToggle from "../NavigationToggle/NavigationToggle";
+import styles from "./NavigationBar.module.css";
 import NavigationBarListItem from "./NavigationBarListItem";
 
 export type NavigationBarProps = {
-  links: Array<InlineAnchorProps>;
+  links: Array<RouteDataItem>;
 };
 
 export default function NavigationBar({ links }: NavigationBarProps) {
+  const [current, send] = useMachine(navigationMachine);
+
+  const handleToggle = () => {
+    send({ type: "toggle" });
+  };
+
   return (
-    <div className="h-fit w-full">
-      <nav className="font-default fixed top-0 flex h-48 w-full flex-col items-center justify-evenly border border-b border-l-0 border-r-0 border-t-0 bg-white font-mono text-black sm:h-16 sm:flex-row sm:justify-center dark:bg-soft-black dark:text-white">
-        <ul
-          role="menu"
-          className="flex h-auto w-40 flex-col items-center justify-center sm:h-16 sm:w-full sm:flex-row"
-        >
-          {links.map((link, index) => (
-            <NavigationBarListItem
-              key={index}
-              isLast={index === links.length - 1}
-            >
-              <InlineAnchor
-                bold={false}
-                ariaLabel={link.ariaLabel}
-                isExternal={link.isExternal}
-                href={link.href}
-                text={link.text}
-              />
-            </NavigationBarListItem>
-          ))}
-        </ul>
-      </nav>
-    </div>
+    <nav id="navigation-bar" className={mergeClasses(styles["navigation-bar"])}>
+      <ul
+        role="menu"
+        className={mergeClasses(styles["navigation-list-container"])}
+      >
+        <RenderIf condition={current.value === "open"}>
+          <FlexContainer
+            flexFlow="column"
+            responsive={{
+              flexFlow: { prefix: "sm", value: "row" },
+              gapX: { prefix: "sm", value: 2 },
+            }}
+          >
+            {links
+              .filter((link) => !link.hidden)
+              .map((link, index) => {
+                return (
+                  <NavigationBarListItem
+                    key={index}
+                    isLast={index === links.length - 1}
+                  >
+                    <NavLink
+                      to={link.href}
+                      aria-label={link.ariaLabel}
+                      className={({ isActive }) =>
+                        mergeClasses(isActive && "active")
+                      }
+                    >
+                      <InlineAnchorContent
+                        isExternal={Boolean(link.isExternal)}
+                        bold
+                        underline={false}
+                      >
+                        {link.name}
+                      </InlineAnchorContent>
+                    </NavLink>
+                  </NavigationBarListItem>
+                );
+              })}
+          </FlexContainer>
+        </RenderIf>
+      </ul>
+
+      <div className={mergeClasses(styles["navigation-toggle-container"])}>
+        <NavigationToggle
+          active={current.value === "open"}
+          onClick={handleToggle}
+        />
+      </div>
+    </nav>
   );
 }

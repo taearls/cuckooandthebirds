@@ -23,8 +23,6 @@ If you're curious to run this app locally, feel free to clone this. After a fres
 
 ### Linting
 
-This application is configured to run linting in a pre-commit hook.
-
 To check for linting violations, simply run `npm run lint:check`. To fix them, run `npm run lint:fix`
 
 # Previous Iterations

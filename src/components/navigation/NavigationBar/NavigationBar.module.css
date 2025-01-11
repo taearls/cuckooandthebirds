@@ -1,0 +1,33 @@
+.navigation-bar {
+  display: grid;
+  position: fixed;
+  top: 0;
+  min-height: 4rem;
+  width: 100%;
+  border-bottom: 1px;
+  border-style: solid;
+  grid-template-columns: 1fr min-content;
+  grid-template-areas: "list toggle";
+}
+
+.navigation-list-container {
+  grid-area: list;
+  display: inline-flex;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  justify-self: center;
+  align-self: center;
+  width: 10rem;
+  @apply sm:w-full sm:h-16 sm:flex-row;
+}
+
+.navigation-toggle-container {
+  grid-area: toggle;
+  display: inline-block;
+  align-self: flex-start;
+  width: fit-content;
+  margin: 1rem;
+  margin-left: calc(-36px - 1rem);
+}

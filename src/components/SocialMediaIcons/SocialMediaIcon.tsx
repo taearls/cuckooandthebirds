@@ -1,8 +1,13 @@
+import { mergeClasses } from "@/util/styling/styling.utils";
+import { ReactNode } from "react";
+
+import styles from "./SocialMediaIcon.module.css";
+
 export type SocialMediaIconProps = {
   name: string;
   href: string;
   ariaLabel?: string;
-  icon: React.ReactNode | React.ReactNode[];
+  icon: ReactNode;
 };
 
 export default function SocialMediaIcon({
@@ -15,12 +20,11 @@ export default function SocialMediaIcon({
     <a
       href={href}
       aria-label={ariaLabel}
-      className="focus:shadow-outline-light dark:focus:shadow-outline-dark rounded-sm focus:outline-none"
+      className={mergeClasses(styles["icon-base"], styles["icon"], "accent")}
       target="_blank"
+      rel="noreferrer"
     >
-      <span className="rounded-sm text-purple-700 hover:text-cyan-400 dark:text-purple-400 dark:hover:text-cyan-300">
-        {icon}
-      </span>
+      <span className="rounded-sm">{icon}</span>
     </a>
   );
 }

@@ -1,15 +1,25 @@
+import { TextAlignment } from "@/types/layout";
+import {
+  getTextAlignmentClass,
+  mergeClasses,
+} from "@/util/styling/styling.utils";
+
 import { HeadingProps } from "./types";
-import { getTextAlignmentClass } from "@/util";
 
 export default function HeadingTwo({
   children,
-  align = "center",
+  align = TextAlignment.CENTER,
+  accent = true,
 }: HeadingProps) {
   const alignmentClass = getTextAlignmentClass(align);
 
   return (
     <h2
-      className={`${alignmentClass} mb-8 text-3xl font-bold text-purple-700 dark:text-purple-400`}
+      className={mergeClasses(
+        alignmentClass,
+        accent && "accent",
+        "text-3xl font-bold",
+      )}
     >
       {children}
     </h2>
