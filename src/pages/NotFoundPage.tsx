@@ -18,7 +18,7 @@ export default function NotFoundPage() {
           does not exist.
         </Paragraph>
         <button
-          className={"accent text-xl underline w-fit"}
+          className={"accent w-fit text-xl underline"}
           onClick={
             // Attempt to recover by navigating to previous page
             () => navigate(-1)

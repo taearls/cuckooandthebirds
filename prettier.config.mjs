@@ -14,6 +14,7 @@ export default {
   plugins: [
     // https://github.com/IanVS/prettier-plugin-sort-imports
     "@ianvs/prettier-plugin-sort-imports",
+    "prettier-plugin-tailwindcss",
   ],
   semi: true,
   singleQuote: false,

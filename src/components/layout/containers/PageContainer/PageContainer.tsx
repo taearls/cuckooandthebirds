@@ -10,7 +10,7 @@ export default function PageContainer({ children }: PageContainerProps) {
     <div
       id="page-container"
       // mt-[69px] sets initial marginTop on page load.
-      className={`${styles["page-container"]} top-0 mx-auto w-full bg-none px-24 py-4 leading-8 mt-[69px]`}
+      className={`${styles["page-container"]} top-0 mx-auto mt-[69px] w-full bg-none px-24 py-4 leading-8`}
     >
       {children}
     </div>

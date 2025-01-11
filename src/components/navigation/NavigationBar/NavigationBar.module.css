@@ -20,7 +20,7 @@
   justify-self: center;
   align-self: center;
   width: 10rem;
-  @apply sm:w-full sm:h-16 sm:flex-row;
+  @apply sm:h-16 sm:w-full sm:flex-row;
 }
 
 .navigation-toggle-container {
