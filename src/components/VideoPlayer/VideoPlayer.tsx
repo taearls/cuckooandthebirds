@@ -1,8 +1,3 @@
-import { jsxOrEmptyString } from "@/util/utils";
-
-import RenderIf from "../layout/RenderIf";
-import styles from "./VideoPlayer.module.css";
-
 export type VideoPlayerProps = {
   title: string;
   src: string;

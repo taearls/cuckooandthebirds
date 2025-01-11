@@ -1,7 +1,3 @@
-import { navigationMachine } from "@/state/navigationMachine";
-import { useMachine } from "@xstate/react";
-import { useEffect, useLayoutEffect, useState } from "react";
-
 import styles from "./PageContainer.module.css";
 
 export type PageContainerProps = {
@@ -9,11 +5,12 @@ export type PageContainerProps = {
 };
 
 export default function PageContainer({ children }: PageContainerProps) {
-  // height of page container controlled in NavigationBar
+  // height of page container controlled in NavigationBar via navigationMachine
   return (
     <div
       id="page-container"
-      className={`${styles["page-container"]} top-0 mx-auto w-full bg-none px-24 py-4 leading-8`}
+      // mt-[69px] sets initial marginTop on page load.
+      className={`${styles["page-container"]} top-0 mx-auto w-full bg-none px-24 py-4 leading-8 mt-[69px]`}
     >
       {children}
     </div>

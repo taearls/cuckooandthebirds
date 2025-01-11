@@ -99,11 +99,11 @@ export default function FlexContainer({
       id={id}
       className={mergeClasses(
         "flex",
-        flexFlowClass && flexFlowClass,
+        flexFlowClass,
         justifyContentClass && justifyContentClass.toString(),
         alignItemsClass && alignItemsClass.toString(),
-        gapXClass && gapXClass,
-        gapYClass && gapYClass,
+        gapXClass,
+        gapYClass,
       )}
     >
       {children}

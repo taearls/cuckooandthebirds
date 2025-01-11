@@ -1,4 +1,3 @@
-import { TextAlignment, TextAlignmentType } from "@/types/layout";
 import { ReactNode } from "react";
 
 export const cloneDeep = <T extends object>(item: T): T =>
