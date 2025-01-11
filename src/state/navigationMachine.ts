@@ -1,14 +1,18 @@
 import { createMachine } from "xstate";
 
+export const checkNavHeight = () => {
+  const pageContainer = document.getElementById("page-container");
+  const navigationBar = document.getElementById("navigation-bar");
+
+  if (pageContainer && navigationBar) {
+    pageContainer.style.marginTop =
+      navigationBar.offsetHeight.toString() + "px";
+  }
+};
+
 const onToggleAction = () =>
   setTimeout(() => {
-    const pageContainer = document.getElementById("page-container");
-    const navigationBar = document.getElementById("navigation-bar");
-
-    if (pageContainer && navigationBar) {
-      pageContainer.style.marginTop =
-        navigationBar.offsetHeight.toString() + "px";
-    }
+    checkNavHeight();
   }, 0);
 
 export const navigationMachine = createMachine({

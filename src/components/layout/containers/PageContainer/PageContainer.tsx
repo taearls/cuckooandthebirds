@@ -1,3 +1,6 @@
+import useWindowResize from "@/hooks/useWindowResize";
+import { checkNavHeight } from "@/state/navigationMachine";
+
 import styles from "./PageContainer.module.css";
 
 export type PageContainerProps = {
@@ -5,12 +8,13 @@ export type PageContainerProps = {
 };
 
 export default function PageContainer({ children }: PageContainerProps) {
+  useWindowResize(checkNavHeight, []);
+
   // height of page container controlled in NavigationBar via navigationMachine
   return (
     <div
       id="page-container"
-      // mt-[69px] sets initial marginTop on page load.
-      className={`${styles["page-container"]} top-0 mx-auto mt-[69px] w-full bg-none px-24 py-4 leading-8`}
+      className={`${styles["page-container"]} top-0 mx-auto w-full bg-none px-24 py-4 leading-8`}
     >
       {children}
     </div>
