@@ -111,10 +111,5 @@ const config: Config = {
       },
     },
   },
-  variants: {
-    cursor: ["responsive", "hover", "disabled"],
-    opacity: ["responsive", "group-hover", "focus-within", "hover", "disabled"],
-    padding: ["responsive", "disabled"],
-  },
 };
 export default config;

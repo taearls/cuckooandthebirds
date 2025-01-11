@@ -18,5 +18,6 @@ export default {
   semi: true,
   singleQuote: false,
   tabWidth: 2,
+  tailwindConfig: "./tailwind.config.ts",
   trailingComma: "all",
 };

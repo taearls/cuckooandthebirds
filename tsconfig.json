@@ -9,6 +9,7 @@
     }
   ],
   "compilerOptions": {
-    "module": "NodeNext"
+    "module": "NodeNext",
+    "allowImportingTsExtensions": true
   }
 }

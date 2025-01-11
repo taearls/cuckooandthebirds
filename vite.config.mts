@@ -29,7 +29,6 @@ export default (args: ViteConfigInput) => {
     },
     plugins: [
       react(),
-      // tsconfigPaths({ loose: true }),
       // patchCssModules(),
       // {
       //   name: "custom-css-import",

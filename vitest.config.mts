@@ -2,7 +2,7 @@ import { fileURLToPath } from "node:url";
 
 import { configDefaults, defineConfig, mergeConfig } from "vitest/config";
 
-import viteConfig, { ViteConfigInput } from "./vite.config.mjs";
+import viteConfig, { ViteConfigInput } from "./vite.config.mts";
 
 export default (args: ViteConfigInput) =>
   mergeConfig(

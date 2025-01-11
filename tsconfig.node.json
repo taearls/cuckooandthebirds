@@ -16,6 +16,7 @@
     "moduleResolution": "Bundler",
     "types": ["node", "vitest/globals", "vite/client"],
     "jsx": "react-jsx",
+    "allowImportingTsExtensions": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
