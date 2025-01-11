@@ -6,24 +6,24 @@ import SocialMediaIcon, { SocialMediaIconProps } from "./SocialMediaIcon";
 
 const SOCIAL_MEDIA_ICONS: Array<SocialMediaIconProps> = [
   {
-    name: "Bandcamp",
     href: "https://cuckooandthebirds.bandcamp.com",
     icon: <BandcampIcon />,
+    name: "Bandcamp",
   },
   {
-    name: "Spotify",
     href: "https://open.spotify.com/artist/3JcmKe00eIMMsC0MRkKknD?si=KAG0Wnb2Sr6TYP5Rp3MWeA",
     icon: <SpotifyIcon />,
+    name: "Spotify",
   },
   {
-    name: "Instagram",
     href: "https://www.instagram.com/cuckooandthebirds",
     icon: <InstagramIcon />,
+    name: "Instagram",
   },
   {
-    name: "YouTube",
     href: "https://www.youtube.com/@cuckooandthebirdsmusic",
     icon: <YoutubeIcon />,
+    name: "YouTube",
   },
 ];
 

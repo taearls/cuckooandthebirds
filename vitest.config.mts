@@ -9,12 +9,11 @@ export default (args: ViteConfigInput) =>
     viteConfig(args),
     defineConfig({
       test: {
-        globals: true,
         environment: "jsdom",
         exclude: [...configDefaults.exclude, "e2e/**"],
+        globals: true,
         root: fileURLToPath(new URL("./", import.meta.url)),
         setupFiles: ["./setupTests.ts"],
-        // alias: {'@/': new URL('./src/', import.meta.url).pathname, }
       },
     }),
   );

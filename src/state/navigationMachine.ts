@@ -18,20 +18,20 @@ export const navigationMachine = createMachine({
     closed: {
       on: {
         toggle: {
-          target: "open",
           actions: () => {
             onToggleAction();
           },
+          target: "open",
         },
       },
     },
     open: {
       on: {
         toggle: {
-          target: "closed",
           actions: () => {
             onToggleAction();
           },
+          target: "closed",
         },
       },
     },

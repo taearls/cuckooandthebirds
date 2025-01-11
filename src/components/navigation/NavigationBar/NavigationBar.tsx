@@ -32,8 +32,8 @@ export default function NavigationBar({ links }: NavigationBarProps) {
           <FlexContainer
             flexFlow="column"
             responsive={{
-              gapX: { prefix: "sm", value: 2 },
               flexFlow: { prefix: "sm", value: "row" },
+              gapX: { prefix: "sm", value: 2 },
             }}
           >
             {links

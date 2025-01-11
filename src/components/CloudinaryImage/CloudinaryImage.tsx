@@ -34,7 +34,7 @@ export default function CloudinaryImage({
     <img
       src={img.toURL()}
       alt={alt}
-      style={{ maxWidth: width, maxHeight: height }}
+      style={{ maxHeight: height, maxWidth: width }}
     />
   );
 }

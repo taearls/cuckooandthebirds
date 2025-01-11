@@ -12,11 +12,11 @@ export default [
   {
     languageOptions: {
       ecmaVersion: 2022,
-      sourceType: "module",
       globals: {
         ...globals.browser,
         ...globals.node,
       },
+      sourceType: "module",
     },
   },
   pluginJs.configs.recommended,
@@ -30,18 +30,19 @@ export default [
     },
   },
   {
+    linterOptions: {
+      reportUnusedDisableDirectives: "warn",
+    },
     rules: {
-      "react/react-in-jsx-scope": "off",
-      "no-unused-vars": ["warn", { varsIgnorePattern: "_*" }],
       "@typescript-eslint/no-unused-vars": [
         "warn",
         { varsIgnorePattern: "_*" },
       ],
+      "no-unused-vars": ["warn", { varsIgnorePattern: "_*" }],
+      "react/react-in-jsx-scope": "off",
+      "sort-keys": "warn",
       // not currently supported in eslint-react-plugin with eslint v9
       // "react/no-array-index-key": "error",
-    },
-    linterOptions: {
-      reportUnusedDisableDirectives: "warn",
     },
   },
   { ignores: ["dist/*", ".react-router/*", "node_modules"] },

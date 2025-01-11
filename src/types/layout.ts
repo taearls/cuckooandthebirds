@@ -1,6 +1,6 @@
 export const TextAlignment = {
-  LEFT: "left",
   CENTER: "center",
+  LEFT: "left",
   RIGHT: "right",
 } as const;
 

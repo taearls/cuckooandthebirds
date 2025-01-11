@@ -6,10 +6,10 @@ export type ExternalLinkIconProps = {
 };
 
 const DEFAULT_PROP_VALUES: ExternalLinkIconProps = {
-  id: "external-link-icon",
-  title: "External Link",
   description:
     "Icon indicating the user will visit an external site in a separate tab or window.",
+  id: "external-link-icon",
+  title: "External Link",
 };
 
 export default function ExternalLinkIcon({

@@ -21,8 +21,8 @@ export const JustifyContentCSSValue = {
 export const AlignItemsCSSValue = {
   BASELINE: "baseline",
   CENTER: "center",
-  START: "flex-start",
   END: "flex-end",
+  START: "flex-start",
   STRETCH: "stretch",
 } as const satisfies Record<string, string>;
 

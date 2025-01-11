@@ -3,12 +3,8 @@
 
 import { fileURLToPath } from "node:url";
 
-// import { reactRouter } from "@react-router/dev/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
-
-// import { patchCssModules } from "vite-css-modules";
-// import tsconfigPaths from "vite-tsconfig-paths";
 
 export type ViteConfigInput = {
   mode: "development" | "production";
@@ -19,6 +15,18 @@ export default (args: ViteConfigInput) => {
   const generateScopedName =
     args.mode === "development" ? "[local]_[hash:base64:4]" : "[hash:base64:4]";
   return defineConfig({
+    base: "./",
+    build: {
+      emptyOutDir: true,
+      outDir: "./dist",
+      target: "es2022",
+    },
+    css: {
+      modules: {
+        generateScopedName,
+        localsConvention: "camelCase",
+      },
+    },
     plugins: [
       react(),
       // tsconfigPaths({ loose: true }),
@@ -61,18 +69,6 @@ export default (args: ViteConfigInput) => {
     },
     server: {
       port: 3000,
-    },
-    base: "./",
-    build: {
-      target: "es2022",
-      outDir: "./dist",
-      emptyOutDir: true,
-    },
-    css: {
-      modules: {
-        localsConvention: "camelCase",
-        generateScopedName,
-      },
     },
   });
 };

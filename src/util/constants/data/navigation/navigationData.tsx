@@ -25,27 +25,27 @@ export type RouteDataItem = {
 
 const routes: Array<RouteDataItem> = [
   {
-    href: "/",
     ariaLabel: "Visit Home Page",
-    name: "Home",
     component: <HomePage />,
+    href: "/",
+    name: "Home",
   },
   {
-    href: "/music",
     ariaLabel: "Visit Music Page",
-    name: "Music",
-    component: <MusicPageOutlet />,
     childLinks: [
       {
-        href: "",
         component: <MusicPage />,
+        href: "",
         index: true,
       },
       {
-        href: ":releaseId",
         component: <MusicDetailsPage />,
+        href: ":releaseId",
       },
     ],
+    component: <MusicPageOutlet />,
+    href: "/music",
+    name: "Music",
   },
   // {
   //   href: "/shows",
@@ -53,29 +53,29 @@ const routes: Array<RouteDataItem> = [
   //   childLinks: [],
   // },
   {
-    href: "/press",
-    name: "Press",
     ariaLabel: "Visit Press Page",
     component: <PressPage />,
+    href: "/press",
+    name: "Press",
   },
   {
-    href: "/booking",
     ariaLabel: "Visit Booking Page",
-    name: "Booking",
     component: <BookingPage />,
+    href: "/booking",
+    name: "Booking",
   },
   {
     ariaLabel: "Listen to Tyler's music on Bandcamp",
-    name: "Bandcamp",
     href: "https://cuckooandthebirds.bandcamp.com",
     isExternal: true,
+    name: "Bandcamp",
   },
   {
+    ariaLabel: "Navigate To 404 Page",
+    component: <NotFoundPage />,
+    hidden: true,
     href: "*",
     name: "404",
-    ariaLabel: "Navigate To 404 Page",
-    hidden: true,
-    component: <NotFoundPage />,
   },
 ];
 

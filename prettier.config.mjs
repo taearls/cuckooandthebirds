@@ -1,13 +1,5 @@
 export default {
   $schema: "https://json.schemastore.org/prettierrc",
-  semi: true,
-  tabWidth: 2,
-  singleQuote: false,
-  trailingComma: "all",
-  plugins: [
-    // https://github.com/IanVS/prettier-plugin-sort-imports
-    "@ianvs/prettier-plugin-sort-imports",
-  ],
   importOrder: [
     "<TYPES>^(node:)",
     "<TYPES>",
@@ -19,4 +11,12 @@ export default {
     "",
     "^[.]",
   ],
+  plugins: [
+    // https://github.com/IanVS/prettier-plugin-sort-imports
+    "@ianvs/prettier-plugin-sort-imports",
+  ],
+  semi: true,
+  singleQuote: false,
+  tabWidth: 2,
+  trailingComma: "all",
 };
