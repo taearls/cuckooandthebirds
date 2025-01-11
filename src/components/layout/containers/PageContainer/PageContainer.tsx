@@ -1,3 +1,7 @@
+import { navigationMachine } from "@/state/navigationMachine";
+import { useMachine } from "@xstate/react";
+import { useEffect, useLayoutEffect, useState } from "react";
+
 import styles from "./PageContainer.module.css";
 
 export type PageContainerProps = {
@@ -5,9 +9,11 @@ export type PageContainerProps = {
 };
 
 export default function PageContainer({ children }: PageContainerProps) {
+  // height of page container controlled in NavigationBar
   return (
     <div
-      className={`${styles["page-container"]} top-0 mx-auto mt-48 w-full bg-none px-24 py-4 leading-8 sm:mt-16`}
+      id="page-container"
+      className={`${styles["page-container"]} top-0 mx-auto w-full bg-none px-24 py-4 leading-8`}
     >
       {children}
     </div>

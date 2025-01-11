@@ -124,9 +124,9 @@ export const getGapClass = (
     | FlexContainerProps["responsive"]["gapX"]
     | FlexContainerProps["responsive"]["gapY"],
 ) => {
-  if (val.value == null) return "";
+  if (val.value == null && responsive == null) return "";
 
-  const baseClass = `gap-${val.direction}-${val.value}`;
+  const baseClass = `gap-${val.direction}-${val.value || responsive.value}`;
   const responsiveClass = getResponsiveClass(baseClass, responsive, val.value);
 
   return combineBaseAndResponsiveClasses(baseClass, [responsiveClass]);

@@ -1,4 +1,5 @@
-import { StrictMode } from "react";
+import { useActorRef } from "@xstate/react";
+import { createContext, StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router";
 
@@ -8,6 +9,19 @@ import PageContainer from "./components/layout/containers/PageContainer/PageCont
 import Footer from "./components/layout/Footer/Footer";
 import Header from "./components/layout/Header/Header";
 import routes from "./routes";
+import { navigationMachine } from "./state/navigationMachine";
+
+const GlobalStateContext = createContext({});
+
+export const GlobalStateProvider = (props) => {
+  const authService = useActorRef(navigationMachine);
+
+  return (
+    <GlobalStateContext.Provider value={{ navigationMachine }}>
+      {props.children}
+    </GlobalStateContext.Provider>
+  );
+};
 
 // export const metadata: Metadata = {
 //   openGraph: {
@@ -32,11 +46,13 @@ import routes from "./routes";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
-      <Header />
-      <PageContainer>{routes}</PageContainer>
+    <GlobalStateProvider>
+      <BrowserRouter>
+        <Header />
+        <PageContainer>{routes}</PageContainer>
 
-      <Footer />
-    </BrowserRouter>
+        <Footer />
+      </BrowserRouter>
+    </GlobalStateProvider>
   </StrictMode>,
 );
