@@ -16,7 +16,7 @@ export default function HomePage() {
       <FlexContainer flexFlow="column" gapY={8}>
         <HeadingOne align={TextAlignment.CENTER}>Our Story</HeadingOne>
         <FlexContainer flexFlow="column" gapY={8}>
-          <FlexContainer flexFlow="column" gapY={2}>
+          <FlexContainer flexFlow="column" alignItems="center" gapY={2}>
             <Paragraph>
               Cuckoo and the Birds is a three-piece, Midwest rock band from
               Chicago. Their songs experiment with extended harmonies, blending
@@ -29,7 +29,7 @@ export default function HomePage() {
             />
           </FlexContainer>
 
-          <FlexContainer flexFlow="column" gapY={2}>
+          <FlexContainer flexFlow="column" alignItems="center" gapY={2}>
             <Paragraph>
               Historically, they have operated as a solo project from songwriter
               and guitarist Tyler Earls, but now they&apos;re a full band,
@@ -42,7 +42,7 @@ export default function HomePage() {
             />
           </FlexContainer>
 
-          <FlexContainer flexFlow="column" gapY={2}>
+          <FlexContainer flexFlow="column" alignItems="center" gapY={2}>
             <Paragraph>
               Cuckoo and the Birds released their first EP,{" "}
               <InlineAnchor

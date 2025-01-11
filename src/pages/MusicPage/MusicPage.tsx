@@ -2,24 +2,8 @@ import CloudinaryImage from "@/components/CloudinaryImage/CloudinaryImage";
 import FlexContainer from "@/components/layout/containers/FlexContainer/FlexContainer";
 import HeadingOne from "@/components/layout/headings/HeadingOne";
 import Paragraph from "@/components/layout/Paragraph/Paragraph";
+import { RELEASE_SLUG_DATA } from "@/util/constants/data/releases/data";
 import { Link } from "react-router";
-
-export const RELEASE_SLUG_DATA = [
-  {
-    title: "Show Me The Dark",
-    releaseId: "show-me-the-dark",
-    cldImgPath: "Show Me The Dark/show-me-the-dark-artwork",
-    alt: "Artwork for Show Me The Dark",
-    year: 2021,
-  },
-  {
-    title: "Twin Stars",
-    releaseId: "twin-stars",
-    cldImgPath: "Twin Stars/twin-stars-album-art.jpg",
-    alt: "Album Artwork for Twin Stars",
-    year: 2019,
-  },
-];
 
 export default function MusicPage() {
   const sortedReleases = RELEASE_SLUG_DATA.sort((a, b) => {
@@ -40,7 +24,7 @@ export default function MusicPage() {
             flexFlow="column"
             gapX={4}
             gapY={4}
-            responsive={{ flexFlow: { prefix: "md", value: "row" } }}
+            responsive={{ flexFlow: { prefix: "lg", value: "row" } }}
           >
             {sortedReleases.map((release) => (
               <FlexContainer

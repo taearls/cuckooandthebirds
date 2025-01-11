@@ -5,17 +5,14 @@ import {
   getJustifyContentClass,
   mergeClasses,
 } from "@/util/styling/styling.utils";
-import { IntRange } from "@/util/utils";
-import { JSX, ReactElement } from "react";
-
-import styles from "./FlexContainer.module.css";
+import { ReactElement } from "react";
 
 export const JustifyContentCSSValue = {
-  NORMAL: "normal",
   CENTER: "center",
   END: "flex-end",
-  SPACE_BETWEEN: "space-between",
+  NORMAL: "normal",
   SPACE_AROUND: "space-around",
+  SPACE_BETWEEN: "space-between",
   SPACE_EVENLY: "space-evenly",
   START: "flex-start",
   STRETCH: "stretch",
@@ -30,9 +27,9 @@ export const AlignItemsCSSValue = {
 } as const satisfies Record<string, string>;
 
 export type GapCSSType = {
-  direction: "horizontal" | "vertical";
+  direction: "x" | "y";
   // https://github.com/microsoft/TypeScript/issues/54925
-  value: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+  value?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 };
 
 export type JustifyContentCSSType =
@@ -84,29 +81,31 @@ export default function FlexContainer({
   );
   const gapXClass = getGapClass(
     {
-      direction: "horizontal",
+      direction: "x",
       value: gapX,
     },
     responsive?.gapX,
   );
   const gapYClass = getGapClass(
     {
-      direction: "vertical",
+      direction: "y",
       value: gapY,
     },
     responsive?.gapY,
   );
 
+  console.log({ gapXClass, gapYClass });
+
   return (
     <div
       id={id}
       className={mergeClasses(
-        styles["flex-container"],
+        "flex",
         flexFlowClass && flexFlowClass,
         justifyContentClass && justifyContentClass.toString(),
         alignItemsClass && alignItemsClass.toString(),
-        gapXClass && styles[gapXClass],
-        gapYClass && styles[gapYClass],
+        gapXClass && gapXClass,
+        gapYClass && gapYClass,
       )}
     >
       {children}

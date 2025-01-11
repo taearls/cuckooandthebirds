@@ -6,6 +6,24 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    {
+      pattern: /flex-(row|col)/,
+      variants: ["sm", "md", "lg", "xl", "2xl"],
+    },
+    {
+      pattern:
+        /justify-(center|end|normal|around|between|evenly|start|stretch)/,
+      variants: ["sm", "md", "lg", "xl", "2xl"],
+    },
+    {
+      pattern: /items-(baseline|center|end|start|stretch)/,
+      variants: ["sm", "md", "lg", "xl", "2xl"],
+    },
+    {
+      pattern: /gap-(x|y)-[1-8]/,
+    },
+  ],
   theme: {
     extend: {
       margin: {

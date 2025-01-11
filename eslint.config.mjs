@@ -2,6 +2,7 @@ import pluginJs from "@eslint/js";
 import eslintConfigPrettier from "eslint-config-prettier";
 import noBarrelFiles from "eslint-plugin-no-barrel-files";
 import pluginReact from "eslint-plugin-react";
+import reactRefresh from "eslint-plugin-react-refresh";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 
@@ -46,4 +47,5 @@ export default [
   { ignores: ["dist/*", ".react-router/*", "node_modules"] },
   noBarrelFiles.flat,
   eslintConfigPrettier,
+  reactRefresh.configs.recommended,
 ];
