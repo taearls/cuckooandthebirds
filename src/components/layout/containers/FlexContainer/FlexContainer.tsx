@@ -94,8 +94,6 @@ export default function FlexContainer({
     responsive?.gapY,
   );
 
-  console.log({ gapXClass, gapYClass });
-
   return (
     <div
       id={id}
