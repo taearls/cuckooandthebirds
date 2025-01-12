@@ -17,6 +17,7 @@ export default function VideoPlayer({
     <iframe
       width={width}
       height={height}
+      style={{ maxWidth: "var(--max-width-mobile)" }}
       src={src}
       title={title}
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

@@ -14,7 +14,7 @@ export default function MusicPage() {
 
   return (
     <main>
-      <FlexContainer flexFlow="column" gapY={8}>
+      <FlexContainer flexFlow="column" alignItems="center" gapY={8}>
         <HeadingOne>Music</HeadingOne>
         <Paragraph>
           Click on the album artwork below to learn more about it!

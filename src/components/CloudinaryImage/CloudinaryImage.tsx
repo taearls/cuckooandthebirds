@@ -22,7 +22,7 @@ export default function CloudinaryImage({
     <img
       src={img.toURL()}
       alt={alt}
-      style={{ height: "auto", maxWidth: "calc(100vw - 4rem)", width }}
+      style={{ height: "auto", maxWidth: "var(--max-width-mobile)", width }}
     />
   );
 }

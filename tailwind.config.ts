@@ -106,6 +106,9 @@ const config: Config = {
       maxWidth: {
         "65ch": "65ch",
       },
+      width: {
+        "65ch": "65ch",
+      },
       zIndex: {
         "100": "100",
       },

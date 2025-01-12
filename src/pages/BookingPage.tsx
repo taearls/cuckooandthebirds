@@ -7,12 +7,12 @@ import { WEBSITE_EMAIL } from "@/util/constants/constants";
 export default function BookingPage() {
   return (
     <main>
-      <FlexContainer flexFlow="column" gapY={8}>
+      <FlexContainer flexFlow="column" alignItems="center" gapY={8}>
         <HeadingOne>Booking</HeadingOne>
-        <Paragraph>
+        <Paragraph width="sm:w-65ch">
           Cuckoo and the Birds is fully vaxxed and ready to rock!
         </Paragraph>
-        <Paragraph>
+        <Paragraph width="sm:w-65ch">
           {"The best way to contact us is via email at "}
           <InlineAnchor
             href={`mailto:${WEBSITE_EMAIL}`}

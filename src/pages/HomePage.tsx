@@ -16,7 +16,7 @@ export default function HomePage() {
       <FlexContainer flexFlow="column" gapY={8}>
         <HeadingOne align={TextAlignment.CENTER}>Our Story</HeadingOne>
         <FlexContainer flexFlow="column" gapY={8}>
-          <FlexContainer flexFlow="column" alignItems="center" gapY={2}>
+          <FlexContainer flexFlow="column" alignItems="center" gapY={4}>
             <Paragraph>
               Cuckoo and the Birds is a three-piece, Midwest rock band from
               Chicago. Their songs experiment with extended harmonies, blending
@@ -29,7 +29,7 @@ export default function HomePage() {
             />
           </FlexContainer>
 
-          <FlexContainer flexFlow="column" alignItems="center" gapY={2}>
+          <FlexContainer flexFlow="column" alignItems="center" gapY={4}>
             <Paragraph>
               Historically, they have operated as a solo project from songwriter
               and guitarist Tyler Earls, but now they&apos;re a full band,
@@ -38,11 +38,11 @@ export default function HomePage() {
 
             <RandomCloudinaryImage
               imageGroups={SHUFFLED_IMAGE_GROUPS}
-              groupNumber={2}
+              groupNumber={4}
             />
           </FlexContainer>
 
-          <FlexContainer flexFlow="column" alignItems="center" gapY={2}>
+          <FlexContainer flexFlow="column" alignItems="center" gapY={4}>
             <Paragraph>
               Cuckoo and the Birds released their first EP,{" "}
               <InlineAnchor
@@ -63,15 +63,12 @@ export default function HomePage() {
             />
           </FlexContainer>
 
-          <FlexContainer flexFlow="column" gapY={4}>
+          <FlexContainer flexFlow="column" alignItems="center" gapY={4}>
             <HeadingTwo>Booking</HeadingTwo>
             <Paragraph>
               Cuckoo and the Birds have played a handful of shows in Chicago,
-              and are always looking for more!
-            </Paragraph>
-
-            <Paragraph>
-              For booking inquiries, please email{" "}
+              and are always looking for more! For booking inquiries, please
+              email{" "}
               <InlineAnchor
                 ariaLabel="Send Cuckoo and the Birds an email"
                 accent

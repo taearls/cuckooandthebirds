@@ -6,6 +6,7 @@ import HeadingTwo from "@/components/layout/headings/HeadingTwo";
 import Paragraph from "@/components/layout/Paragraph/Paragraph";
 import RenderIf from "@/components/layout/RenderIf";
 import VideoPlayer from "@/components/VideoPlayer/VideoPlayer";
+import { TextAlignment } from "@/types/layout";
 import { RELEASE_DETAILS_DATA } from "@/util/constants/data/releases/data";
 import { useParams } from "react-router";
 
@@ -57,11 +58,11 @@ export default function MusicDetailsPage() {
                 publicId={releaseData.imgsrc}
               />
             </InlineAnchor>
-            <Paragraph italic accent>
+            <Paragraph italic accent alignment={TextAlignment.CENTER}>
               Artwork by {releaseData.artworkCredit}
             </Paragraph>
           </FlexContainer>
-          <FlexContainer flexFlow="column" gapY={4}>
+          <FlexContainer flexFlow="column" alignItems="center" gapY={4}>
             {releaseData.descriptions.map((description, index) => (
               <Paragraph key={`${releaseData.title}-description-${index + 1}`}>
                 {description}
@@ -76,7 +77,7 @@ export default function MusicDetailsPage() {
               title={`${releaseData.title} Video`}
               src={releaseData.videosrc}
             />
-            <Paragraph>
+            <Paragraph alignment={TextAlignment.CENTER}>
               Check out the official music video for {releaseData.title}!
             </Paragraph>
           </RenderIf>
@@ -84,27 +85,51 @@ export default function MusicDetailsPage() {
 
         <FlexContainer flexFlow="column" gapY={8}>
           <HeadingTwo accent>Credits:</HeadingTwo>
-          <div>
-            {releaseData.performingCredits.map((performerCredit, index) => (
-              <Paragraph key={`performer-credit-${index + 1}`}>
-                {performerCredit}
-              </Paragraph>
-            ))}
-          </div>
-          <div>
-            {releaseData.videoCredits.map((videoCredit, index) => (
-              <Paragraph key={`video-credit-${index + 1}`}>
-                {videoCredit}
-              </Paragraph>
-            ))}
-          </div>
-          <div>
-            {releaseData.recordingCredits.map((recordingCredit, index) => (
-              <Paragraph key={`recording-credit-${index + 1}`}>
-                {recordingCredit}
-              </Paragraph>
-            ))}
-          </div>
+          <RenderIf condition={releaseData.performingCredits.length > 0}>
+            <FlexContainer
+              flexFlow="column"
+              alignItems="flex-start"
+              responsive={{ alignItems: { prefix: "sm", value: "center" } }}
+            >
+              {releaseData.performingCredits.map((performerCredit, index) => (
+                <Paragraph
+                  key={`performer-credit-${index + 1}`}
+                  width="sm:w-65ch"
+                >
+                  {performerCredit}
+                </Paragraph>
+              ))}
+            </FlexContainer>
+          </RenderIf>
+          <RenderIf condition={releaseData.videoCredits.length > 0}>
+            <FlexContainer
+              flexFlow="column"
+              alignItems="flex-start"
+              responsive={{ alignItems: { prefix: "sm", value: "center" } }}
+            >
+              {releaseData.videoCredits.map((videoCredit, index) => (
+                <Paragraph key={`video-credit-${index + 1}`} width="sm:w-65ch">
+                  {videoCredit}
+                </Paragraph>
+              ))}
+            </FlexContainer>
+          </RenderIf>
+          <RenderIf condition={releaseData.recordingCredits.length > 0}>
+            <FlexContainer
+              flexFlow="column"
+              alignItems="flex-start"
+              responsive={{ alignItems: { prefix: "sm", value: "center" } }}
+            >
+              {releaseData.recordingCredits.map((recordingCredit, index) => (
+                <Paragraph
+                  key={`recording-credit-${index + 1}`}
+                  width="sm:w-65ch"
+                >
+                  {recordingCredit}
+                </Paragraph>
+              ))}
+            </FlexContainer>
+          </RenderIf>
         </FlexContainer>
       </FlexContainer>
     </main>
