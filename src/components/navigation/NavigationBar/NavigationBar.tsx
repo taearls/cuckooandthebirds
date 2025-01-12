@@ -1,3 +1,4 @@
+import DarkModeToggle from "@/components/DarkModeToggle/DarkModeToggle";
 import { InlineAnchorContent } from "@/components/InlineAnchor/InlineAnchor";
 import FlexContainer from "@/components/layout/containers/FlexContainer/FlexContainer";
 import RenderIf from "@/components/layout/RenderIf";
@@ -42,7 +43,9 @@ export default function NavigationBar({ links }: NavigationBarProps) {
                 return (
                   <NavigationBarListItem
                     key={index}
-                    isLast={index === links.length - 1}
+                    isLast={
+                      index === links.filter((link) => !link.hidden).length - 1
+                    }
                   >
                     <NavLink
                       to={link.href}
@@ -67,6 +70,7 @@ export default function NavigationBar({ links }: NavigationBarProps) {
       </ul>
 
       <div className={mergeClasses(styles["navigation-toggle-container"])}>
+        <DarkModeToggle />
         <NavigationToggle
           active={current.value === "open"}
           onClick={handleToggle}

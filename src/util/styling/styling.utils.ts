@@ -35,7 +35,7 @@ export const getTextAlignmentClass = (alignment: TextAlignmentType): string => {
 };
 
 export const getJustifyContentClass = (
-  val?: JustifyContentCSSType,
+  val: JustifyContentCSSType,
   responsive?: FlexContainerProps["responsive"]["justifyContent"],
 ): ValueOf<JustifyContentCSSType> => {
   let baseClass = "";
@@ -74,7 +74,7 @@ export const getJustifyContentClass = (
 };
 
 export const getAlignItemsClass = (
-  val?: AlignItemsCSSType,
+  val: AlignItemsCSSType,
   responsive?: FlexContainerProps["responsive"]["alignItems"],
 ): ValueOf<AlignItemsCSSType> => {
   let baseClass = "";
@@ -104,7 +104,7 @@ export const getAlignItemsClass = (
 };
 
 export const getFlexFlowClass = (
-  val?: "row" | "column",
+  val: "row" | "column",
   responsive?: FlexContainerProps["responsive"]["flexFlow"],
 ) => {
   const baseClass = val === "column" ? "flex-col" : "flex-row";
@@ -124,9 +124,7 @@ export const getGapClass = (
     | FlexContainerProps["responsive"]["gapX"]
     | FlexContainerProps["responsive"]["gapY"],
 ) => {
-  if (val.value == null && responsive == null) return "";
-
-  const baseClass = `gap-${val.direction}-${val.value || responsive.value}`;
+  const baseClass = `gap-${val.direction}-${val.value}`;
   const responsiveClass = getResponsiveClass(baseClass, responsive, val.value);
 
   return combineBaseAndResponsiveClasses(baseClass, [responsiveClass]);
@@ -165,7 +163,7 @@ export const combineBaseAndResponsiveClasses = (
   baseClass: string,
   responsiveClasses: Array<string>,
 ): string => {
-  return `${baseClass} ${responsiveClasses.join(" ")}`.trim();
+  return `${responsiveClasses.join(" ")} ${baseClass}`.trim();
 };
 
 /**

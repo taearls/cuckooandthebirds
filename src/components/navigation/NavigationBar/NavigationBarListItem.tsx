@@ -11,6 +11,7 @@ export default function NavigationBarListItem({
     ? ""
     : "border-b-1 border border-l-0 border-r-0 border-t-0 border-gray-400 sm:border-none dark:border-gray-500";
 
+  console.log({ borderClass });
   return (
     <li
       role="menuitem"
