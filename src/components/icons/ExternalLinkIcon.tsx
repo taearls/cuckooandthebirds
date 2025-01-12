@@ -1,4 +1,3 @@
-// TODO: add color and hoverColor props
 export type ExternalLinkIconProps = {
   id?: string;
   title?: string;
