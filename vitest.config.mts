@@ -1,5 +1,3 @@
-import { fileURLToPath } from "node:url";
-
 import { configDefaults, defineConfig, mergeConfig } from "vitest/config";
 
 import viteConfig, { ViteConfigInput } from "./vite.config.mts";
@@ -12,8 +10,6 @@ export default (args: ViteConfigInput) =>
         environment: "jsdom",
         exclude: [...configDefaults.exclude, "e2e/**"],
         globals: true,
-        root: fileURLToPath(new URL("./", import.meta.url)),
-        setupFiles: ["./setupTests.ts"],
       },
     }),
   );

@@ -1,10 +1,12 @@
-import path, { dirname } from "path";
+import type { Linter } from "eslint";
+
+import { dirname } from "path";
 import { fileURLToPath } from "url";
 
+import { FlatCompat } from "@eslint/eslintrc";
 import pluginJs from "@eslint/js";
 import eslintConfigPrettier from "eslint-config-prettier";
-import importPlugin from "eslint-plugin-import";
-import noBarrelFiles from "eslint-plugin-no-barrel-files";
+import { flatConfigs as importPluginFlatConfigs } from "eslint-plugin-import";
 import pluginReact from "eslint-plugin-react";
 import reactRefresh from "eslint-plugin-react-refresh";
 import globals from "globals";
@@ -13,9 +15,12 @@ import tseslint from "typescript-eslint";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-/** @type {import('eslint').Linter.Config[]} */
-export default [
-  { files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"] },
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
+});
+
+const config: Linter.Config[] = [
+  { files: ["**/*.{js,mjs,cjs,ts,mts,jsx,tsx}"] },
   {
     languageOptions: {
       ecmaVersion: "latest",
@@ -31,15 +36,15 @@ export default [
   {
     plugins: {
       react: {
-        ...pluginReact.configs.flat.recommended,
+        ...pluginReact.configs.flat!.recommended,
         version: "detect",
       },
     },
   },
   {
-    ...importPlugin.flatConfigs.recommended,
+    ...importPluginFlatConfigs.recommended,
     settings: {
-      ...importPlugin.flatConfigs.recommended.settings,
+      ...importPluginFlatConfigs.recommended.settings,
 
       // ignore npm packages starting with @; e.g., @vitejs/plugin-react in vite.config.mts
       "import/ignore": ["@[^/]"],
@@ -49,7 +54,7 @@ export default [
       "import/resolver": {
         alias: {
           extensions: [".ts", ".js", ".jsx", ".tsx"],
-          map: [["@", path.resolve(__dirname, "./src")]],
+          map: [["@", fileURLToPath(new URL("./src", import.meta.url))]],
         },
         node: {
           extensions: [".js", ".jsx", ".ts", ".tsx"],
@@ -76,8 +81,28 @@ export default [
       // "react/no-array-index-key": "error",
     },
   },
-  { ignores: ["dist/*", ".react-router/*", "node_modules"] },
-  noBarrelFiles.flat,
+  {
+    ignores: [
+      "dist/*",
+      ".react-router/*",
+      "node_modules",
+      "prettier.config.mjs",
+    ],
+  },
   eslintConfigPrettier,
+  ...compat.config({
+    env: {
+      es2020: true,
+      node: true,
+    },
+    plugins: ["barrel-files"],
+    rules: {
+      "barrel-files/avoid-barrel-files": "error",
+      "barrel-files/avoid-namespace-import": "error",
+      "barrel-files/avoid-re-export-all": "error",
+    },
+  }),
   reactRefresh.configs.recommended,
 ];
+
+export default config;
