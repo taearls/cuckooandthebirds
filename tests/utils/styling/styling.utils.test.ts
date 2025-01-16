@@ -1,14 +1,74 @@
 import { describe, expect, it } from "vitest";
 
-import { JustifyContentCSSValue } from "../../../src/components/layout/containers/FlexContainer/FlexContainer";
+import {
+  AlignItemsCSSValue,
+  JustifyContentCSSValue,
+  MediaQueryPrefix,
+  ResponsiveValue,
+} from "../../../src/components/layout/containers/FlexContainer/FlexContainer";
+import { ValueOf } from "../../../src/types/util";
 import {
   capitalizeText,
+  getAlignItemsClass,
   getJustifyContentClass,
   getSingularOrPlural,
   mergeClasses,
 } from "../../../src/util/styling/styling.utils";
 // @ts-expect-error css module import should work but it doesn't here for some annoying reason
 import styles from "./styling-test.module.css";
+
+const createResponsiveClassTests = <T extends object>(
+  testFn: (
+    inputs: ValueOf<T>,
+    responsive?: Array<ResponsiveValue<ValueOf<T>>>,
+  ) => string,
+  inputs: Array<[string, ValueOf<T>]>,
+  expectedValues: string[],
+  obj: T,
+  label: string,
+) => {
+  const responsivePrefixes: Array<MediaQueryPrefix> = [
+    "sm",
+    "md",
+    "lg",
+    "xl",
+    "2xl",
+  ];
+
+  for (let i = 0; i < inputs.length; i++) {
+    for (let j = 0; j < responsivePrefixes.length; j++) {
+      const [name, input] = inputs[i];
+      const responsiveValues: Array<ResponsiveValue<ValueOf<T>>> = [
+        {
+          prefix: responsivePrefixes[(j + 1) % responsivePrefixes.length],
+          value: inputs[(i + 1) % inputs.length][1],
+        },
+        {
+          prefix: responsivePrefixes[(j + 2) % responsivePrefixes.length],
+          value: inputs[(i + 2) % inputs.length][1],
+        },
+      ];
+
+      it(`will transform ${label}.${name} with responsive values: \n\t\t[\n\t\t\t${responsiveValues
+        .map((x) => `{ prefix: ${x.prefix}, value: ${x.value} },\n\t\t\t`)
+        .join("")
+        .trim()}\n\t\t] into the correct class`, () => {
+        const actual = testFn(input, responsiveValues);
+        const expectedResponsiveClass = responsiveValues
+          .map(
+            (x) =>
+              `${x.prefix}:${expectedValues[Object.values(obj).indexOf(x.value)]}`,
+          )
+          .join(" ")
+          .trim();
+
+        const expected = `${expectedResponsiveClass} ${expectedValues[i]}`;
+
+        expect(actual).toEqual(expected);
+      });
+    }
+  }
+};
 
 describe("Styling util testing", () => {
   describe("mergeClasses", () => {
@@ -226,20 +286,19 @@ describe("Styling util testing", () => {
   });
 
   describe("getJustifyContentClass", () => {
+    const inputs = Object.entries(JustifyContentCSSValue);
+    const expectedValues = [
+      "justify-center",
+      "justify-end",
+      "justify-normal",
+      "justify-around",
+      "justify-between",
+      "justify-evenly",
+      "justify-start",
+      "justify-stretch",
+    ];
+
     describe("non-responsive classes", () => {
-      const inputs = Object.entries(JustifyContentCSSValue);
-
-      const expectedValues = [
-        "justify-center",
-        "justify-end",
-        "justify-normal",
-        "justify-around",
-        "justify-between",
-        "justify-evenly",
-        "justify-start",
-        "justify-stretch",
-      ];
-
       for (let i = 0; i < inputs.length; i++) {
         const [name, input] = inputs[i];
 
@@ -254,37 +313,48 @@ describe("Styling util testing", () => {
     });
 
     describe("responsive classes", () => {
-      const inputs = Object.entries(JustifyContentCSSValue);
-      const responsivePrefixes = ["sm", "md", "lg", "xl", "2xl"];
+      createResponsiveClassTests(
+        getJustifyContentClass,
+        inputs,
+        expectedValues,
+        JustifyContentCSSValue,
+        "JustifyContentCSSType",
+      );
+    });
+  });
 
-      const expectedValues = [
-        "justify-center",
-        "justify-end",
-        "justify-normal",
-        "justify-around",
-        "justify-between",
-        "justify-evenly",
-        "justify-start",
-        "justify-stretch",
-      ];
+  describe("getAlignItemsClass", () => {
+    const inputs = Object.entries(AlignItemsCSSValue);
+    const expectedValues = [
+      "items-baseline",
+      "items-center",
+      "items-end",
+      "items-start",
+      "items-stretch",
+    ];
 
+    describe("non-responsive classes", () => {
       for (let i = 0; i < inputs.length; i++) {
-        for (let j = 0; j < responsivePrefixes.length; j++) {
-          const [name, input] = inputs[i];
-          const prefix = responsivePrefixes[j];
+        const [name, input] = inputs[i];
 
-          it(`will transform JustifyContentCSSValue.${name} with prefix ${prefix} into the correct justify content class`, () => {
-            const actual = getJustifyContentClass(input, {
-              prefix,
-              value: input,
-            });
+        it(`will transform AlignItemsCSSValue.${name} into the correct align items class`, () => {
+          const actual = getAlignItemsClass(input);
 
-            const expected = `${prefix}:${expectedValues[i]} ${expectedValues[i]}`;
+          const expected = expectedValues[i];
 
-            expect(actual).toEqual(expected);
-          });
-        }
+          expect(actual).toEqual(expected);
+        });
       }
+    });
+
+    describe("responsive classes", () => {
+      createResponsiveClassTests(
+        getAlignItemsClass,
+        inputs,
+        expectedValues,
+        AlignItemsCSSValue,
+        "AlignItemsCSSType",
+      );
     });
   });
 });

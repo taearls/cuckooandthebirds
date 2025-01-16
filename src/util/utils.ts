@@ -7,8 +7,6 @@ export const getKeysOfTFromConstObj = <T extends object>(constObj: T) => {
   return typeof constObj;
 };
 
-export type ValueOf<T> = T[keyof T];
-
 type Enumerate<
   N extends number,
   Acc extends number[] = [],

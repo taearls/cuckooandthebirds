@@ -46,11 +46,11 @@ export type ResponsiveValue<T> = { prefix: MediaQueryPrefix; value: T };
 export type FlexContainerProps = {
   flexFlow?: "row" | "column";
   responsive?: {
-    flexFlow?: ResponsiveValue<"row" | "column">;
-    gapX?: ResponsiveValue<GapCSSType["value"]>;
-    gapY?: ResponsiveValue<GapCSSType["value"]>;
-    justifyContent?: ResponsiveValue<JustifyContentCSSType>;
-    alignItems?: ResponsiveValue<AlignItemsCSSType>;
+    flexFlow?: Array<ResponsiveValue<"row" | "column">>;
+    gapX?: Array<ResponsiveValue<GapCSSType["value"]>>;
+    gapY?: Array<ResponsiveValue<GapCSSType["value"]>>;
+    justifyContent?: Array<ResponsiveValue<JustifyContentCSSType>>;
+    alignItems?: Array<ResponsiveValue<AlignItemsCSSType>>;
   };
   id?: string;
   gapX?: GapCSSType["value"];

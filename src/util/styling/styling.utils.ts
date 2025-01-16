@@ -73,14 +73,14 @@ export const getJustifyContentClass = (
   };
 
   const baseClass = justifyTransform(val);
-  const responsiveBaseClass = justifyTransform(responsive?.value);
+  const responsiveClasses =
+    responsive?.map((responsiveValue) => {
+      const responsiveBaseClass = justifyTransform(responsiveValue.value);
 
-  const responsiveClass = getResponsiveClass(
-    responsive?.prefix,
-    responsiveBaseClass,
-  );
+      return getResponsiveClass(responsiveValue.prefix, responsiveBaseClass);
+    }) || [];
 
-  return combineBaseAndResponsiveClasses(baseClass, [responsiveClass]);
+  return combineBaseAndResponsiveClasses(baseClass, responsiveClasses);
 };
 
 export const getAlignItemsClass = (
@@ -113,14 +113,14 @@ export const getAlignItemsClass = (
   };
 
   const baseClass = alignItemsTransform(val);
-  const responsiveBaseClass = alignItemsTransform(responsive?.value);
+  const responsiveClasses =
+    responsive?.map((responsiveValue) => {
+      const responsiveBaseClass = alignItemsTransform(responsiveValue.value);
 
-  const responsiveClass = getResponsiveClass(
-    responsive?.prefix,
-    responsiveBaseClass,
-  );
+      return getResponsiveClass(responsiveValue.prefix, responsiveBaseClass);
+    }) || [];
 
-  return combineBaseAndResponsiveClasses(baseClass, [responsiveClass]);
+  return combineBaseAndResponsiveClasses(baseClass, responsiveClasses);
 };
 
 export const getFlexFlowClass = (
@@ -128,14 +128,16 @@ export const getFlexFlowClass = (
   responsive?: FlexContainerProps["responsive"]["flexFlow"],
 ) => {
   const baseClass = val === "column" ? "flex-col" : "flex-row";
-  const responsiveBaseClass =
-    responsive.value === "column" ? "flex-col" : "flex-row";
-  const responsiveClass = getResponsiveClass(
-    responsive?.prefix,
-    responsiveBaseClass,
-  );
 
-  return combineBaseAndResponsiveClasses(baseClass, [responsiveClass]);
+  const responsiveClasses =
+    responsive?.map((responsiveValue) => {
+      const responsiveBaseClass =
+        responsiveValue.value === "column" ? "flex-col" : "flex-row";
+
+      return getResponsiveClass(responsiveValue.prefix, responsiveBaseClass);
+    }) || [];
+
+  return combineBaseAndResponsiveClasses(baseClass, responsiveClasses);
 };
 
 export const getGapClass = (
@@ -145,13 +147,14 @@ export const getGapClass = (
     | FlexContainerProps["responsive"]["gapY"],
 ) => {
   const baseClass = `gap-${val.direction}-${val.value}`;
-  const responsiveBaseClass = `gap-${val?.direction}-${responsive?.value}`;
-  const responsiveClass = getResponsiveClass(
-    responsive?.prefix,
-    responsiveBaseClass,
-  );
 
-  return combineBaseAndResponsiveClasses(baseClass, [responsiveClass]);
+  const responsiveClasses =
+    responsive?.map((responsiveValue) => {
+      const responsiveBaseClass = `gap-${val.direction}-${responsiveValue.value}`;
+      return getResponsiveClass(responsiveValue.prefix, responsiveBaseClass);
+    }) || [];
+
+  return combineBaseAndResponsiveClasses(baseClass, responsiveClasses);
 };
 
 export const getResponsiveClass = (
