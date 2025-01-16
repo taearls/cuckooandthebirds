@@ -5,6 +5,7 @@ import {
   GapCSSType,
   JustifyContentCSSType,
   JustifyContentCSSValue,
+  MediaQueryPrefix,
 } from "@/components/layout/containers/FlexContainer/FlexContainer";
 import { TextAlignment, TextAlignmentType } from "@/types/layout";
 import { ValueOf } from "@/types/util";
@@ -38,37 +39,46 @@ export const getJustifyContentClass = (
   val: JustifyContentCSSType,
   responsive?: FlexContainerProps["responsive"]["justifyContent"],
 ): ValueOf<JustifyContentCSSType> => {
-  let baseClass = "";
+  const justifyTransform = (classToTransform: string | undefined) => {
+    let result = "";
+    // https://tailwindcss.com/docs/justify-content
+    switch (classToTransform) {
+      case JustifyContentCSSValue.CENTER:
+        result = "justify-center";
+        break;
+      case JustifyContentCSSValue.END:
+        result = "justify-end";
+        break;
+      case JustifyContentCSSValue.NORMAL:
+        result = "justify-normal";
+        break;
+      case JustifyContentCSSValue.SPACE_AROUND:
+        result = "justify-around";
+        break;
+      case JustifyContentCSSValue.SPACE_BETWEEN:
+        result = "justify-between";
+        break;
+      case JustifyContentCSSValue.SPACE_EVENLY:
+        result = "justify-evenly";
+        break;
+      case JustifyContentCSSValue.START:
+        result = "justify-start";
+        break;
+      case JustifyContentCSSValue.STRETCH:
+        result = "justify-stretch";
+        break;
+    }
 
-  // https://tailwindcss.com/docs/justify-content
-  switch (val) {
-    case JustifyContentCSSValue.CENTER:
-      baseClass = "justify-center";
-      break;
-    case JustifyContentCSSValue.END:
-      baseClass = "justify-end";
-      break;
-    case JustifyContentCSSValue.NORMAL:
-      baseClass = "justify-normal";
-      break;
-    case JustifyContentCSSValue.SPACE_AROUND:
-      baseClass = "justify-around";
-      break;
-    case JustifyContentCSSValue.SPACE_BETWEEN:
-      baseClass = "justify-between";
-      break;
-    case JustifyContentCSSValue.SPACE_EVENLY:
-      baseClass = "justify-evenly";
-      break;
-    case JustifyContentCSSValue.START:
-      baseClass = "justify-start";
-      break;
-    case JustifyContentCSSValue.STRETCH:
-      baseClass = "justify-stretch";
-      break;
-  }
+    return result;
+  };
 
-  const responsiveClass = getResponsiveClass(baseClass, responsive, val);
+  const baseClass = justifyTransform(val);
+  const responsiveBaseClass = justifyTransform(responsive?.value);
+
+  const responsiveClass = getResponsiveClass(
+    responsive?.prefix,
+    responsiveBaseClass,
+  );
 
   return combineBaseAndResponsiveClasses(baseClass, [responsiveClass]);
 };
@@ -77,28 +87,38 @@ export const getAlignItemsClass = (
   val: AlignItemsCSSType,
   responsive?: FlexContainerProps["responsive"]["alignItems"],
 ): ValueOf<AlignItemsCSSType> => {
-  let baseClass = "";
+  const alignItemsTransform = (
+    classToTransform: string | undefined,
+  ): string => {
+    let result = "";
+    switch (classToTransform) {
+      case AlignItemsCSSValue.BASELINE:
+        result = "items-baseline";
+        break;
+      case AlignItemsCSSValue.CENTER:
+        result = "items-center";
+        break;
+      case AlignItemsCSSValue.END:
+        result = "items-end";
+        break;
+      case AlignItemsCSSValue.START:
+        result = "items-start";
+        break;
+      case AlignItemsCSSValue.STRETCH:
+        result = "items-stretch";
+        break;
+    }
 
-  // https://tailwindcss.com/docs/align-items
-  switch (val) {
-    case AlignItemsCSSValue.BASELINE:
-      baseClass = "items-baseline";
-      break;
-    case AlignItemsCSSValue.CENTER:
-      baseClass = "items-center";
-      break;
-    case AlignItemsCSSValue.END:
-      baseClass = "items-end";
-      break;
-    case AlignItemsCSSValue.START:
-      baseClass = "items-start";
-      break;
-    case AlignItemsCSSValue.STRETCH:
-      baseClass = "items-stretch";
-      break;
-  }
+    return result;
+  };
 
-  const responsiveClass = getResponsiveClass(baseClass, responsive, val);
+  const baseClass = alignItemsTransform(val);
+  const responsiveBaseClass = alignItemsTransform(responsive?.value);
+
+  const responsiveClass = getResponsiveClass(
+    responsive?.prefix,
+    responsiveBaseClass,
+  );
 
   return combineBaseAndResponsiveClasses(baseClass, [responsiveClass]);
 };
@@ -108,11 +128,11 @@ export const getFlexFlowClass = (
   responsive?: FlexContainerProps["responsive"]["flexFlow"],
 ) => {
   const baseClass = val === "column" ? "flex-col" : "flex-row";
-  const valToReplace = val === "column" ? "col" : "row";
+  const responsiveBaseClass =
+    responsive.value === "column" ? "flex-col" : "flex-row";
   const responsiveClass = getResponsiveClass(
-    baseClass,
-    responsive,
-    valToReplace,
+    responsive?.prefix,
+    responsiveBaseClass,
   );
 
   return combineBaseAndResponsiveClasses(baseClass, [responsiveClass]);
@@ -125,36 +145,22 @@ export const getGapClass = (
     | FlexContainerProps["responsive"]["gapY"],
 ) => {
   const baseClass = `gap-${val.direction}-${val.value}`;
-  const responsiveClass = getResponsiveClass(baseClass, responsive, val.value);
+  const responsiveBaseClass = `gap-${val?.direction}-${responsive?.value}`;
+  const responsiveClass = getResponsiveClass(
+    responsive?.prefix,
+    responsiveBaseClass,
+  );
 
   return combineBaseAndResponsiveClasses(baseClass, [responsiveClass]);
 };
 
 export const getResponsiveClass = (
-  baseClass: string,
-  val?: FlexContainerProps["responsive"][keyof FlexContainerProps["responsive"]],
-  valToReplace?:
-    | GapCSSType["value"]
-    | AlignItemsCSSType
-    | JustifyContentCSSType
-    | "row"
-    | "col",
+  prefix?: MediaQueryPrefix,
+  responsiveBaseClass?: string,
 ) => {
-  if (val == null) return "";
+  if (!prefix || !responsiveBaseClass) return "";
 
-  let responsiveBaseClass = baseClass;
-  if (
-    Boolean(valToReplace) &&
-    Boolean(val?.value) &&
-    !baseClass.includes(val.value.toString())
-  ) {
-    responsiveBaseClass = baseClass.replace(
-      valToReplace.toString(),
-      val.value.toString(),
-    );
-  }
-
-  const responsiveClass = `${val.prefix}:${responsiveBaseClass}`;
+  const responsiveClass = `${prefix}:${responsiveBaseClass}`;
 
   return responsiveClass;
 };

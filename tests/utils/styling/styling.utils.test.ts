@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
 
+import { JustifyContentCSSValue } from "../../../src/components/layout/containers/FlexContainer/FlexContainer";
 import {
   capitalizeText,
+  getJustifyContentClass,
   getSingularOrPlural,
   mergeClasses,
 } from "../../../src/util/styling/styling.utils";
@@ -220,6 +222,69 @@ describe("Styling util testing", () => {
       expect(actualUnit).toEqual(expected);
 
       expect(actualUnits).toEqual(expected);
+    });
+  });
+
+  describe("getJustifyContentClass", () => {
+    describe("non-responsive classes", () => {
+      const inputs = Object.entries(JustifyContentCSSValue);
+
+      const expectedValues = [
+        "justify-center",
+        "justify-end",
+        "justify-normal",
+        "justify-around",
+        "justify-between",
+        "justify-evenly",
+        "justify-start",
+        "justify-stretch",
+      ];
+
+      for (let i = 0; i < inputs.length; i++) {
+        const [name, input] = inputs[i];
+
+        it(`will transform JustifyContentCSSValue.${name} into the correct justify content class`, () => {
+          const actual = getJustifyContentClass(input);
+
+          const expected = expectedValues[i];
+
+          expect(actual).toEqual(expected);
+        });
+      }
+    });
+
+    describe("responsive classes", () => {
+      const inputs = Object.entries(JustifyContentCSSValue);
+      const responsivePrefixes = ["sm", "md", "lg", "xl", "2xl"];
+
+      const expectedValues = [
+        "justify-center",
+        "justify-end",
+        "justify-normal",
+        "justify-around",
+        "justify-between",
+        "justify-evenly",
+        "justify-start",
+        "justify-stretch",
+      ];
+
+      for (let i = 0; i < inputs.length; i++) {
+        for (let j = 0; j < responsivePrefixes.length; j++) {
+          const [name, input] = inputs[i];
+          const prefix = responsivePrefixes[j];
+
+          it(`will transform JustifyContentCSSValue.${name} with prefix ${prefix} into the correct justify content class`, () => {
+            const actual = getJustifyContentClass(input, {
+              prefix,
+              value: input,
+            });
+
+            const expected = `${prefix}:${expectedValues[i]} ${expectedValues[i]}`;
+
+            expect(actual).toEqual(expected);
+          });
+        }
+      }
     });
   });
 });
