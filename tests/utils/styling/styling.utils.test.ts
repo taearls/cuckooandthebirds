@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  AlignItemsCSSType,
   AlignItemsCSSValue,
   JustifyContentCSSValue,
   MediaQueryPrefix,
@@ -49,24 +50,45 @@ const createResponsiveClassTests = <T extends object>(
         },
       ];
 
+      const expectedResponsiveClass = responsiveValues
+        .map(
+          (x) =>
+            `${x.prefix}:${expectedValues[Object.values(obj).indexOf(x.value)]}`,
+        )
+        .join(" ")
+        .trim();
+      const expected = `${expectedResponsiveClass} ${expectedValues[i]}`;
+
       it(`will transform ${label}.${name} with responsive values: \n\t\t[\n\t\t\t${responsiveValues
         .map((x) => `{ prefix: ${x.prefix}, value: ${x.value} },\n\t\t\t`)
         .join("")
-        .trim()}\n\t\t] into the correct class`, () => {
+        .trim()}\n\t\t] into the correct class: ${expected}`, () => {
         const actual = testFn(input, responsiveValues);
-        const expectedResponsiveClass = responsiveValues
-          .map(
-            (x) =>
-              `${x.prefix}:${expectedValues[Object.values(obj).indexOf(x.value)]}`,
-          )
-          .join(" ")
-          .trim();
-
-        const expected = `${expectedResponsiveClass} ${expectedValues[i]}`;
 
         expect(actual).toEqual(expected);
       });
     }
+  }
+};
+
+const createNonResponsiveClassTests = <T extends object>(
+  testFn: (
+    inputs: ValueOf<T>,
+    responsive?: Array<ResponsiveValue<ValueOf<T>>>,
+  ) => string,
+  inputs: Array<[string, ValueOf<T>]>,
+  expectedValues: string[],
+  label: string,
+) => {
+  for (let i = 0; i < inputs.length; i++) {
+    const [name, input] = inputs[i];
+    const expected = expectedValues[i];
+
+    it(`will transform ${label}.${name} into the correct class: ${expected}`, () => {
+      const actual = testFn(input);
+
+      expect(actual).toEqual(expected);
+    });
   }
 };
 
@@ -299,17 +321,12 @@ describe("Styling util testing", () => {
     ];
 
     describe("non-responsive classes", () => {
-      for (let i = 0; i < inputs.length; i++) {
-        const [name, input] = inputs[i];
-
-        it(`will transform JustifyContentCSSValue.${name} into the correct justify content class`, () => {
-          const actual = getJustifyContentClass(input);
-
-          const expected = expectedValues[i];
-
-          expect(actual).toEqual(expected);
-        });
-      }
+      createNonResponsiveClassTests<typeof JustifyContentCSSValue>(
+        getJustifyContentClass,
+        inputs,
+        expectedValues,
+        "JustifyContentCSSType",
+      );
     });
 
     describe("responsive classes", () => {
@@ -334,17 +351,12 @@ describe("Styling util testing", () => {
     ];
 
     describe("non-responsive classes", () => {
-      for (let i = 0; i < inputs.length; i++) {
-        const [name, input] = inputs[i];
-
-        it(`will transform AlignItemsCSSValue.${name} into the correct align items class`, () => {
-          const actual = getAlignItemsClass(input);
-
-          const expected = expectedValues[i];
-
-          expect(actual).toEqual(expected);
-        });
-      }
+      createNonResponsiveClassTests<typeof AlignItemsCSSValue>(
+        getAlignItemsClass,
+        inputs,
+        expectedValues,
+        "AlignItemsCSSType",
+      );
     });
 
     describe("responsive classes", () => {
