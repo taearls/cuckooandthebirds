@@ -9,7 +9,7 @@ export const getKeysOfTFromConstObj = <T extends object>(constObj: T) => {
 
 type Enumerate<
   N extends number,
-  Acc extends number[] = [],
+  Acc extends Array<number> = [],
 > = Acc["length"] extends N
   ? Acc[number]
   : Enumerate<N, [...Acc, Acc["length"]]>;
@@ -84,9 +84,11 @@ export const getRandomNumberInRange = ({
  * @param item - the item to convert into an array
  * @returns - an array of type Array<T>
  */
-export const intoArray = <T extends object>(item: T | T[] | undefined): T[] => {
+export const intoArray = <T extends object>(
+  item: T | Array<T> | undefined,
+): Array<T> => {
   if (!item) {
-    return [] as T[];
+    return [] as Array<T>;
   }
 
   return Array.isArray(item) ? item : [item];

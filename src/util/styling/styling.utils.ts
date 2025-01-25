@@ -12,7 +12,7 @@ import {
   TextAlignmentType,
 } from "@/types/layout";
 import { ValueOf } from "@/types/util";
-import { intoArray } from "../utils";
+import { intoArray } from "@/util/utils";
 
 /**
  * Helper function that merges an unknown amount of classes into a single string. this helps with readability both in code and in the DOM.

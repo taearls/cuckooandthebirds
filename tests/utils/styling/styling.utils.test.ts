@@ -30,7 +30,7 @@ const createResponsiveClassTests = <T extends object>(
       | ResponsiveValue<ValueOf<T>>,
   ) => string,
   inputs: Array<[string, ValueOf<T>]>,
-  expectedValues: string[],
+  expectedValues: Array<string>,
   obj: T,
   label: string,
 ) => {
@@ -84,7 +84,7 @@ const createNonResponsiveClassTests = <T extends object>(
     responsive?: Array<ResponsiveValue<ValueOf<T>>>,
   ) => string,
   inputs: Array<[string, ValueOf<T>]>,
-  expectedValues: string[],
+  expectedValues: Array<string>,
   label: string,
 ) => {
   for (let i = 0; i < inputs.length; i++) {

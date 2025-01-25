@@ -5,7 +5,7 @@ import {
 } from "@/util/styling/styling.utils";
 
 export type ParagraphProps = {
-  children: React.ReactNode | React.ReactNode[];
+  children: React.ReactNode | Array<React.ReactNode>;
   accent?: boolean;
   italic?: boolean;
   width?: string;

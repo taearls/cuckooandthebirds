@@ -19,7 +19,7 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
-const config: Linter.Config[] = [
+const config: Array<Linter.Config> = [
   { files: ["**/*.{js,mjs,cjs,ts,mts,jsx,tsx}"] },
   {
     languageOptions: {
@@ -70,6 +70,7 @@ const config: Linter.Config[] = [
       reportUnusedDisableDirectives: "warn",
     },
     rules: {
+      "@typescript-eslint/array-type": ["error", { default: "generic" }],
       "@typescript-eslint/no-unused-vars": [
         "warn",
         { varsIgnorePattern: "_*" },

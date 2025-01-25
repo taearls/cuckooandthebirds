@@ -39,7 +39,7 @@ export type FlexContainerProps = {
   gapY?: GapCSSType["value"];
   justifyContent?: JustifyContentCSSType;
   alignItems?: AlignItemsCSSType;
-  children: ReactElement | ReactElement[];
+  children: ReactElement | Array<ReactElement>;
 };
 
 export default function FlexContainer({

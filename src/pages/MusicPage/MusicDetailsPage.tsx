@@ -25,10 +25,10 @@ export type ReleaseDataType = {
   year: number;
   title: string;
   href: string;
-  descriptions: string[];
-  videoCredits: string[];
-  performingCredits: string[];
-  recordingCredits: string[];
+  descriptions: Array<string>;
+  videoCredits: Array<string>;
+  performingCredits: Array<string>;
+  recordingCredits: Array<string>;
 };
 
 export default function MusicDetailsPage() {

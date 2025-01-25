@@ -1,9 +1,11 @@
+import { ReactNode } from "react";
+
 import useWindowResize from "@/hooks/useWindowResize";
 import { checkNavHeight } from "@/state/navigationMachine";
 import styles from "./PageContainer.module.css";
 
 export type PageContainerProps = {
-  children: React.ReactNode | React.ReactNode[];
+  children: ReactNode | Array<ReactNode>;
 };
 
 export default function PageContainer({ children }: PageContainerProps) {

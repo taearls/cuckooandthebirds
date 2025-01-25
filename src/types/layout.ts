@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export const TextAlignment = {
   CENTER: "center",
   LEFT: "left",
@@ -58,3 +60,9 @@ export type MediaQueryPrefix =
   (typeof MediaQueryPrefixValue)[keyof typeof MediaQueryPrefixValue];
 
 export type ResponsiveValue<T> = { prefix: MediaQueryPrefix; value: T };
+
+export type HeadingProps = {
+  children: ReactNode | Array<ReactNode>;
+  align?: TextAlignmentType;
+  accent?: boolean;
+};
