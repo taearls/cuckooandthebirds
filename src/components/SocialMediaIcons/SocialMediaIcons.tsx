@@ -1,7 +1,10 @@
+import { JustifyContentCSSValue } from "@/types/layout";
+
 import BandcampIcon from "../icons/BandcampIcon";
 import InstagramIcon from "../icons/InstagramIcon";
 import SpotifyIcon from "../icons/SpotifyIcon";
 import YoutubeIcon from "../icons/YouTubeIcon";
+import FlexContainer from "../layout/containers/FlexContainer/FlexContainer";
 import SocialMediaIcon, { SocialMediaIconProps } from "./SocialMediaIcon";
 
 const SOCIAL_MEDIA_ICONS: Array<SocialMediaIconProps> = [
@@ -29,7 +32,7 @@ const SOCIAL_MEDIA_ICONS: Array<SocialMediaIconProps> = [
 
 export default function SocialMediaIcons() {
   return (
-    <div className="flex justify-center gap-x-2">
+    <FlexContainer justifyContent={JustifyContentCSSValue.CENTER} gapX={2}>
       {SOCIAL_MEDIA_ICONS.map(({ name, href, icon, ariaLabel }, index) => (
         <SocialMediaIcon
           key={`${icon}-${index}`}
@@ -39,6 +42,6 @@ export default function SocialMediaIcons() {
           ariaLabel={ariaLabel}
         />
       ))}
-    </div>
+    </FlexContainer>
   );
 }

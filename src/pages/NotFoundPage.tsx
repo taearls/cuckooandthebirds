@@ -1,6 +1,7 @@
 import FlexContainer from "@/components/layout/containers/FlexContainer/FlexContainer";
 import HeadingOne from "@/components/layout/headings/HeadingOne";
 import Paragraph from "@/components/layout/Paragraph/Paragraph";
+import { FlexFlowCSSValue } from "@/types/layout";
 import { useLocation, useNavigate } from "react-router";
 
 export default function NotFoundPage() {
@@ -9,7 +10,7 @@ export default function NotFoundPage() {
 
   return (
     <main>
-      <FlexContainer flexFlow="column" gapY={8}>
+      <FlexContainer flexFlow={FlexFlowCSSValue.COLUMN} gapY={8}>
         <HeadingOne>Oh no!</HeadingOne>
         <Paragraph>
           <code>

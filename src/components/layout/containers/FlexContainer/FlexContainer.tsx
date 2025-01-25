@@ -1,4 +1,11 @@
 import {
+  AlignItemsCSSType,
+  FlexFlowCSSType,
+  GapCSSType,
+  JustifyContentCSSType,
+  ResponsiveValue,
+} from "@/types/layout";
+import {
   getAlignItemsClass,
   getFlexFlowClass,
   getGapClass,
@@ -6,44 +13,6 @@ import {
   mergeClasses,
 } from "@/util/styling/styling.utils";
 import { ReactElement } from "react";
-
-export const JustifyContentCSSValue = {
-  CENTER: "center",
-  END: "flex-end",
-  NORMAL: "normal",
-  SPACE_AROUND: "space-around",
-  SPACE_BETWEEN: "space-between",
-  SPACE_EVENLY: "space-evenly",
-  START: "flex-start",
-  STRETCH: "stretch",
-} as const satisfies Record<string, string>;
-
-export const AlignItemsCSSValue = {
-  BASELINE: "baseline",
-  CENTER: "center",
-  END: "end",
-  START: "start",
-  STRETCH: "stretch",
-} as const satisfies Record<string, string>;
-
-export type GapCSSType = {
-  direction: "x" | "y";
-  // https://github.com/microsoft/TypeScript/issues/54925
-  value?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
-};
-
-export type JustifyContentCSSType =
-  (typeof JustifyContentCSSValue)[keyof typeof JustifyContentCSSValue];
-
-export type AlignItemsCSSType =
-  (typeof AlignItemsCSSValue)[keyof typeof AlignItemsCSSValue];
-
-export type FlexFlowCSSType = "row" | "column";
-
-// https://tailwindcss.com/docs/responsive-design
-export type MediaQueryPrefix = "sm" | "md" | "lg" | "xl" | "2xl";
-
-export type ResponsiveValue<T> = { prefix: MediaQueryPrefix; value: T };
 
 export type FlexContainerProps = {
   flexFlow?: FlexFlowCSSType;

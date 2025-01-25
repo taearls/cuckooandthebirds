@@ -2,7 +2,12 @@ import DarkModeToggle from "@/components/DarkModeToggle/DarkModeToggle";
 import { InlineAnchorContent } from "@/components/InlineAnchor/InlineAnchor";
 import FlexContainer from "@/components/layout/containers/FlexContainer/FlexContainer";
 import RenderIf from "@/components/layout/RenderIf";
-import { navigationMachine } from "@/state/navigationMachine";
+import {
+  NAVIGATION_EVENT,
+  NAVIGATION_STATE,
+  navigationMachine,
+} from "@/state/navigationMachine";
+import { FlexFlowCSSValue, MediaQueryPrefixValue } from "@/types/layout";
 import { RouteDataItem } from "@/util/constants/data/navigation/navigationData";
 import { mergeClasses } from "@/util/styling/styling.utils";
 import { useMachine } from "@xstate/react";
@@ -20,7 +25,7 @@ export default function NavigationBar({ links }: NavigationBarProps) {
   const [current, send] = useMachine(navigationMachine);
 
   const handleToggle = () => {
-    send({ type: "toggle" });
+    send({ type: NAVIGATION_EVENT.TOGGLE });
   };
 
   return (
@@ -28,19 +33,22 @@ export default function NavigationBar({ links }: NavigationBarProps) {
       id="navigation-bar"
       className={mergeClasses(
         styles["navigation-bar"],
-        current.value === "closed" && styles["closed"],
+        current.value === NAVIGATION_STATE.CLOSED && styles["closed"],
       )}
     >
       <ul
         role="menu"
         className={mergeClasses(styles["navigation-list-container"])}
       >
-        <RenderIf condition={current.value === "open"}>
+        <RenderIf condition={current.value === NAVIGATION_STATE.OPEN}>
           <FlexContainer
-            flexFlow="column"
+            flexFlow={FlexFlowCSSValue.COLUMN}
             responsive={{
-              flexFlow: { prefix: "sm", value: "row" },
-              gapX: { prefix: "sm", value: 2 },
+              flexFlow: {
+                prefix: MediaQueryPrefixValue.SM,
+                value: FlexFlowCSSValue.ROW,
+              },
+              gapX: { prefix: MediaQueryPrefixValue.SM, value: 2 },
             }}
           >
             {links
@@ -76,11 +84,11 @@ export default function NavigationBar({ links }: NavigationBarProps) {
       </ul>
 
       <div className={mergeClasses(styles["navigation-toggle-container"])}>
-        <RenderIf condition={current.value === "open"}>
+        <RenderIf condition={current.value === NAVIGATION_STATE.OPEN}>
           <DarkModeToggle />
         </RenderIf>
         <NavigationToggle
-          active={current.value === "open"}
+          active={current.value === NAVIGATION_STATE.OPEN}
           onClick={handleToggle}
         />
       </div>

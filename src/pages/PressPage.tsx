@@ -2,7 +2,7 @@ import InlineAnchor from "@/components/InlineAnchor/InlineAnchor";
 import FlexContainer from "@/components/layout/containers/FlexContainer/FlexContainer";
 import HeadingOne from "@/components/layout/headings/HeadingOne";
 import HeadingTwo from "@/components/layout/headings/HeadingTwo";
-import { TextAlignment } from "@/types/layout";
+import { FlexFlowCSSValue, TextAlignment } from "@/types/layout";
 import { INTERVIEW_DATA, REVIEW_DATA } from "@/util/constants/data/press/data";
 
 export type PressData = {
@@ -16,11 +16,11 @@ export type PressData = {
 export default function PressPage() {
   return (
     <main>
-      <FlexContainer flexFlow="column" gapY={8}>
+      <FlexContainer flexFlow={FlexFlowCSSValue.COLUMN} gapY={8}>
         <HeadingOne>Press</HeadingOne>
 
         <div>
-          <FlexContainer flexFlow="column" gapY={4}>
+          <FlexContainer flexFlow={FlexFlowCSSValue.COLUMN} gapY={4}>
             <HeadingTwo align={TextAlignment.LEFT}>Reviews</HeadingTwo>
 
             <>
@@ -42,7 +42,7 @@ export default function PressPage() {
         </div>
 
         <div>
-          <FlexContainer flexFlow="column" gapY={4}>
+          <FlexContainer flexFlow={FlexFlowCSSValue.COLUMN} gapY={4}>
             <HeadingTwo align={TextAlignment.LEFT}>Interviews</HeadingTwo>
 
             <>

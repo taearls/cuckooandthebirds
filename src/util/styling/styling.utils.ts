@@ -3,6 +3,7 @@ import {
   AlignItemsCSSValue,
   FlexContainerProps,
   FlexFlowCSSType,
+  FlexFlowCSSValue,
   GapCSSType,
   JustifyContentCSSType,
   JustifyContentCSSValue,
@@ -169,13 +170,15 @@ export const getFlexFlowClass = (
   val?: FlexFlowCSSType,
   responsive?: FlexContainerProps["responsive"]["flexFlow"],
 ) => {
-  const baseClass = val === "column" ? "flex-col" : "flex-row";
+  const baseClass = val === FlexFlowCSSValue.COLUMN ? "flex-col" : "flex-row";
   const array = intoArray(responsive);
 
   const responsiveClasses =
     array.map((responsiveValue) => {
       const responsiveBaseClass =
-        responsiveValue.value === "column" ? "flex-col" : "flex-row";
+        responsiveValue.value === FlexFlowCSSValue.COLUMN
+          ? "flex-col"
+          : "flex-row";
 
       return getResponsiveClass(responsiveValue.prefix, responsiveBaseClass);
     }) || [];

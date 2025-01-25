@@ -5,6 +5,7 @@ import {
   GapCSSType,
   JustifyContentCSSValue,
   MediaQueryPrefix,
+  MediaQueryPrefixValue,
   ResponsiveValue,
 } from "../../../src/components/layout/containers/FlexContainer/FlexContainer";
 import { ValueOf } from "../../../src/types/util";
@@ -337,7 +338,10 @@ describe("Styling util testing", () => {
 
     describe("responsive classes", () => {
       it("single responsive class with base class", () => {
-        const responsive = { prefix: "sm", value: JustifyContentCSSValue.END };
+        const responsive = {
+          prefix: MediaQueryPrefixValue.SM,
+          value: JustifyContentCSSValue.END,
+        };
 
         const actual = getJustifyContentClass(
           JustifyContentCSSValue.CENTER,
@@ -349,7 +353,10 @@ describe("Styling util testing", () => {
         expect(actual).toEqual(expected);
       });
       it("single responsive class with no base class", () => {
-        const responsive = { prefix: "sm", value: JustifyContentCSSValue.END };
+        const responsive = {
+          prefix: MediaQueryPrefixValue.SM,
+          value: JustifyContentCSSValue.END,
+        };
 
         const actual = getJustifyContentClass(undefined, responsive);
 
@@ -389,7 +396,10 @@ describe("Styling util testing", () => {
 
     describe("responsive classes", () => {
       it("single responsive class with base class", () => {
-        const responsive = { prefix: "sm", value: AlignItemsCSSValue.END };
+        const responsive = {
+          prefix: MediaQueryPrefixValue.SM,
+          value: AlignItemsCSSValue.END,
+        };
 
         const actual = getAlignItemsClass(
           AlignItemsCSSValue.CENTER,
@@ -402,7 +412,10 @@ describe("Styling util testing", () => {
       });
 
       it("single responsive class with no base class", () => {
-        const responsive = { prefix: "sm", value: AlignItemsCSSValue.END };
+        const responsive = {
+          prefix: MediaQueryPrefixValue.SM,
+          value: AlignItemsCSSValue.END,
+        };
 
         const actual = getAlignItemsClass(undefined, responsive);
 

@@ -4,7 +4,11 @@ import HeadingOne from "@/components/layout/headings/HeadingOne";
 import HeadingTwo from "@/components/layout/headings/HeadingTwo";
 import Paragraph from "@/components/layout/Paragraph/Paragraph";
 import RandomCloudinaryImage from "@/components/RandomCloudinaryImage/RandomCloudinaryImage";
-import { TextAlignment } from "@/types/layout";
+import {
+  AlignItemsCSSValue,
+  FlexFlowCSSValue,
+  TextAlignment,
+} from "@/types/layout";
 import {
   SHUFFLED_IMAGE_GROUPS,
   WEBSITE_EMAIL,
@@ -13,10 +17,14 @@ import {
 export default function HomePage() {
   return (
     <main>
-      <FlexContainer flexFlow="column" gapY={8}>
+      <FlexContainer flexFlow={FlexFlowCSSValue.COLUMN} gapY={8}>
         <HeadingOne align={TextAlignment.CENTER}>Our Story</HeadingOne>
-        <FlexContainer flexFlow="column" gapY={8}>
-          <FlexContainer flexFlow="column" alignItems="center" gapY={4}>
+        <FlexContainer flexFlow={FlexFlowCSSValue.COLUMN} gapY={8}>
+          <FlexContainer
+            flexFlow={FlexFlowCSSValue.COLUMN}
+            alignItems={AlignItemsCSSValue.CENTER}
+            gapY={4}
+          >
             <Paragraph>
               Cuckoo and the Birds is a three-piece, Midwest rock band from
               Chicago. Their songs experiment with extended harmonies, blending
@@ -29,7 +37,11 @@ export default function HomePage() {
             />
           </FlexContainer>
 
-          <FlexContainer flexFlow="column" alignItems="center" gapY={4}>
+          <FlexContainer
+            flexFlow={FlexFlowCSSValue.COLUMN}
+            alignItems={AlignItemsCSSValue.CENTER}
+            gapY={4}
+          >
             <Paragraph>
               Historically, they have operated as a solo project from songwriter
               and guitarist Tyler Earls, but now they&apos;re a full band,
@@ -42,7 +54,11 @@ export default function HomePage() {
             />
           </FlexContainer>
 
-          <FlexContainer flexFlow="column" alignItems="center" gapY={4}>
+          <FlexContainer
+            flexFlow={FlexFlowCSSValue.COLUMN}
+            alignItems={AlignItemsCSSValue.CENTER}
+            gapY={4}
+          >
             <Paragraph>
               Cuckoo and the Birds released their first EP,{" "}
               <InlineAnchor
@@ -63,7 +79,11 @@ export default function HomePage() {
             />
           </FlexContainer>
 
-          <FlexContainer flexFlow="column" alignItems="center" gapY={4}>
+          <FlexContainer
+            flexFlow={FlexFlowCSSValue.COLUMN}
+            alignItems={AlignItemsCSSValue.CENTER}
+            gapY={4}
+          >
             <HeadingTwo>Booking</HeadingTwo>
             <Paragraph>
               Cuckoo and the Birds have played a handful of shows in Chicago,
