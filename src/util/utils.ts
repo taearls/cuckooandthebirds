@@ -77,3 +77,17 @@ export const getRandomNumberInRange = ({
 }): number => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
+
+// TODO: add unit tests
+/**
+ * Helper function to safely convert a type T into an Array<T>
+ * @param item - the item to convert into an array
+ * @returns - an array of type Array<T>
+ */
+export const intoArray = <T extends object>(item: T | T[] | undefined): T[] => {
+  if (!item) {
+    return [] as T[];
+  }
+
+  return Array.isArray(item) ? item : [item];
+};

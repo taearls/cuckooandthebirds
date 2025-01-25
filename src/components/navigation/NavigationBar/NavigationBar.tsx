@@ -48,7 +48,7 @@ export default function NavigationBar({ links }: NavigationBarProps) {
                 prefix: MediaQueryPrefixValue.SM,
                 value: FlexFlowCSSValue.ROW,
               },
-              gapX: { prefix: MediaQueryPrefixValue.SM, value: 2 },
+              gapX: { prefix: MediaQueryPrefixValue.SM, value: 4 },
             }}
           >
             {links

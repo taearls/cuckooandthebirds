@@ -7,7 +7,7 @@ import {
   MediaQueryPrefix,
   MediaQueryPrefixValue,
   ResponsiveValue,
-} from "../../../src/components/layout/containers/FlexContainer/FlexContainer";
+} from "../../../src/types/layout";
 import { ValueOf } from "../../../src/types/util";
 import {
   capitalizeText,

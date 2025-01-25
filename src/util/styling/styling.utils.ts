@@ -1,16 +1,19 @@
+import { FlexContainerProps } from "@/components/layout/containers/FlexContainer/FlexContainer";
 import {
   AlignItemsCSSType,
   AlignItemsCSSValue,
-  FlexContainerProps,
   FlexFlowCSSType,
   FlexFlowCSSValue,
   GapCSSType,
   JustifyContentCSSType,
   JustifyContentCSSValue,
   MediaQueryPrefix,
-} from "@/components/layout/containers/FlexContainer/FlexContainer";
-import { TextAlignment, TextAlignmentType } from "@/types/layout";
+  TextAlignment,
+  TextAlignmentType,
+} from "@/types/layout";
 import { ValueOf } from "@/types/util";
+
+import { intoArray } from "../utils";
 
 /**
  * Helper function that merges an unknown amount of classes into a single string. this helps with readability both in code and in the DOM.
@@ -143,20 +146,6 @@ export const getAlignItemsClass = (
     }) || [];
 
   return combineBaseAndResponsiveClasses(baseClass, responsiveClasses);
-};
-
-// TODO: add unit tests, move to separate utils file
-/**
- * Helper function to safely convert a type T into an Array<T>
- * @param item - the item to convert into an array
- * @returns - an array of type Array<T>
- */
-const intoArray = <T extends object>(item: T | T[] | undefined): T[] => {
-  if (!item) {
-    return [] as T[];
-  }
-
-  return Array.isArray(item) ? item : [item];
 };
 
 // TODO: add unit tests
