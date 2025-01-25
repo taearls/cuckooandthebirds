@@ -91,7 +91,7 @@ export default function FlexContainer({
     alignItems,
     responsive?.alignItems,
   );
-  const gapXClass = getGapClass("x", gapX, responsive.gapX);
+  const gapXClass = getGapClass("x", gapX, responsive?.gapX);
   const gapYClass = getGapClass("y", gapY, responsive?.gapY);
 
   return (
