@@ -26,7 +26,6 @@ export const mergeClasses = (...classes: Array<string | boolean>): string => {
     .join(" ");
 };
 
-// TODO: add unit tests
 /**
  * Helper function to get a text-alignment class based on the TextAlignmentType passed in.
  * @param alignment - the alignment we want for the text
@@ -147,7 +146,6 @@ export const getAlignItemsClass = (
   return combineBaseAndResponsiveClasses(baseClass, responsiveClasses);
 };
 
-// TODO: add unit tests
 /**
  * Helper function to get a flex flow class based on the FlexFlowCSSType passed in. If a responsive value is passed, it will be merged into the resulting class.
  * @param val - the flex flow css type used to determine the base (non-responsive) class
@@ -158,7 +156,12 @@ export const getFlexFlowClass = (
   val?: FlexFlowCSSType,
   responsive?: NonNullable<FlexContainerProps["responsive"]>["flexFlow"],
 ) => {
-  const baseClass = val === FlexFlowCSSValue.COLUMN ? "flex-col" : "flex-row";
+  const baseClass =
+    val == null
+      ? ""
+      : val === FlexFlowCSSValue.COLUMN
+        ? "flex-col"
+        : "flex-row";
   const array = intoArray(responsive);
 
   const responsiveClasses =
@@ -200,7 +203,6 @@ export const getGapClass = (
   return combineBaseAndResponsiveClasses(baseClass, responsiveClasses);
 };
 
-// TODO: add unit tests
 /**
  * Helper function to get a responsive class based on the MediaQueryPrefix and base css class passed in.
  * @param prefix - the responsive prefix we want to prepend to the base class
@@ -218,7 +220,6 @@ export const getResponsiveClass = (
   return responsiveClass;
 };
 
-// TODO: add unit tests
 /**
  * Helper function to combine responsive and base classes into one resulting string
  * @param baseClass - the base class that is not responsive

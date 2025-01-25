@@ -1,23 +1,5 @@
-import { ReactNode } from "react";
-
 export const cloneDeep = <T extends object>(item: T): T =>
   JSON.parse(JSON.stringify(item));
-
-export const getKeysOfTFromConstObj = <T extends object>(constObj: T) => {
-  return typeof constObj;
-};
-
-type Enumerate<
-  N extends number,
-  Acc extends Array<number> = [],
-> = Acc["length"] extends N
-  ? Acc[number]
-  : Enumerate<N, [...Acc, Acc["length"]]>;
-
-export type IntRange<F extends number, T extends number> = Exclude<
-  Enumerate<T>,
-  Enumerate<F>
->;
 
 export const getCloudinarySrc = (
   publicId: string,
@@ -33,12 +15,6 @@ export const getCloudinarySrc = (
 
 export const getCurrentYear = () => {
   return new Date().getFullYear();
-};
-
-export const jsxOrEmptyString = (value?: ReactNode | string): typeof value => {
-  if (value == null) return "";
-
-  return value;
 };
 
 // const getRandomizedTextAndPhotoData = (shuffledPhotoGroups, textData) => {
@@ -78,15 +54,12 @@ export const getRandomNumberInRange = ({
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-// TODO: add unit tests
 /**
  * Helper function to safely convert a type T into an Array<T>
  * @param item - the item to convert into an array
  * @returns - an array of type Array<T>
  */
-export const intoArray = <T extends object>(
-  item: T | Array<T> | undefined,
-): Array<T> => {
+export const intoArray = <T>(item: T | Array<T> | undefined): Array<T> => {
   if (!item) {
     return [] as Array<T>;
   }

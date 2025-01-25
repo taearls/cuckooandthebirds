@@ -2,19 +2,25 @@ import { describe, expect, it } from "vitest";
 
 import {
   AlignItemsCSSValue,
+  FlexFlowCSSValue,
   GapCSSType,
   JustifyContentCSSValue,
   MediaQueryPrefix,
   MediaQueryPrefixValue,
   ResponsiveValue,
+  TextAlignment,
 } from "@/types/layout";
 import { ValueOf } from "@/types/util";
 import {
   capitalizeText,
+  combineBaseAndResponsiveClasses,
   getAlignItemsClass,
+  getFlexFlowClass,
   getGapClass,
   getJustifyContentClass,
+  getResponsiveClass,
   getSingularOrPlural,
+  getTextAlignmentClass,
   mergeClasses,
 } from "@/util/styling/styling.utils";
 import styles from "./styling-test.module.css";
@@ -522,6 +528,171 @@ describe("Styling util testing", () => {
 
         expect(actual).toEqual(expected);
       });
+    });
+  });
+
+  describe("getFlexFlowClass", () => {
+    const inputs = Object.entries(FlexFlowCSSValue);
+    const expectedValues = ["flex-col", "flex-row"];
+
+    describe("non-responsive classes", () => {
+      createNonResponsiveClassTests<typeof FlexFlowCSSValue>(
+        getFlexFlowClass,
+        inputs,
+        expectedValues,
+        "FlexFlowCSSType",
+      );
+    });
+
+    describe("responsive classes", () => {
+      it("single responsive class with base class", () => {
+        const responsive = {
+          prefix: MediaQueryPrefixValue.SM,
+          value: FlexFlowCSSValue.COLUMN,
+        };
+
+        const actual = getFlexFlowClass(FlexFlowCSSValue.ROW, responsive);
+
+        const expected = "flex-row sm:flex-col";
+
+        expect(actual).toEqual(expected);
+      });
+      it("single responsive class with no base class", () => {
+        const responsive = {
+          prefix: MediaQueryPrefixValue.SM,
+          value: FlexFlowCSSValue.COLUMN,
+        };
+
+        const actual = getFlexFlowClass(undefined, responsive);
+
+        const expected = "sm:flex-col";
+
+        expect(actual).toEqual(expected);
+      });
+
+      createResponsiveClassTests(
+        getFlexFlowClass,
+        inputs,
+        expectedValues,
+        FlexFlowCSSValue,
+        "JustifyContentCSSType",
+      );
+    });
+  });
+
+  describe("getTextAlignmentClass", () => {
+    it("gets a left-aligned class", () => {
+      const input = TextAlignment.LEFT;
+
+      const actual = getTextAlignmentClass(input);
+
+      const expected = "text-left";
+
+      expect(actual).toEqual(expected);
+    });
+    it("gets a center-aligned class", () => {
+      const input = TextAlignment.CENTER;
+
+      const actual = getTextAlignmentClass(input);
+
+      const expected = "text-center";
+
+      expect(actual).toEqual(expected);
+    });
+    it("gets a right-aligned class", () => {
+      const input = TextAlignment.RIGHT;
+
+      const actual = getTextAlignmentClass(input);
+
+      const expected = "text-right";
+
+      expect(actual).toEqual(expected);
+    });
+  });
+
+  describe("getResponsiveClass", () => {
+    it("gets a responsive class", () => {
+      const prefix = MediaQueryPrefixValue.LG;
+      const baseClass = "text-right";
+
+      const actual = getResponsiveClass(prefix, baseClass);
+
+      const expected = "lg:text-right";
+
+      expect(actual).toEqual(expected);
+    });
+    it("returns an empty string if either arg is undefined", () => {
+      let actual = getResponsiveClass(undefined, "foo");
+
+      const expected = "";
+
+      expect(actual).toEqual(expected);
+
+      actual = getResponsiveClass(MediaQueryPrefixValue.LG, undefined);
+
+      expect(actual).toEqual(expected);
+
+      actual = getResponsiveClass(undefined, undefined);
+
+      expect(actual).toEqual(expected);
+    });
+  });
+
+  describe("combineBaseAndResponsiveClasses", () => {
+    it("combines a base class with responsive classes", () => {
+      const baseClass = "text-right";
+      const responsiveClasses = ["sm:text-left", "md:text-center"];
+
+      const actual = combineBaseAndResponsiveClasses(
+        baseClass,
+        responsiveClasses,
+      );
+
+      const expected = "text-right sm:text-left md:text-center";
+
+      expect(actual).toEqual(expected);
+    });
+
+    it("returns only a baseClass if responsive classes are not defined", () => {
+      const baseClass = "text-right";
+      const responsiveClasses = undefined;
+
+      const actual = combineBaseAndResponsiveClasses(
+        baseClass,
+        responsiveClasses,
+      );
+
+      const expected = "text-right";
+
+      expect(actual).toEqual(expected);
+    });
+
+    it("returns only responsive classes if the baseClass is not defined", () => {
+      const baseClass = undefined;
+      const responsiveClasses = ["sm:text-left", "md:text-center"];
+
+      const actual = combineBaseAndResponsiveClasses(
+        baseClass,
+        responsiveClasses,
+      );
+
+      const expected = "sm:text-left md:text-center";
+
+      expect(actual).toEqual(expected);
+    });
+
+    it("returns an empty string if both args are not defined", () => {
+      const baseClass = undefined;
+      const responsiveClasses = undefined;
+
+      const actual = combineBaseAndResponsiveClasses(
+        baseClass,
+        responsiveClasses,
+      );
+
+      const expected = "";
+
+      expect(actual).toEqual(expected);
     });
   });
 });

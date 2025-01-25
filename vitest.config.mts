@@ -10,7 +10,8 @@ export default (args: ViteConfigInput) =>
         environment: "jsdom",
         exclude: [...configDefaults.exclude, "e2e/**"],
         globals: true,
-        logHeapUsage: true,
+        // NOTE: this option could be useful for unit test performance tuning
+        // logHeapUsage: true,
       },
     }),
   );
