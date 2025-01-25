@@ -23,6 +23,12 @@ export const mergeClasses = (...classes: Array<string | boolean>): string => {
     .join(" ");
 };
 
+// TODO: add unit tests
+/**
+ * Helper function to get a text-alignment class based on the TextAlignmentType passed in.
+ * @param alignment - the alignment we want for the text
+ * @returns a CSS class that will align the text
+ */
 export const getTextAlignmentClass = (alignment: TextAlignmentType): string => {
   switch (alignment) {
     case TextAlignment.LEFT: {
@@ -36,8 +42,14 @@ export const getTextAlignmentClass = (alignment: TextAlignmentType): string => {
   }
 };
 
+/**
+ * Helper function to get a justify content class based on the JustifyContentCSSType passed in. If a responsive value is passed, it will be merged into the resulting class.
+ * @param val - the justify content css type used to determine the base (non-responsive) class
+ * @param responsive - an optional responsive value which will build the responsive classes to append to the resulting class
+ * @returns a justify content css class
+ */
 export const getJustifyContentClass = (
-  val: JustifyContentCSSType,
+  val?: JustifyContentCSSType,
   responsive?: FlexContainerProps["responsive"]["justifyContent"],
 ): ValueOf<JustifyContentCSSType> => {
   const justifyTransform = (classToTransform: string | undefined) => {
@@ -85,6 +97,12 @@ export const getJustifyContentClass = (
   return combineBaseAndResponsiveClasses(baseClass, responsiveClasses);
 };
 
+/**
+ * Helper function to get a align items class based on the AlignItemsCSSType passed in. If a responsive value is passed, it will be merged into the resulting class.
+ * @param val - the align items css type used to determine the base (non-responsive) class
+ * @param responsive - an optional responsive value which will build the responsive classes to append to the resulting class
+ * @returns an align items css class
+ */
 export const getAlignItemsClass = (
   val?: AlignItemsCSSType,
   responsive?: FlexContainerProps["responsive"]["alignItems"],
@@ -126,6 +144,12 @@ export const getAlignItemsClass = (
   return combineBaseAndResponsiveClasses(baseClass, responsiveClasses);
 };
 
+// TODO: add unit tests, move to separate utils file
+/**
+ * Helper function to safely convert a type T into an Array<T>
+ * @param item - the item to convert into an array
+ * @returns - an array of type Array<T>
+ */
 const intoArray = <T extends object>(item: T | T[] | undefined): T[] => {
   if (!item) {
     return [] as T[];
@@ -134,6 +158,13 @@ const intoArray = <T extends object>(item: T | T[] | undefined): T[] => {
   return Array.isArray(item) ? item : [item];
 };
 
+// TODO: add unit tests
+/**
+ * Helper function to get a flex flow class based on the FlexFlowCSSType passed in. If a responsive value is passed, it will be merged into the resulting class.
+ * @param val - the flex flow css type used to determine the base (non-responsive) class
+ * @param responsive - an optional responsive value which will build the responsive classes to append to the resulting class
+ * @returns a flex flow css class
+ */
 export const getFlexFlowClass = (
   val?: FlexFlowCSSType,
   responsive?: FlexContainerProps["responsive"]["flexFlow"],
@@ -152,6 +183,13 @@ export const getFlexFlowClass = (
   return combineBaseAndResponsiveClasses(baseClass, responsiveClasses);
 };
 
+/**
+ * Helper function to get a gap class based on the GapCSSType passed in. If a responsive value is passed, it will be merged into the resulting class.
+ * @param direction - the direction of the gap class we want
+ * @param val - the gap css type used to determine the base (non-responsive) class
+ * @param responsive - an optional responsive value which will build the responsive classes to append to the resulting class
+ * @returns a gap css class
+ */
 export const getGapClass = (
   direction: GapCSSType["direction"],
   val?: GapCSSType["value"],
@@ -171,6 +209,13 @@ export const getGapClass = (
   return combineBaseAndResponsiveClasses(baseClass, responsiveClasses);
 };
 
+// TODO: add unit tests
+/**
+ * Helper function to get a responsive class based on the MediaQueryPrefix and base css class passed in.
+ * @param prefix - the responsive prefix we want to prepend to the base class
+ * @param responsiveBaseClass - the base class for the resulting responsive class.
+ * @returns a responsive css class, or an empty string if either argument is not defined
+ */
 export const getResponsiveClass = (
   prefix?: MediaQueryPrefix,
   responsiveBaseClass?: string,
@@ -182,6 +227,13 @@ export const getResponsiveClass = (
   return responsiveClass;
 };
 
+// TODO: add unit tests
+/**
+ * Helper function to combine responsive and base classes into one resulting string
+ * @param baseClass - the base class that is not responsive
+ * @param responsiveBaseClass - the responsive classes as a list
+ * @returns a css class that includes the passed base class and responsive classes, or an empty string if both arguments are not defined
+ */
 export const combineBaseAndResponsiveClasses = (
   baseClass?: string,
   responsiveClasses?: Array<string>,
