@@ -24,7 +24,13 @@ export default function NavigationBar({ links }: NavigationBarProps) {
   };
 
   return (
-    <nav id="navigation-bar" className={mergeClasses(styles["navigation-bar"])}>
+    <nav
+      id="navigation-bar"
+      className={mergeClasses(
+        styles["navigation-bar"],
+        current.value === "closed" && styles["closed"],
+      )}
+    >
       <ul
         role="menu"
         className={mergeClasses(styles["navigation-list-container"])}
@@ -70,7 +76,9 @@ export default function NavigationBar({ links }: NavigationBarProps) {
       </ul>
 
       <div className={mergeClasses(styles["navigation-toggle-container"])}>
-        <DarkModeToggle />
+        <RenderIf condition={current.value === "open"}>
+          <DarkModeToggle />
+        </RenderIf>
         <NavigationToggle
           active={current.value === "open"}
           onClick={handleToggle}

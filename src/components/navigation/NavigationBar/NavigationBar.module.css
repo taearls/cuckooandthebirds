@@ -10,6 +10,10 @@
   grid-template-areas: "list toggle";
 }
 
+.navigation-bar.closed {
+  border: 0;
+}
+
 .navigation-list-container {
   grid-area: list;
   display: inline-flex;
@@ -26,7 +30,7 @@
 .navigation-toggle-container {
   position: absolute;
   top: 0;
-  right: 0;
+  right: 0.25rem;
   grid-area: toggle;
   display: inline-flex;
   align-self: flex-start;

@@ -9,9 +9,9 @@
   --collapsed-nav-height: 64px;
   --footer-height: 80px;
   --body-padding-y: 16px;
-  --text-light: #4e4b66;
-  --text-dark: white;
-  --background-light: white;
+  --text-light: #1b1212;
+  --text-dark: #faf9f6;
+  --background-light: #faf9f6;
   --background-dark: #121212;
   --active-light: rgb(
     34 211 238 / var(--tw-text-opacity, 1)
