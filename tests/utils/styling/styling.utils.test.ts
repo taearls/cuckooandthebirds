@@ -11,6 +11,7 @@ import { ValueOf } from "../../../src/types/util";
 import {
   capitalizeText,
   getAlignItemsClass,
+  getGapClass,
   getJustifyContentClass,
   getSingularOrPlural,
   mergeClasses,
@@ -418,6 +419,99 @@ describe("Styling util testing", () => {
         AlignItemsCSSValue,
         "AlignItemsCSSType",
       );
+    });
+  });
+
+  describe("getGapClass", () => {
+    describe("non-responsive classes", () => {
+      it("creates a horizontal class", () => {
+        const input: GapCSSType = {
+          direction: "x",
+          value: 1,
+        };
+
+        const actual = getGapClass(input.direction, input.value, undefined);
+
+        const expected = "gap-x-1";
+
+        expect(actual).toEqual(expected);
+      });
+      it("creates a vertical class", () => {
+        const input: GapCSSType = {
+          direction: "y",
+          value: 1,
+        };
+
+        const actual = getGapClass(input.direction, input.value, undefined);
+
+        const expected = "gap-y-1";
+
+        expect(actual).toEqual(expected);
+      });
+    });
+
+    describe("responsive classes", () => {
+      it("creates a horizontal class", () => {
+        const input: GapCSSType = {
+          direction: "x",
+          value: 1,
+        };
+
+        const responsive: ResponsiveValue<GapCSSType["value"]> = {
+          prefix: "sm",
+          value: 2,
+        };
+
+        const actual = getGapClass(input.direction, input.value, responsive);
+
+        const expected = "gap-x-1 sm:gap-x-2";
+
+        expect(actual).toEqual(expected);
+      });
+
+      it("creates a horizontal class with no base class", () => {
+        const responsive: ResponsiveValue<GapCSSType["value"]> = {
+          prefix: "sm",
+          value: 2,
+        };
+
+        const actual = getGapClass("x", undefined, responsive);
+
+        const expected = "sm:gap-x-2";
+
+        expect(actual).toEqual(expected);
+      });
+
+      it("creates a vertical class", () => {
+        const input: GapCSSType = {
+          direction: "y",
+          value: 1,
+        };
+
+        const responsive: ResponsiveValue<GapCSSType["value"]> = {
+          prefix: "sm",
+          value: 2,
+        };
+
+        const actual = getGapClass(input.direction, input.value, responsive);
+
+        const expected = "gap-y-1 sm:gap-y-2";
+
+        expect(actual).toEqual(expected);
+      });
+
+      it("creates a vertical class with no base class", () => {
+        const responsive: ResponsiveValue<GapCSSType["value"]> = {
+          prefix: "sm",
+          value: 2,
+        };
+
+        const actual = getGapClass("y", undefined, responsive);
+
+        const expected = "sm:gap-y-2";
+
+        expect(actual).toEqual(expected);
+      });
     });
   });
 });

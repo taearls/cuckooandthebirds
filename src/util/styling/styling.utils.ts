@@ -153,17 +153,18 @@ export const getFlexFlowClass = (
 };
 
 export const getGapClass = (
-  val?: GapCSSType,
+  direction: GapCSSType["direction"],
+  val?: GapCSSType["value"],
   responsive?:
     | FlexContainerProps["responsive"]["gapX"]
     | FlexContainerProps["responsive"]["gapY"],
 ) => {
-  const baseClass = `gap-${val.direction}-${val.value}`;
+  const baseClass = val != null ? `gap-${direction}-${val}` : "";
   const array = intoArray(responsive);
 
   const responsiveClasses =
     array?.map((responsiveValue) => {
-      const responsiveBaseClass = `gap-${val.direction}-${responsiveValue.value}`;
+      const responsiveBaseClass = `gap-${direction}-${responsiveValue.value}`;
       return getResponsiveClass(responsiveValue.prefix, responsiveBaseClass);
     }) || [];
 

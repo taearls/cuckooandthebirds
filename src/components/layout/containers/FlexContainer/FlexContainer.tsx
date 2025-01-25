@@ -29,7 +29,7 @@ export const AlignItemsCSSValue = {
 export type GapCSSType = {
   direction: "x" | "y";
   // https://github.com/microsoft/TypeScript/issues/54925
-  value: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+  value?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 };
 
 export type JustifyContentCSSType =
@@ -91,20 +91,8 @@ export default function FlexContainer({
     alignItems,
     responsive?.alignItems,
   );
-  const gapXClass = getGapClass(
-    {
-      direction: "x",
-      value: gapX,
-    },
-    responsive?.gapX,
-  );
-  const gapYClass = getGapClass(
-    {
-      direction: "y",
-      value: gapY,
-    },
-    responsive?.gapY,
-  );
+  const gapXClass = getGapClass("x", gapX, responsive.gapX);
+  const gapYClass = getGapClass("y", gapY, responsive?.gapY);
 
   return (
     <div
