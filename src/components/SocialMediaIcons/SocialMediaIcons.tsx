@@ -1,5 +1,4 @@
 import { JustifyContentCSSValue } from "@/types/layout";
-
 import BandcampIcon from "../icons/BandcampIcon";
 import InstagramIcon from "../icons/InstagramIcon";
 import SpotifyIcon from "../icons/SpotifyIcon";

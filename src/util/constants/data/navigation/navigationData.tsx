@@ -1,3 +1,5 @@
+import { JSX } from "react";
+
 import BookingPage from "@/pages/BookingPage";
 import HomePage from "@/pages/HomePage";
 import MusicDetailsPage from "@/pages/MusicPage/MusicDetailsPage";
@@ -5,7 +7,6 @@ import MusicPage from "@/pages/MusicPage/MusicPage";
 import MusicPageOutlet from "@/pages/MusicPage/MusicPageOutlet";
 import NotFoundPage from "@/pages/NotFoundPage";
 import PressPage from "@/pages/PressPage";
-import { JSX } from "react";
 
 export type RouteDataChildItem = {
   href: string;

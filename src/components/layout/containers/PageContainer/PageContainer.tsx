@@ -1,6 +1,5 @@
 import useWindowResize from "@/hooks/useWindowResize";
 import { checkNavHeight } from "@/state/navigationMachine";
-
 import styles from "./PageContainer.module.css";
 
 export type PageContainerProps = {

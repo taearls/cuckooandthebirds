@@ -3,7 +3,6 @@ import {
   getTextAlignmentClass,
   mergeClasses,
 } from "@/util/styling/styling.utils";
-
 import { HeadingProps } from "./types";
 
 export default function HeadingTwo({

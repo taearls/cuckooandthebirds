@@ -1,8 +1,9 @@
+import { useLocation, useNavigate } from "react-router";
+
 import FlexContainer from "@/components/layout/containers/FlexContainer/FlexContainer";
 import HeadingOne from "@/components/layout/headings/HeadingOne";
 import Paragraph from "@/components/layout/Paragraph/Paragraph";
 import { FlexFlowCSSValue } from "@/types/layout";
-import { useLocation, useNavigate } from "react-router";
 
 export default function NotFoundPage() {
   const location = useLocation();

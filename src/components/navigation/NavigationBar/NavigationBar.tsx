@@ -1,3 +1,6 @@
+import { useMachine } from "@xstate/react";
+import { NavLink } from "react-router";
+
 import DarkModeToggle from "@/components/DarkModeToggle/DarkModeToggle";
 import { InlineAnchorContent } from "@/components/InlineAnchor/InlineAnchor";
 import FlexContainer from "@/components/layout/containers/FlexContainer/FlexContainer";
@@ -10,9 +13,6 @@ import {
 import { FlexFlowCSSValue, MediaQueryPrefixValue } from "@/types/layout";
 import { RouteDataItem } from "@/util/constants/data/navigation/navigationData";
 import { mergeClasses } from "@/util/styling/styling.utils";
-import { useMachine } from "@xstate/react";
-import { NavLink } from "react-router";
-
 import NavigationToggle from "../NavigationToggle/NavigationToggle";
 import styles from "./NavigationBar.module.css";
 import NavigationBarListItem from "./NavigationBarListItem";

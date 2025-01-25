@@ -1,3 +1,5 @@
+import { useParams } from "react-router";
+
 import CloudinaryImage from "@/components/CloudinaryImage/CloudinaryImage";
 import InlineAnchor from "@/components/InlineAnchor/InlineAnchor";
 import FlexContainer from "@/components/layout/containers/FlexContainer/FlexContainer";
@@ -13,8 +15,6 @@ import {
   TextAlignment,
 } from "@/types/layout";
 import { RELEASE_DETAILS_DATA } from "@/util/constants/data/releases/data";
-import { useParams } from "react-router";
-
 import NotFoundPage from "../NotFoundPage";
 
 export type ReleaseDataType = {

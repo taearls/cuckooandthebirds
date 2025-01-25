@@ -1,6 +1,5 @@
 import { capitalizeText } from "@/util/styling/styling.utils";
 import { getRandomNumberInRange } from "@/util/utils";
-
 import CloudinaryImage from "../CloudinaryImage/CloudinaryImage";
 
 // TODO: implement cache

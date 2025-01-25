@@ -1,5 +1,6 @@
-import { CLOUDINARY_INSTANCE } from "@/util/constants/constants";
 import { fill } from "@cloudinary/url-gen/actions/resize";
+
+import { CLOUDINARY_INSTANCE } from "@/util/constants/constants";
 
 export type CloudinaryImageProps = {
   alt: string;

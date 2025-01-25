@@ -1,3 +1,5 @@
+import { ReactElement } from "react";
+
 import {
   AlignItemsCSSType,
   FlexFlowCSSType,
@@ -12,7 +14,6 @@ import {
   getJustifyContentClass,
   mergeClasses,
 } from "@/util/styling/styling.utils";
-import { ReactElement } from "react";
 
 export type FlexContainerProps = {
   flexFlow?: FlexFlowCSSType;
