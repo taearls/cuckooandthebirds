@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 
 import {
-  AlignItemsCSSType,
   AlignItemsCSSValue,
   JustifyContentCSSValue,
   MediaQueryPrefix,
@@ -18,10 +17,14 @@ import {
 // @ts-expect-error css module import should work but it doesn't here for some annoying reason
 import styles from "./styling-test.module.css";
 
+// TODO: get linting to prevent warnings from appearing here.
+
 const createResponsiveClassTests = <T extends object>(
   testFn: (
     inputs: ValueOf<T>,
-    responsive?: Array<ResponsiveValue<ValueOf<T>>>,
+    responsive?:
+      | Array<ResponsiveValue<ValueOf<T>>>
+      | ResponsiveValue<ValueOf<T>>,
   ) => string,
   inputs: Array<[string, ValueOf<T>]>,
   expectedValues: string[],
@@ -39,6 +42,7 @@ const createResponsiveClassTests = <T extends object>(
   for (let i = 0; i < inputs.length; i++) {
     for (let j = 0; j < responsivePrefixes.length; j++) {
       const [name, input] = inputs[i];
+      // TODO: clean this up into smaller methods.
       const responsiveValues: Array<ResponsiveValue<ValueOf<T>>> = [
         {
           prefix: responsivePrefixes[(j + 1) % responsivePrefixes.length],
@@ -57,7 +61,7 @@ const createResponsiveClassTests = <T extends object>(
         )
         .join(" ")
         .trim();
-      const expected = `${expectedResponsiveClass} ${expectedValues[i]}`;
+      const expected = `${expectedValues[i]} ${expectedResponsiveClass}`;
 
       it(`will transform ${label}.${name} with responsive values: \n\t\t[\n\t\t\t${responsiveValues
         .map((x) => `{ prefix: ${x.prefix}, value: ${x.value} },\n\t\t\t`)
@@ -330,6 +334,18 @@ describe("Styling util testing", () => {
     });
 
     describe("responsive classes", () => {
+      it("single responsive class", () => {
+        const responsive = { prefix: "sm", value: JustifyContentCSSValue.END };
+
+        const actual = getJustifyContentClass(
+          JustifyContentCSSValue.CENTER,
+          responsive,
+        );
+
+        const expected = "justify-center sm:justify-end";
+
+        expect(actual).toEqual(expected);
+      });
       createResponsiveClassTests(
         getJustifyContentClass,
         inputs,
@@ -360,6 +376,20 @@ describe("Styling util testing", () => {
     });
 
     describe("responsive classes", () => {
+      it("single responsive class", () => {
+        const responsive = { prefix: "sm", value: AlignItemsCSSValue.END };
+
+        const actual = getAlignItemsClass(
+          AlignItemsCSSValue.CENTER,
+          responsive,
+        );
+
+        const expected = "items-center sm:items-end";
+
+        expect(actual).toEqual(expected);
+      });
+
+      // table test for multiple responsive tests.
       createResponsiveClassTests(
         getAlignItemsClass,
         inputs,

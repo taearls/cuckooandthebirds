@@ -10,6 +10,7 @@ export default (args: ViteConfigInput) =>
         environment: "jsdom",
         exclude: [...configDefaults.exclude, "e2e/**"],
         globals: true,
+        logHeapUsage: true,
       },
     }),
   );

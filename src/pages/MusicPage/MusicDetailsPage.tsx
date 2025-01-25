@@ -88,8 +88,8 @@ export default function MusicDetailsPage() {
           <RenderIf condition={releaseData.performingCredits.length > 0}>
             <FlexContainer
               flexFlow="column"
-              alignItems="flex-start"
-              responsive={{ alignItems: { prefix: "sm", value: "center" } }}
+              alignItems="start"
+              responsive={{ alignItems: [{ prefix: "sm", value: "center" }] }}
             >
               {releaseData.performingCredits.map((performerCredit, index) => (
                 <Paragraph
@@ -104,7 +104,7 @@ export default function MusicDetailsPage() {
           <RenderIf condition={releaseData.videoCredits.length > 0}>
             <FlexContainer
               flexFlow="column"
-              alignItems="flex-start"
+              alignItems="start"
               responsive={{ alignItems: { prefix: "sm", value: "center" } }}
             >
               {releaseData.videoCredits.map((videoCredit, index) => (
@@ -117,7 +117,7 @@ export default function MusicDetailsPage() {
           <RenderIf condition={releaseData.recordingCredits.length > 0}>
             <FlexContainer
               flexFlow="column"
-              alignItems="flex-start"
+              alignItems="start"
               responsive={{ alignItems: { prefix: "sm", value: "center" } }}
             >
               {releaseData.recordingCredits.map((recordingCredit, index) => (

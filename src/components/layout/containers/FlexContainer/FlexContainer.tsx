@@ -38,19 +38,31 @@ export type JustifyContentCSSType =
 export type AlignItemsCSSType =
   (typeof AlignItemsCSSValue)[keyof typeof AlignItemsCSSValue];
 
+export type FlexFlowCSSType = "row" | "column";
+
 // https://tailwindcss.com/docs/responsive-design
 export type MediaQueryPrefix = "sm" | "md" | "lg" | "xl" | "2xl";
 
 export type ResponsiveValue<T> = { prefix: MediaQueryPrefix; value: T };
 
 export type FlexContainerProps = {
-  flexFlow?: "row" | "column";
+  flexFlow?: FlexFlowCSSType;
   responsive?: {
-    flexFlow?: Array<ResponsiveValue<"row" | "column">>;
-    gapX?: Array<ResponsiveValue<GapCSSType["value"]>>;
-    gapY?: Array<ResponsiveValue<GapCSSType["value"]>>;
-    justifyContent?: Array<ResponsiveValue<JustifyContentCSSType>>;
-    alignItems?: Array<ResponsiveValue<AlignItemsCSSType>>;
+    flexFlow?:
+      | Array<ResponsiveValue<FlexFlowCSSType>>
+      | ResponsiveValue<FlexFlowCSSType>;
+    gapX?:
+      | Array<ResponsiveValue<GapCSSType["value"]>>
+      | ResponsiveValue<GapCSSType["value"]>;
+    gapY?:
+      | Array<ResponsiveValue<GapCSSType["value"]>>
+      | ResponsiveValue<GapCSSType["value"]>;
+    justifyContent?:
+      | Array<ResponsiveValue<JustifyContentCSSType>>
+      | ResponsiveValue<JustifyContentCSSType>;
+    alignItems?:
+      | Array<ResponsiveValue<AlignItemsCSSType>>
+      | ResponsiveValue<AlignItemsCSSType>;
   };
   id?: string;
   gapX?: GapCSSType["value"];

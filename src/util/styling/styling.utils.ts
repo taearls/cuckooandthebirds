@@ -2,6 +2,7 @@ import {
   AlignItemsCSSType,
   AlignItemsCSSValue,
   FlexContainerProps,
+  FlexFlowCSSType,
   GapCSSType,
   JustifyContentCSSType,
   JustifyContentCSSValue,
@@ -73,8 +74,9 @@ export const getJustifyContentClass = (
   };
 
   const baseClass = justifyTransform(val);
+  const array = intoArray(responsive);
   const responsiveClasses =
-    responsive?.map((responsiveValue) => {
+    array?.map((responsiveValue) => {
       const responsiveBaseClass = justifyTransform(responsiveValue.value);
 
       return getResponsiveClass(responsiveValue.prefix, responsiveBaseClass);
@@ -113,8 +115,9 @@ export const getAlignItemsClass = (
   };
 
   const baseClass = alignItemsTransform(val);
+  const array = intoArray(responsive);
   const responsiveClasses =
-    responsive?.map((responsiveValue) => {
+    array.map((responsiveValue) => {
       const responsiveBaseClass = alignItemsTransform(responsiveValue.value);
 
       return getResponsiveClass(responsiveValue.prefix, responsiveBaseClass);
@@ -123,14 +126,23 @@ export const getAlignItemsClass = (
   return combineBaseAndResponsiveClasses(baseClass, responsiveClasses);
 };
 
+const intoArray = <T extends object>(item: T | T[] | undefined): T[] => {
+  if (!item) {
+    return [] as T[];
+  }
+
+  return Array.isArray(item) ? item : [item];
+};
+
 export const getFlexFlowClass = (
-  val: "row" | "column",
+  val: FlexFlowCSSType,
   responsive?: FlexContainerProps["responsive"]["flexFlow"],
 ) => {
   const baseClass = val === "column" ? "flex-col" : "flex-row";
+  const array = intoArray(responsive);
 
   const responsiveClasses =
-    responsive?.map((responsiveValue) => {
+    array.map((responsiveValue) => {
       const responsiveBaseClass =
         responsiveValue.value === "column" ? "flex-col" : "flex-row";
 
@@ -147,9 +159,10 @@ export const getGapClass = (
     | FlexContainerProps["responsive"]["gapY"],
 ) => {
   const baseClass = `gap-${val.direction}-${val.value}`;
+  const array = intoArray(responsive);
 
   const responsiveClasses =
-    responsive?.map((responsiveValue) => {
+    array?.map((responsiveValue) => {
       const responsiveBaseClass = `gap-${val.direction}-${responsiveValue.value}`;
       return getResponsiveClass(responsiveValue.prefix, responsiveBaseClass);
     }) || [];
@@ -172,7 +185,7 @@ export const combineBaseAndResponsiveClasses = (
   baseClass: string,
   responsiveClasses: Array<string>,
 ): string => {
-  return `${responsiveClasses.join(" ")} ${baseClass}`.trim();
+  return `${baseClass} ${responsiveClasses.join(" ")}`.trim();
 };
 
 /**
