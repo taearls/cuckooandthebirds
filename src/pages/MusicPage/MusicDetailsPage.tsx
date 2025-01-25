@@ -1,3 +1,5 @@
+import { useParams } from "react-router";
+
 import CloudinaryImage from "@/components/CloudinaryImage/CloudinaryImage";
 import InlineAnchor from "@/components/InlineAnchor/InlineAnchor";
 import FlexContainer from "@/components/layout/containers/FlexContainer/FlexContainer";
@@ -6,10 +8,13 @@ import HeadingTwo from "@/components/layout/headings/HeadingTwo";
 import Paragraph from "@/components/layout/Paragraph/Paragraph";
 import RenderIf from "@/components/layout/RenderIf";
 import VideoPlayer from "@/components/VideoPlayer/VideoPlayer";
-import { TextAlignment } from "@/types/layout";
+import {
+  AlignItemsCSSValue,
+  FlexFlowCSSValue,
+  MediaQueryPrefixValue,
+  TextAlignment,
+} from "@/types/layout";
 import { RELEASE_DETAILS_DATA } from "@/util/constants/data/releases/data";
-import { useParams } from "react-router";
-
 import NotFoundPage from "../NotFoundPage";
 
 export type ReleaseDataType = {
@@ -20,10 +25,10 @@ export type ReleaseDataType = {
   year: number;
   title: string;
   href: string;
-  descriptions: string[];
-  videoCredits: string[];
-  performingCredits: string[];
-  recordingCredits: string[];
+  descriptions: Array<string>;
+  videoCredits: Array<string>;
+  performingCredits: Array<string>;
+  recordingCredits: Array<string>;
 };
 
 export default function MusicDetailsPage() {
@@ -43,12 +48,15 @@ export default function MusicDetailsPage() {
 
   return (
     <main>
-      <FlexContainer flexFlow="column" gapY={8}>
-        <FlexContainer flexFlow="column" gapY={8}>
+      <FlexContainer flexFlow={FlexFlowCSSValue.COLUMN} gapY={8}>
+        <FlexContainer flexFlow={FlexFlowCSSValue.COLUMN} gapY={8}>
           <HeadingOne>
             {releaseData.title} ({releaseData.year})
           </HeadingOne>
-          <FlexContainer flexFlow="column" alignItems="center">
+          <FlexContainer
+            flexFlow={FlexFlowCSSValue.COLUMN}
+            alignItems={AlignItemsCSSValue.CENTER}
+          >
             <InlineAnchor
               ariaLabel={`Click the image and listen to ${releaseData.title}`}
               href={releaseData.href}
@@ -62,7 +70,11 @@ export default function MusicDetailsPage() {
               Artwork by {releaseData.artworkCredit}
             </Paragraph>
           </FlexContainer>
-          <FlexContainer flexFlow="column" alignItems="center" gapY={4}>
+          <FlexContainer
+            flexFlow={FlexFlowCSSValue.COLUMN}
+            alignItems={AlignItemsCSSValue.CENTER}
+            gapY={4}
+          >
             {releaseData.descriptions.map((description, index) => (
               <Paragraph key={`${releaseData.title}-description-${index + 1}`}>
                 {description}
@@ -71,11 +83,16 @@ export default function MusicDetailsPage() {
           </FlexContainer>
         </FlexContainer>
 
-        <FlexContainer flexFlow={"column"} gapY={8} alignItems="center">
+        <FlexContainer
+          flexFlow={FlexFlowCSSValue.COLUMN}
+          gapY={8}
+          alignItems={AlignItemsCSSValue.CENTER}
+        >
           <RenderIf condition={releaseData.videosrc != null}>
             <VideoPlayer
               title={`${releaseData.title} Video`}
-              src={releaseData.videosrc}
+              // we know this isn't null because of the wrapping RenderIf component's condition
+              src={releaseData.videosrc!}
             />
             <Paragraph alignment={TextAlignment.CENTER}>
               Check out the official music video for {releaseData.title}!
@@ -83,13 +100,20 @@ export default function MusicDetailsPage() {
           </RenderIf>
         </FlexContainer>
 
-        <FlexContainer flexFlow="column" gapY={8}>
+        <FlexContainer flexFlow={FlexFlowCSSValue.COLUMN} gapY={8}>
           <HeadingTwo accent>Credits:</HeadingTwo>
           <RenderIf condition={releaseData.performingCredits.length > 0}>
             <FlexContainer
-              flexFlow="column"
-              alignItems="flex-start"
-              responsive={{ alignItems: { prefix: "sm", value: "center" } }}
+              flexFlow={FlexFlowCSSValue.COLUMN}
+              alignItems={AlignItemsCSSValue.START}
+              responsive={{
+                alignItems: [
+                  {
+                    prefix: MediaQueryPrefixValue.SM,
+                    value: AlignItemsCSSValue.CENTER,
+                  },
+                ],
+              }}
             >
               {releaseData.performingCredits.map((performerCredit, index) => (
                 <Paragraph
@@ -103,9 +127,14 @@ export default function MusicDetailsPage() {
           </RenderIf>
           <RenderIf condition={releaseData.videoCredits.length > 0}>
             <FlexContainer
-              flexFlow="column"
-              alignItems="flex-start"
-              responsive={{ alignItems: { prefix: "sm", value: "center" } }}
+              flexFlow={FlexFlowCSSValue.COLUMN}
+              alignItems={AlignItemsCSSValue.START}
+              responsive={{
+                alignItems: {
+                  prefix: MediaQueryPrefixValue.SM,
+                  value: AlignItemsCSSValue.CENTER,
+                },
+              }}
             >
               {releaseData.videoCredits.map((videoCredit, index) => (
                 <Paragraph key={`video-credit-${index + 1}`} width="sm:w-65ch">
@@ -116,9 +145,14 @@ export default function MusicDetailsPage() {
           </RenderIf>
           <RenderIf condition={releaseData.recordingCredits.length > 0}>
             <FlexContainer
-              flexFlow="column"
-              alignItems="flex-start"
-              responsive={{ alignItems: { prefix: "sm", value: "center" } }}
+              flexFlow={FlexFlowCSSValue.COLUMN}
+              alignItems={AlignItemsCSSValue.START}
+              responsive={{
+                alignItems: {
+                  prefix: MediaQueryPrefixValue.SM,
+                  value: AlignItemsCSSValue.CENTER,
+                },
+              }}
             >
               {releaseData.recordingCredits.map((recordingCredit, index) => (
                 <Paragraph

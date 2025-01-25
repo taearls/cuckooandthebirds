@@ -15,27 +15,36 @@ const onToggleAction = () =>
     checkNavHeight();
   }, 0);
 
+export const NAVIGATION_STATE = {
+  CLOSED: "closed",
+  OPEN: "open",
+} as const satisfies Record<string, string>;
+
+export const NAVIGATION_EVENT = {
+  TOGGLE: "toggle",
+} as const satisfies Record<string, string>;
+
 export const navigationMachine = createMachine({
   id: "navigation",
-  initial: "closed",
+  initial: NAVIGATION_STATE.CLOSED,
   states: {
-    closed: {
+    [NAVIGATION_STATE.CLOSED]: {
       on: {
-        toggle: {
+        [NAVIGATION_EVENT.TOGGLE]: {
           actions: () => {
             onToggleAction();
           },
-          target: "open",
+          target: NAVIGATION_STATE.OPEN,
         },
       },
     },
-    open: {
+    [NAVIGATION_STATE.OPEN]: {
       on: {
-        toggle: {
+        [NAVIGATION_EVENT.TOGGLE]: {
           actions: () => {
             onToggleAction();
           },
-          target: "closed",
+          target: NAVIGATION_STATE.CLOSED,
         },
       },
     },

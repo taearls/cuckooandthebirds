@@ -1,6 +1,8 @@
+import { ReactNode } from "react";
+
 export type NavigationBarListItemProps = {
   isLast: boolean;
-  children: React.ReactNode | React.ReactNode[];
+  children: ReactNode | Array<ReactNode>;
 };
 
 export default function NavigationBarListItem({

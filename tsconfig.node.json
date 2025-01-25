@@ -5,7 +5,8 @@
     "vitest.config.*",
     "cypress.config.*",
     "src/types/globals.d.ts",
-    "tests/*",
+    "src/**/*",
+    "tests/**/*",
     "setupTests.ts"
   ],
   "compilerOptions": {
@@ -20,6 +21,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "isolatedModules": true,
+    "lib": ["dom", "es2022"],
+    "skipLibCheck": true
   }
 }

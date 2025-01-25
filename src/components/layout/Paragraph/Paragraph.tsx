@@ -5,7 +5,7 @@ import {
 } from "@/util/styling/styling.utils";
 
 export type ParagraphProps = {
-  children: React.ReactNode | React.ReactNode[];
+  children: React.ReactNode | Array<React.ReactNode>;
   accent?: boolean;
   italic?: boolean;
   width?: string;
@@ -25,9 +25,9 @@ export default function Paragraph({
       className={mergeClasses(
         accent && "accent",
         italic && "italic",
-        width,
+        width != null && width,
         alignmentClass,
-        "text-lg leading-normal md:text-xl max-w-65ch",
+        "max-w-65ch text-lg leading-normal md:text-xl",
       )}
     >
       {children}

@@ -1,13 +1,18 @@
+import { FlexContainerProps } from "@/components/layout/containers/FlexContainer/FlexContainer";
 import {
   AlignItemsCSSType,
   AlignItemsCSSValue,
-  FlexContainerProps,
+  FlexFlowCSSType,
+  FlexFlowCSSValue,
   GapCSSType,
   JustifyContentCSSType,
   JustifyContentCSSValue,
-} from "@/components/layout/containers/FlexContainer/FlexContainer";
-import { TextAlignment, TextAlignmentType } from "@/types/layout";
+  MediaQueryPrefix,
+  TextAlignment,
+  TextAlignmentType,
+} from "@/types/layout";
 import { ValueOf } from "@/types/util";
+import { intoArray } from "@/util/utils";
 
 /**
  * Helper function that merges an unknown amount of classes into a single string. this helps with readability both in code and in the DOM.
@@ -21,6 +26,11 @@ export const mergeClasses = (...classes: Array<string | boolean>): string => {
     .join(" ");
 };
 
+/**
+ * Helper function to get a text-alignment class based on the TextAlignmentType passed in.
+ * @param alignment - the alignment we want for the text
+ * @returns a CSS class that will align the text
+ */
 export const getTextAlignmentClass = (alignment: TextAlignmentType): string => {
   switch (alignment) {
     case TextAlignment.LEFT: {
@@ -34,138 +44,193 @@ export const getTextAlignmentClass = (alignment: TextAlignmentType): string => {
   }
 };
 
+/**
+ * Helper function to get a justify content class based on the JustifyContentCSSType passed in. If a responsive value is passed, it will be merged into the resulting class.
+ * @param val - the justify content css type used to determine the base (non-responsive) class
+ * @param responsive - an optional responsive value which will build the responsive classes to append to the resulting class
+ * @returns a justify content css class
+ */
 export const getJustifyContentClass = (
   val?: JustifyContentCSSType,
-  responsive?: FlexContainerProps["responsive"]["justifyContent"],
-): ValueOf<JustifyContentCSSType> => {
-  let baseClass = "";
+  responsive?: NonNullable<FlexContainerProps["responsive"]>["justifyContent"],
+): string => {
+  const justifyTransform = (classToTransform: string | undefined) => {
+    let result = "";
+    // https://tailwindcss.com/docs/justify-content
+    switch (classToTransform) {
+      case JustifyContentCSSValue.CENTER:
+        result = "justify-center";
+        break;
+      case JustifyContentCSSValue.END:
+        result = "justify-end";
+        break;
+      case JustifyContentCSSValue.NORMAL:
+        result = "justify-normal";
+        break;
+      case JustifyContentCSSValue.SPACE_AROUND:
+        result = "justify-around";
+        break;
+      case JustifyContentCSSValue.SPACE_BETWEEN:
+        result = "justify-between";
+        break;
+      case JustifyContentCSSValue.SPACE_EVENLY:
+        result = "justify-evenly";
+        break;
+      case JustifyContentCSSValue.START:
+        result = "justify-start";
+        break;
+      case JustifyContentCSSValue.STRETCH:
+        result = "justify-stretch";
+        break;
+    }
 
-  // https://tailwindcss.com/docs/justify-content
-  switch (val) {
-    case JustifyContentCSSValue.CENTER:
-      baseClass = "justify-center";
-      break;
-    case JustifyContentCSSValue.END:
-      baseClass = "justify-end";
-      break;
-    case JustifyContentCSSValue.NORMAL:
-      baseClass = "justify-normal";
-      break;
-    case JustifyContentCSSValue.SPACE_AROUND:
-      baseClass = "justify-around";
-      break;
-    case JustifyContentCSSValue.SPACE_BETWEEN:
-      baseClass = "justify-between";
-      break;
-    case JustifyContentCSSValue.SPACE_EVENLY:
-      baseClass = "justify-evenly";
-      break;
-    case JustifyContentCSSValue.START:
-      baseClass = "justify-start";
-      break;
-    case JustifyContentCSSValue.STRETCH:
-      baseClass = "justify-stretch";
-      break;
-  }
+    return result;
+  };
 
-  const responsiveClass = getResponsiveClass(baseClass, responsive, val);
+  const baseClass = justifyTransform(val);
+  const array = intoArray(responsive);
+  const responsiveClasses =
+    array?.map((responsiveValue) => {
+      const responsiveBaseClass = justifyTransform(responsiveValue.value);
 
-  return combineBaseAndResponsiveClasses(baseClass, [responsiveClass]);
+      return getResponsiveClass(responsiveValue.prefix, responsiveBaseClass);
+    }) || [];
+
+  return combineBaseAndResponsiveClasses(baseClass, responsiveClasses);
 };
 
+/**
+ * Helper function to get a align items class based on the AlignItemsCSSType passed in. If a responsive value is passed, it will be merged into the resulting class.
+ * @param val - the align items css type used to determine the base (non-responsive) class
+ * @param responsive - an optional responsive value which will build the responsive classes to append to the resulting class
+ * @returns an align items css class
+ */
 export const getAlignItemsClass = (
   val?: AlignItemsCSSType,
-  responsive?: FlexContainerProps["responsive"]["alignItems"],
-): ValueOf<AlignItemsCSSType> => {
-  let baseClass = "";
+  responsive?: NonNullable<FlexContainerProps["responsive"]>["alignItems"],
+): string => {
+  const alignItemsTransform = (
+    classToTransform: string | undefined,
+  ): string => {
+    let result = "";
+    switch (classToTransform) {
+      case AlignItemsCSSValue.BASELINE:
+        result = "items-baseline";
+        break;
+      case AlignItemsCSSValue.CENTER:
+        result = "items-center";
+        break;
+      case AlignItemsCSSValue.END:
+        result = "items-end";
+        break;
+      case AlignItemsCSSValue.START:
+        result = "items-start";
+        break;
+      case AlignItemsCSSValue.STRETCH:
+        result = "items-stretch";
+        break;
+    }
 
-  // https://tailwindcss.com/docs/align-items
-  switch (val) {
-    case AlignItemsCSSValue.BASELINE:
-      baseClass = "items-baseline";
-      break;
-    case AlignItemsCSSValue.CENTER:
-      baseClass = "items-center";
-      break;
-    case AlignItemsCSSValue.END:
-      baseClass = "items-end";
-      break;
-    case AlignItemsCSSValue.START:
-      baseClass = "items-start";
-      break;
-    case AlignItemsCSSValue.STRETCH:
-      baseClass = "items-stretch";
-      break;
-  }
+    return result;
+  };
 
-  const responsiveClass = getResponsiveClass(baseClass, responsive, val);
+  const baseClass = alignItemsTransform(val);
+  const array = intoArray(responsive);
+  const responsiveClasses =
+    array.map((responsiveValue) => {
+      const responsiveBaseClass = alignItemsTransform(responsiveValue.value);
 
-  return combineBaseAndResponsiveClasses(baseClass, [responsiveClass]);
+      return getResponsiveClass(responsiveValue.prefix, responsiveBaseClass);
+    }) || [];
+
+  return combineBaseAndResponsiveClasses(baseClass, responsiveClasses);
 };
 
+/**
+ * Helper function to get a flex flow class based on the FlexFlowCSSType passed in. If a responsive value is passed, it will be merged into the resulting class.
+ * @param val - the flex flow css type used to determine the base (non-responsive) class
+ * @param responsive - an optional responsive value which will build the responsive classes to append to the resulting class
+ * @returns a flex flow css class
+ */
 export const getFlexFlowClass = (
-  val?: "row" | "column",
-  responsive?: FlexContainerProps["responsive"]["flexFlow"],
+  val?: FlexFlowCSSType,
+  responsive?: NonNullable<FlexContainerProps["responsive"]>["flexFlow"],
 ) => {
-  const baseClass = val === "column" ? "flex-col" : "flex-row";
-  const valToReplace = val === "column" ? "col" : "row";
-  const responsiveClass = getResponsiveClass(
-    baseClass,
-    responsive,
-    valToReplace,
-  );
+  const baseClass =
+    val == null
+      ? ""
+      : val === FlexFlowCSSValue.COLUMN
+        ? "flex-col"
+        : "flex-row";
+  const array = intoArray(responsive);
 
-  return combineBaseAndResponsiveClasses(baseClass, [responsiveClass]);
+  const responsiveClasses =
+    array.map((responsiveValue) => {
+      const responsiveBaseClass =
+        responsiveValue.value === FlexFlowCSSValue.COLUMN
+          ? "flex-col"
+          : "flex-row";
+
+      return getResponsiveClass(responsiveValue.prefix, responsiveBaseClass);
+    }) || [];
+
+  return combineBaseAndResponsiveClasses(baseClass, responsiveClasses);
 };
 
+/**
+ * Helper function to get a gap class based on the GapCSSType passed in. If a responsive value is passed, it will be merged into the resulting class.
+ * @param direction - the direction of the gap class we want
+ * @param val - the gap css type used to determine the base (non-responsive) class
+ * @param responsive - an optional responsive value which will build the responsive classes to append to the resulting class
+ * @returns a gap css class
+ */
 export const getGapClass = (
-  val: GapCSSType,
+  direction: GapCSSType["direction"],
+  val?: GapCSSType["value"],
   responsive?:
-    | FlexContainerProps["responsive"]["gapX"]
-    | FlexContainerProps["responsive"]["gapY"],
+    | NonNullable<FlexContainerProps["responsive"]>["gapX"]
+    | NonNullable<FlexContainerProps["responsive"]>["gapY"],
 ) => {
-  if (val.value == null && responsive == null) return "";
+  const baseClass = val != null ? `gap-${direction}-${val}` : "";
+  const array = intoArray(responsive);
 
-  const baseClass = `gap-${val.direction}-${val.value || responsive.value}`;
-  const responsiveClass = getResponsiveClass(baseClass, responsive, val.value);
+  const responsiveClasses =
+    array?.map((responsiveValue) => {
+      const responsiveBaseClass = `gap-${direction}-${responsiveValue.value}`;
+      return getResponsiveClass(responsiveValue.prefix, responsiveBaseClass);
+    }) || [];
 
-  return combineBaseAndResponsiveClasses(baseClass, [responsiveClass]);
+  return combineBaseAndResponsiveClasses(baseClass, responsiveClasses);
 };
 
+/**
+ * Helper function to get a responsive class based on the MediaQueryPrefix and base css class passed in.
+ * @param prefix - the responsive prefix we want to prepend to the base class
+ * @param responsiveBaseClass - the base class for the resulting responsive class.
+ * @returns a responsive css class, or an empty string if either argument is not defined
+ */
 export const getResponsiveClass = (
-  baseClass: string,
-  val?: FlexContainerProps["responsive"][keyof FlexContainerProps["responsive"]],
-  valToReplace?:
-    | GapCSSType["value"]
-    | AlignItemsCSSType
-    | JustifyContentCSSType
-    | "row"
-    | "col",
+  prefix?: MediaQueryPrefix,
+  responsiveBaseClass?: string,
 ) => {
-  if (val == null) return "";
+  if (!prefix || !responsiveBaseClass) return "";
 
-  let responsiveBaseClass = baseClass;
-  if (
-    Boolean(valToReplace) &&
-    Boolean(val?.value) &&
-    !baseClass.includes(val.value.toString())
-  ) {
-    responsiveBaseClass = baseClass.replace(
-      valToReplace.toString(),
-      val.value.toString(),
-    );
-  }
-
-  const responsiveClass = `${val.prefix}:${responsiveBaseClass}`;
+  const responsiveClass = `${prefix}:${responsiveBaseClass}`;
 
   return responsiveClass;
 };
 
+/**
+ * Helper function to combine responsive and base classes into one resulting string
+ * @param baseClass - the base class that is not responsive
+ * @param responsiveBaseClass - the responsive classes as a list
+ * @returns a css class that includes the passed base class and responsive classes, or an empty string if both arguments are not defined
+ */
 export const combineBaseAndResponsiveClasses = (
-  baseClass: string,
-  responsiveClasses: Array<string>,
+  baseClass?: string,
+  responsiveClasses?: Array<string>,
 ): string => {
-  return `${baseClass} ${responsiveClasses.join(" ")}`.trim();
+  return `${baseClass || ""} ${responsiveClasses?.join(" ") || ""}`.trim();
 };
 
 /**

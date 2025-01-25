@@ -1,6 +1,6 @@
-import { mergeClasses } from "@/util/styling/styling.utils";
 import { JSX } from "react";
 
+import { mergeClasses } from "@/util/styling/styling.utils";
 import ExternalLinkIcon from "../icons/ExternalLinkIcon";
 
 export type InlineAnchorProps = {

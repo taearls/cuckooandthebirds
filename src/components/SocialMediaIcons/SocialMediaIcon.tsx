@@ -1,6 +1,6 @@
-import { mergeClasses } from "@/util/styling/styling.utils";
 import { ReactNode } from "react";
 
+import { mergeClasses } from "@/util/styling/styling.utils";
 import styles from "./SocialMediaIcon.module.css";
 
 export type SocialMediaIconProps = {

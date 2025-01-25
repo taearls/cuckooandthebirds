@@ -27,40 +27,7 @@ export default (args: ViteConfigInput) => {
         localsConvention: "camelCase",
       },
     },
-    plugins: [
-      react(),
-      // patchCssModules(),
-      // {
-      //   name: "custom-css-import",
-      //   enforce: "pre",
-      //   resolveId: (id, importer) =>
-      //     // add .custom so CSS modules are not precessed by the default pipeline
-      //     id.endsWith(".module.css")
-      //       ? join(dirname(importer!), `${id}.custom`)
-      //       : undefined,
-      //   load: (id) => {
-      //     if (id.endsWith(".module.css.custom")) {
-      //       const filename = id.slice(0, -7);
-      //       const a = transform({
-      //         filename,
-      //         code: readFileSync(filename),
-      //         cssModules: true,
-      //       });
-      //       const styles = Object.fromEntries(
-      //         Object.entries(a.exports!)
-      //           // https://github.com/parcel-bundler/lightningcss/issues/291
-      //           .sort((a, b) => a[0].localeCompare(b[0]))
-      //           .map((a) => [a[0], a[1].name]),
-      //       );
-      //       const text = a.code.toString();
-      //       return [
-      //         `export const text = ${JSON.stringify(text)};`,
-      //         `export const styles = ${JSON.stringify(styles)};`,
-      //       ].join("\n");
-      //     }
-      //   },
-      // },
-    ],
+    plugins: [react()],
     resolve: {
       alias: {
         "@": fileURLToPath(new URL("./src", import.meta.url)),

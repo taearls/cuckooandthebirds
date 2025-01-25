@@ -1,3 +1,12 @@
+import { ReactElement } from "react";
+
+import {
+  AlignItemsCSSType,
+  FlexFlowCSSType,
+  GapCSSType,
+  JustifyContentCSSType,
+  ResponsiveValue,
+} from "@/types/layout";
 import {
   getAlignItemsClass,
   getFlexFlowClass,
@@ -5,59 +14,32 @@ import {
   getJustifyContentClass,
   mergeClasses,
 } from "@/util/styling/styling.utils";
-import { ReactElement } from "react";
-
-export const JustifyContentCSSValue = {
-  CENTER: "center",
-  END: "flex-end",
-  NORMAL: "normal",
-  SPACE_AROUND: "space-around",
-  SPACE_BETWEEN: "space-between",
-  SPACE_EVENLY: "space-evenly",
-  START: "flex-start",
-  STRETCH: "stretch",
-} as const satisfies Record<string, string>;
-
-export const AlignItemsCSSValue = {
-  BASELINE: "baseline",
-  CENTER: "center",
-  END: "flex-end",
-  START: "flex-start",
-  STRETCH: "stretch",
-} as const satisfies Record<string, string>;
-
-export type GapCSSType = {
-  direction: "x" | "y";
-  // https://github.com/microsoft/TypeScript/issues/54925
-  value?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
-};
-
-export type JustifyContentCSSType =
-  (typeof JustifyContentCSSValue)[keyof typeof JustifyContentCSSValue];
-
-export type AlignItemsCSSType =
-  (typeof AlignItemsCSSValue)[keyof typeof AlignItemsCSSValue];
-
-// https://tailwindcss.com/docs/responsive-design
-export type MediaQueryPrefix = "sm" | "md" | "lg" | "xl" | "2xl";
-
-export type ResponsiveValue<T> = { prefix: MediaQueryPrefix; value: T };
 
 export type FlexContainerProps = {
-  flexFlow?: "row" | "column";
+  flexFlow?: FlexFlowCSSType;
   responsive?: {
-    flexFlow?: ResponsiveValue<"row" | "column">;
-    gapX?: ResponsiveValue<GapCSSType["value"]>;
-    gapY?: ResponsiveValue<GapCSSType["value"]>;
-    justifyContent?: ResponsiveValue<JustifyContentCSSType>;
-    alignItems?: ResponsiveValue<AlignItemsCSSType>;
+    flexFlow?:
+      | Array<ResponsiveValue<FlexFlowCSSType>>
+      | ResponsiveValue<FlexFlowCSSType>;
+    gapX?:
+      | Array<ResponsiveValue<GapCSSType["value"]>>
+      | ResponsiveValue<GapCSSType["value"]>;
+    gapY?:
+      | Array<ResponsiveValue<GapCSSType["value"]>>
+      | ResponsiveValue<GapCSSType["value"]>;
+    justifyContent?:
+      | Array<ResponsiveValue<JustifyContentCSSType>>
+      | ResponsiveValue<JustifyContentCSSType>;
+    alignItems?:
+      | Array<ResponsiveValue<AlignItemsCSSType>>
+      | ResponsiveValue<AlignItemsCSSType>;
   };
   id?: string;
   gapX?: GapCSSType["value"];
   gapY?: GapCSSType["value"];
   justifyContent?: JustifyContentCSSType;
   alignItems?: AlignItemsCSSType;
-  children: ReactElement | ReactElement[];
+  children: ReactElement | Array<ReactElement>;
 };
 
 export default function FlexContainer({
@@ -79,20 +61,8 @@ export default function FlexContainer({
     alignItems,
     responsive?.alignItems,
   );
-  const gapXClass = getGapClass(
-    {
-      direction: "x",
-      value: gapX,
-    },
-    responsive?.gapX,
-  );
-  const gapYClass = getGapClass(
-    {
-      direction: "y",
-      value: gapY,
-    },
-    responsive?.gapY,
-  );
+  const gapXClass = getGapClass("x", gapX, responsive?.gapX);
+  const gapYClass = getGapClass("y", gapY, responsive?.gapY);
 
   return (
     <div
@@ -100,8 +70,8 @@ export default function FlexContainer({
       className={mergeClasses(
         "flex",
         flexFlowClass,
-        justifyContentClass && justifyContentClass.toString(),
-        alignItemsClass && alignItemsClass.toString(),
+        justifyContentClass != null && justifyContentClass.toString(),
+        alignItemsClass != null && alignItemsClass.toString(),
         gapXClass,
         gapYClass,
       )}
