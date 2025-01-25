@@ -53,8 +53,8 @@ export const getTextAlignmentClass = (alignment: TextAlignmentType): string => {
  */
 export const getJustifyContentClass = (
   val?: JustifyContentCSSType,
-  responsive?: FlexContainerProps["responsive"]["justifyContent"],
-): ValueOf<JustifyContentCSSType> => {
+  responsive?: NonNullable<FlexContainerProps["responsive"]>["justifyContent"],
+): string => {
   const justifyTransform = (classToTransform: string | undefined) => {
     let result = "";
     // https://tailwindcss.com/docs/justify-content
@@ -108,8 +108,8 @@ export const getJustifyContentClass = (
  */
 export const getAlignItemsClass = (
   val?: AlignItemsCSSType,
-  responsive?: FlexContainerProps["responsive"]["alignItems"],
-): ValueOf<AlignItemsCSSType> => {
+  responsive?: NonNullable<FlexContainerProps["responsive"]>["alignItems"],
+): string => {
   const alignItemsTransform = (
     classToTransform: string | undefined,
   ): string => {
@@ -156,7 +156,7 @@ export const getAlignItemsClass = (
  */
 export const getFlexFlowClass = (
   val?: FlexFlowCSSType,
-  responsive?: FlexContainerProps["responsive"]["flexFlow"],
+  responsive?: NonNullable<FlexContainerProps["responsive"]>["flexFlow"],
 ) => {
   const baseClass = val === FlexFlowCSSValue.COLUMN ? "flex-col" : "flex-row";
   const array = intoArray(responsive);
@@ -185,8 +185,8 @@ export const getGapClass = (
   direction: GapCSSType["direction"],
   val?: GapCSSType["value"],
   responsive?:
-    | FlexContainerProps["responsive"]["gapX"]
-    | FlexContainerProps["responsive"]["gapY"],
+    | NonNullable<FlexContainerProps["responsive"]>["gapX"]
+    | NonNullable<FlexContainerProps["responsive"]>["gapY"],
 ) => {
   const baseClass = val != null ? `gap-${direction}-${val}` : "";
   const array = intoArray(responsive);

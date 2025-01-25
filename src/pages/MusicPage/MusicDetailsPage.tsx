@@ -91,7 +91,8 @@ export default function MusicDetailsPage() {
           <RenderIf condition={releaseData.videosrc != null}>
             <VideoPlayer
               title={`${releaseData.title} Video`}
-              src={releaseData.videosrc}
+              // we know this isn't null because of the wrapping RenderIf component's condition
+              src={releaseData.videosrc!}
             />
             <Paragraph alignment={TextAlignment.CENTER}>
               Check out the official music video for {releaseData.title}!

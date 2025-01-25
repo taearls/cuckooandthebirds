@@ -70,8 +70,8 @@ export default function FlexContainer({
       className={mergeClasses(
         "flex",
         flexFlowClass,
-        justifyContentClass && justifyContentClass.toString(),
-        alignItemsClass && alignItemsClass.toString(),
+        justifyContentClass != null && justifyContentClass.toString(),
+        alignItemsClass != null && alignItemsClass.toString(),
         gapXClass,
         gapYClass,
       )}

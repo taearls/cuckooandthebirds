@@ -25,7 +25,7 @@ export default function Paragraph({
       className={mergeClasses(
         accent && "accent",
         italic && "italic",
-        width,
+        width != null && width,
         alignmentClass,
         "max-w-65ch text-lg leading-normal md:text-xl",
       )}

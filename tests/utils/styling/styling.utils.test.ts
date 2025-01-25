@@ -7,8 +7,8 @@ import {
   MediaQueryPrefix,
   MediaQueryPrefixValue,
   ResponsiveValue,
-} from "../../../src/types/layout";
-import { ValueOf } from "../../../src/types/util";
+} from "@/types/layout";
+import { ValueOf } from "@/types/util";
 import {
   capitalizeText,
   getAlignItemsClass,
@@ -16,11 +16,8 @@ import {
   getJustifyContentClass,
   getSingularOrPlural,
   mergeClasses,
-} from "../../../src/util/styling/styling.utils";
-// @ts-expect-error css module import should work but it doesn't here for some annoying reason
+} from "@/util/styling/styling.utils";
 import styles from "./styling-test.module.css";
-
-// TODO: get linting to prevent warnings from appearing here.
 
 const createResponsiveClassTests = <T extends object>(
   testFn: (

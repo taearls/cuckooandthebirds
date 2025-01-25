@@ -73,9 +73,12 @@ const config: Array<Linter.Config> = [
       "@typescript-eslint/array-type": ["error", { default: "generic" }],
       "@typescript-eslint/no-unused-vars": [
         "warn",
-        { varsIgnorePattern: "_*" },
+        { argsIgnorePattern: "_*", varsIgnorePattern: "_*" },
       ],
-      "no-unused-vars": ["warn", { varsIgnorePattern: "_*" }],
+      "no-unused-vars": [
+        "warn",
+        { argsIgnorePattern: "_*", varsIgnorePattern: "_*" },
+      ],
       "react/react-in-jsx-scope": "off",
       "sort-keys": "warn",
       // not currently supported in eslint-react-plugin with eslint v9
