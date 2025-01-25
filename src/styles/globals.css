@@ -36,10 +36,15 @@ html {
   min-width: 100vw;
 }
 
-.dark-theme {
+/* 
+Initially, we use the system settings, but
+when these classes are applied to the root html element, 
+it will explicitly set a dark or light theme 
+*/
+html.dark-theme {
   color-scheme: dark;
 }
-.light-theme {
+html.light-theme {
   color-scheme: light;
 }
 

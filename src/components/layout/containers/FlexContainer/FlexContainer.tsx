@@ -29,7 +29,7 @@ export const AlignItemsCSSValue = {
 export type GapCSSType = {
   direction: "x" | "y";
   // https://github.com/microsoft/TypeScript/issues/54925
-  value?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+  value: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 };
 
 export type JustifyContentCSSType =

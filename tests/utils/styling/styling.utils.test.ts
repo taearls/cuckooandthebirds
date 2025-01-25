@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   AlignItemsCSSValue,
+  GapCSSType,
   JustifyContentCSSValue,
   MediaQueryPrefix,
   ResponsiveValue,
@@ -334,7 +335,7 @@ describe("Styling util testing", () => {
     });
 
     describe("responsive classes", () => {
-      it("single responsive class", () => {
+      it("single responsive class with base class", () => {
         const responsive = { prefix: "sm", value: JustifyContentCSSValue.END };
 
         const actual = getJustifyContentClass(
@@ -346,6 +347,16 @@ describe("Styling util testing", () => {
 
         expect(actual).toEqual(expected);
       });
+      it("single responsive class with no base class", () => {
+        const responsive = { prefix: "sm", value: JustifyContentCSSValue.END };
+
+        const actual = getJustifyContentClass(undefined, responsive);
+
+        const expected = "sm:justify-end";
+
+        expect(actual).toEqual(expected);
+      });
+
       createResponsiveClassTests(
         getJustifyContentClass,
         inputs,
@@ -376,7 +387,7 @@ describe("Styling util testing", () => {
     });
 
     describe("responsive classes", () => {
-      it("single responsive class", () => {
+      it("single responsive class with base class", () => {
         const responsive = { prefix: "sm", value: AlignItemsCSSValue.END };
 
         const actual = getAlignItemsClass(
@@ -385,6 +396,16 @@ describe("Styling util testing", () => {
         );
 
         const expected = "items-center sm:items-end";
+
+        expect(actual).toEqual(expected);
+      });
+
+      it("single responsive class with no base class", () => {
+        const responsive = { prefix: "sm", value: AlignItemsCSSValue.END };
+
+        const actual = getAlignItemsClass(undefined, responsive);
+
+        const expected = "sm:items-end";
 
         expect(actual).toEqual(expected);
       });

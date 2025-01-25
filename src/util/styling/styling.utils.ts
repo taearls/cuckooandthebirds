@@ -86,7 +86,7 @@ export const getJustifyContentClass = (
 };
 
 export const getAlignItemsClass = (
-  val: AlignItemsCSSType,
+  val?: AlignItemsCSSType,
   responsive?: FlexContainerProps["responsive"]["alignItems"],
 ): ValueOf<AlignItemsCSSType> => {
   const alignItemsTransform = (
@@ -135,7 +135,7 @@ const intoArray = <T extends object>(item: T | T[] | undefined): T[] => {
 };
 
 export const getFlexFlowClass = (
-  val: FlexFlowCSSType,
+  val?: FlexFlowCSSType,
   responsive?: FlexContainerProps["responsive"]["flexFlow"],
 ) => {
   const baseClass = val === "column" ? "flex-col" : "flex-row";
@@ -153,7 +153,7 @@ export const getFlexFlowClass = (
 };
 
 export const getGapClass = (
-  val: GapCSSType,
+  val?: GapCSSType,
   responsive?:
     | FlexContainerProps["responsive"]["gapX"]
     | FlexContainerProps["responsive"]["gapY"],
@@ -182,10 +182,10 @@ export const getResponsiveClass = (
 };
 
 export const combineBaseAndResponsiveClasses = (
-  baseClass: string,
-  responsiveClasses: Array<string>,
+  baseClass?: string,
+  responsiveClasses?: Array<string>,
 ): string => {
-  return `${baseClass} ${responsiveClasses.join(" ")}`.trim();
+  return `${baseClass || ""} ${responsiveClasses?.join(" ") || ""}`.trim();
 };
 
 /**
