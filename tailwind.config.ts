@@ -22,6 +22,7 @@ const config: Config = {
     },
     {
       pattern: /gap-(x|y)-[1-8]/,
+      variants: ["sm", "md", "lg", "xl", "2xl"],
     },
   ],
   theme: {

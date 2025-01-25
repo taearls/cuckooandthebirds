@@ -27,12 +27,10 @@ export default function DarkModeToggle() {
   }, [isDarkMode]);
 
   return (
-    <div>
-      <button onClick={() => setIsDarkMode(!isDarkMode)}>
-        <RenderIf condition={isDarkMode} fallback={<MoonIcon />}>
-          <SunIcon />
-        </RenderIf>
-      </button>
-    </div>
+    <button onClick={() => setIsDarkMode(!isDarkMode)}>
+      <RenderIf condition={isDarkMode} fallback={<MoonIcon />}>
+        <SunIcon />
+      </RenderIf>
+    </button>
   );
 }
