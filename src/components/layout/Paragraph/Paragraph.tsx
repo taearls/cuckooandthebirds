@@ -27,7 +27,7 @@ export default function Paragraph({
         italic && "italic",
         width,
         alignmentClass,
-        "text-lg leading-normal md:text-xl max-w-65ch",
+        "max-w-65ch text-lg leading-normal md:text-xl",
       )}
     >
       {children}
