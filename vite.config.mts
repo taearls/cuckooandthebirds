@@ -11,9 +11,11 @@ export type ViteConfigInput = {
 };
 
 // https://vitejs.dev/config/
-export default (args: ViteConfigInput) => {
+export default (args?: ViteConfigInput) => {
   const generateScopedName =
-    args.mode === "development" ? "[local]_[hash:base64:4]" : "[hash:base64:4]";
+    args?.mode === "development"
+      ? "[local]_[hash:base64:4]"
+      : "[hash:base64:4]";
   return defineConfig({
     base: "./",
     build: {
