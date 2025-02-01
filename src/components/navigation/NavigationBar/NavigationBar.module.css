@@ -1,6 +1,6 @@
 .navigation-bar {
   display: grid;
-  position: fixed;
+  position: absolute;
   top: 0;
   min-height: 4rem;
   width: 100%;
@@ -8,10 +8,6 @@
   border-style: solid;
   grid-template-columns: 1fr min-content;
   grid-template-areas: "list toggle";
-}
-
-.navigation-bar.closed {
-  border: 0;
 }
 
 .navigation-list-container {

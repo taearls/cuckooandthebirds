@@ -11,7 +11,6 @@ import {
   TextAlignment,
   TextAlignmentType,
 } from "@/types/layout";
-import { ValueOf } from "@/types/util";
 import { intoArray } from "@/util/utils";
 
 /**

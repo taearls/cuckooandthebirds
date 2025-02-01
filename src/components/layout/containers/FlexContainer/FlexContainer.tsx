@@ -39,6 +39,7 @@ export type FlexContainerProps = {
   gapY?: GapCSSType["value"];
   justifyContent?: JustifyContentCSSType;
   alignItems?: AlignItemsCSSType;
+  fullWidth?: boolean;
   children: ReactElement | Array<ReactElement>;
 };
 
@@ -51,6 +52,7 @@ export default function FlexContainer({
   justifyContent,
   alignItems,
   children,
+  fullWidth = false,
 }: FlexContainerProps) {
   const flexFlowClass = getFlexFlowClass(flexFlow, responsive?.flexFlow);
   const justifyContentClass = getJustifyContentClass(
@@ -69,6 +71,7 @@ export default function FlexContainer({
       id={id}
       className={mergeClasses(
         "flex",
+        fullWidth && "w-full",
         flexFlowClass,
         justifyContentClass != null && justifyContentClass.toString(),
         alignItemsClass != null && alignItemsClass.toString(),
