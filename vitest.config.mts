@@ -1,3 +1,5 @@
+import { fileURLToPath } from "node:url";
+
 import { configDefaults, defineConfig, mergeConfig } from "vitest/config";
 
 import viteConfig, { ViteConfigInput } from "./vite.config.mts";
@@ -12,6 +14,7 @@ export default (args: ViteConfigInput) =>
         globals: true,
         // NOTE: this option could be useful for unit test performance tuning
         // logHeapUsage: true,
+        setupFiles: ["vitest.setup.ts"],
       },
     }),
   );

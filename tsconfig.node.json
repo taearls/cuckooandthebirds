@@ -6,7 +6,7 @@
     "src/types/globals.d.ts",
     "src/**/*",
     "tests/**/*",
-    "setupTests.ts"
+    "vitest.setup.ts"
   ],
   "compilerOptions": {
     "composite": true,

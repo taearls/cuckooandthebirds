@@ -13,6 +13,7 @@
     "format:check": "prettier --check --ignore-path .gitignore .",
     "format:fix": "prettier --write --list-different --ignore-path .gitignore .",
     "test": "vitest run",
+    "test:ui": "vitest --ui",
     "test:watch": "vitest watch"
   },
   "dependencies": {
