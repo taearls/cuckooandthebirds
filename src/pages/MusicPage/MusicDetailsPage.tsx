@@ -1,21 +1,21 @@
 import { useParams } from "react-router";
 
-import CloudinaryImage from "@/components/CloudinaryImage/CloudinaryImage";
-import InlineAnchor from "@/components/InlineAnchor/InlineAnchor";
-import FlexContainer from "@/components/layout/containers/FlexContainer/FlexContainer";
-import HeadingOne from "@/components/layout/headings/HeadingOne";
-import HeadingTwo from "@/components/layout/headings/HeadingTwo";
-import Paragraph from "@/components/layout/Paragraph/Paragraph";
-import RenderIf from "@/components/layout/RenderIf";
-import VideoPlayer from "@/components/VideoPlayer/VideoPlayer";
+import CloudinaryImage from "@/components/CloudinaryImage/CloudinaryImage.tsx";
+import InlineAnchor from "@/components/InlineAnchor/InlineAnchor.tsx";
+import FlexContainer from "@/components/layout/containers/FlexContainer/FlexContainer.tsx";
+import HeadingOne from "@/components/layout/headings/HeadingOne.tsx";
+import HeadingTwo from "@/components/layout/headings/HeadingTwo.tsx";
+import Paragraph from "@/components/layout/Paragraph/Paragraph.tsx";
+import RenderIf from "@/components/layout/RenderIf.tsx";
+import VideoPlayer from "@/components/VideoPlayer/VideoPlayer.tsx";
+import NotFoundPage from "@/pages/NotFoundPage.tsx";
 import {
   AlignItemsCSSValue,
   FlexFlowCSSValue,
   MediaQueryPrefixValue,
   TextAlignment,
-} from "@/types/layout";
-import { RELEASE_DETAILS_DATA } from "@/util/constants/data/releases/data";
-import NotFoundPage from "../NotFoundPage";
+} from "@/types/layout.ts";
+import { RELEASE_DETAILS_DATA } from "@/util/constants/data/releases/data.ts";
 
 export type ReleaseDataType = {
   imgsrc: string;

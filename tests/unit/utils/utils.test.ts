@@ -1,4 +1,4 @@
-import { intoArray } from "@/util/utils";
+import { intoArray } from "@/util/utils.ts";
 
 describe("utils tests", () => {
   describe("intoArray", () => {

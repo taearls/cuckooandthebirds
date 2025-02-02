@@ -1,18 +1,18 @@
-import InlineAnchor from "@/components/InlineAnchor/InlineAnchor";
-import FlexContainer from "@/components/layout/containers/FlexContainer/FlexContainer";
-import HeadingOne from "@/components/layout/headings/HeadingOne";
-import HeadingTwo from "@/components/layout/headings/HeadingTwo";
-import Paragraph from "@/components/layout/Paragraph/Paragraph";
-import RandomCloudinaryImage from "@/components/RandomCloudinaryImage/RandomCloudinaryImage";
+import InlineAnchor from "@/components/InlineAnchor/InlineAnchor.tsx";
+import FlexContainer from "@/components/layout/containers/FlexContainer/FlexContainer.tsx";
+import HeadingOne from "@/components/layout/headings/HeadingOne.tsx";
+import HeadingTwo from "@/components/layout/headings/HeadingTwo.tsx";
+import Paragraph from "@/components/layout/Paragraph/Paragraph.tsx";
+import RandomCloudinaryImage from "@/components/RandomCloudinaryImage/RandomCloudinaryImage.tsx";
 import {
   AlignItemsCSSValue,
   FlexFlowCSSValue,
   TextAlignment,
-} from "@/types/layout";
+} from "@/types/layout.ts";
 import {
   SHUFFLED_IMAGE_GROUPS,
   WEBSITE_EMAIL,
-} from "@/util/constants/constants";
+} from "@/util/constants/constants.ts";
 
 export default function HomePage() {
   return (

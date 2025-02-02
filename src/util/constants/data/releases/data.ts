@@ -1,4 +1,4 @@
-import { ReleaseDataType } from "@/pages/MusicPage/MusicDetailsPage";
+import { ReleaseDataType } from "@/pages/MusicPage/MusicDetailsPage.tsx";
 
 export const RELEASE_DETAILS_DATA: Record<string, ReleaseDataType> = {
   "show-me-the-dark": {

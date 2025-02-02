@@ -1,5 +1,5 @@
-import LoadingSpinner from "@/components/LoadingSpinner/LoadingSpinner";
-import LoadingSpinnerContainer from "@/components/LoadingSpinner/LoadingSpinnerContainer";
+import LoadingSpinner from "@/components/LoadingSpinner/LoadingSpinner.tsx";
+import LoadingSpinnerContainer from "@/components/LoadingSpinner/LoadingSpinnerContainer.tsx";
 
 export default function Loading() {
   return (
