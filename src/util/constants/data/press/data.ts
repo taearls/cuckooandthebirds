@@ -1,4 +1,4 @@
-import { PressData } from "@/pages/PressPage";
+import { PressData } from "@/pages/PressPage.tsx";
 
 export const INTERVIEW_DATA: Array<PressData> = [
   {

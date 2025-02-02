@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 
-import DarkModeToggle from "@/components/DarkModeToggle/DarkModeToggle";
-import { setColorSchemeForTest } from "./utils";
+import DarkModeToggle from "@/components/DarkModeToggle/DarkModeToggle.tsx";
+import { setColorSchemeForTest } from "./utils.ts";
 
 describe("<DarkModeToggle />", () => {
   it("will show a sun icon in dark mode", async () => {

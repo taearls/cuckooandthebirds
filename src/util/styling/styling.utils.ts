@@ -1,4 +1,4 @@
-import { FlexContainerProps } from "@/components/layout/containers/FlexContainer/FlexContainer";
+import { FlexContainerProps } from "@/components/layout/containers/FlexContainer/FlexContainer.tsx";
 import {
   AlignItemsCSSType,
   AlignItemsCSSValue,
@@ -10,8 +10,8 @@ import {
   MediaQueryPrefix,
   TextAlignment,
   TextAlignmentType,
-} from "@/types/layout";
-import { intoArray } from "@/util/utils";
+} from "@/types/layout.ts";
+import { intoArray } from "@/util/utils.ts";
 
 /**
  * Helper function that merges an unknown amount of classes into a single string. this helps with readability both in code and in the DOM.

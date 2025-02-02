@@ -1,15 +1,15 @@
 import { Link } from "react-router";
 
-import CloudinaryImage from "@/components/CloudinaryImage/CloudinaryImage";
-import FlexContainer from "@/components/layout/containers/FlexContainer/FlexContainer";
-import HeadingOne from "@/components/layout/headings/HeadingOne";
-import Paragraph from "@/components/layout/Paragraph/Paragraph";
+import CloudinaryImage from "@/components/CloudinaryImage/CloudinaryImage.tsx";
+import FlexContainer from "@/components/layout/containers/FlexContainer/FlexContainer.tsx";
+import HeadingOne from "@/components/layout/headings/HeadingOne.tsx";
+import Paragraph from "@/components/layout/Paragraph/Paragraph.tsx";
 import {
   AlignItemsCSSValue,
   FlexFlowCSSValue,
   MediaQueryPrefixValue,
-} from "@/types/layout";
-import { RELEASE_SLUG_DATA } from "@/util/constants/data/releases/data";
+} from "@/types/layout.ts";
+import { RELEASE_SLUG_DATA } from "@/util/constants/data/releases/data.ts";
 
 export default function MusicPage() {
   const sortedReleases = RELEASE_SLUG_DATA.sort((a, b) => {

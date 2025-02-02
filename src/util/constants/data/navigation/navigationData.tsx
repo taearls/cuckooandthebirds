@@ -1,12 +1,12 @@
 import { JSX } from "react";
 
-import BookingPage from "@/pages/BookingPage";
-import HomePage from "@/pages/HomePage";
-import MusicDetailsPage from "@/pages/MusicPage/MusicDetailsPage";
-import MusicPage from "@/pages/MusicPage/MusicPage";
-import MusicPageOutlet from "@/pages/MusicPage/MusicPageOutlet";
-import NotFoundPage from "@/pages/NotFoundPage";
-import PressPage from "@/pages/PressPage";
+import BookingPage from "@/pages/BookingPage.tsx";
+import HomePage from "@/pages/HomePage.tsx";
+import MusicDetailsPage from "@/pages/MusicPage/MusicDetailsPage.tsx";
+import MusicPage from "@/pages/MusicPage/MusicPage.tsx";
+import MusicPageOutlet from "@/pages/MusicPage/MusicPageOutlet.tsx";
+import NotFoundPage from "@/pages/NotFoundPage.tsx";
+import PressPage from "@/pages/PressPage.tsx";
 
 export type RouteDataChildItem = {
   href: string;

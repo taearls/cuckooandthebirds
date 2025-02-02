@@ -9,8 +9,8 @@ import {
   MediaQueryPrefixValue,
   ResponsiveValue,
   TextAlignment,
-} from "@/types/layout";
-import { ValueOf } from "@/types/util";
+} from "@/types/layout.ts";
+import { ValueOf } from "@/types/util.ts";
 import {
   capitalizeText,
   combineBaseAndResponsiveClasses,
@@ -22,7 +22,7 @@ import {
   getSingularOrPlural,
   getTextAlignmentClass,
   mergeClasses,
-} from "@/util/styling/styling.utils";
+} from "@/util/styling/styling.utils.ts";
 import styles from "./styling-test.module.css";
 
 const createResponsiveClassTests = <T extends object>(

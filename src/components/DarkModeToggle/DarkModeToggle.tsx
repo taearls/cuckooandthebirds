@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-import MoonIcon from "../icons/MoonIcon";
-import SunIcon from "../icons/SunIcon";
-import RenderIf from "../layout/RenderIf";
+import MoonIcon from "../icons/MoonIcon.tsx";
+import SunIcon from "../icons/SunIcon.tsx";
+import RenderIf from "../layout/RenderIf.tsx";
 
 export default function DarkModeToggle() {
   const prefersDarkColorScheme = window.matchMedia(

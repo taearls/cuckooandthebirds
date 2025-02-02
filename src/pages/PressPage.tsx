@@ -1,9 +1,12 @@
-import InlineAnchor from "@/components/InlineAnchor/InlineAnchor";
-import FlexContainer from "@/components/layout/containers/FlexContainer/FlexContainer";
-import HeadingOne from "@/components/layout/headings/HeadingOne";
-import HeadingTwo from "@/components/layout/headings/HeadingTwo";
-import { FlexFlowCSSValue, TextAlignment } from "@/types/layout";
-import { INTERVIEW_DATA, REVIEW_DATA } from "@/util/constants/data/press/data";
+import InlineAnchor from "@/components/InlineAnchor/InlineAnchor.tsx";
+import FlexContainer from "@/components/layout/containers/FlexContainer/FlexContainer.tsx";
+import HeadingOne from "@/components/layout/headings/HeadingOne.tsx";
+import HeadingTwo from "@/components/layout/headings/HeadingTwo.tsx";
+import { FlexFlowCSSValue, TextAlignment } from "@/types/layout.ts";
+import {
+  INTERVIEW_DATA,
+  REVIEW_DATA,
+} from "@/util/constants/data/press/data.ts";
 
 export type PressData = {
   text: string;
