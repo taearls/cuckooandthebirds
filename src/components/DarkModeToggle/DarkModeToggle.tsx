@@ -12,8 +12,6 @@ export default function DarkModeToggle() {
     prefersDarkColorScheme?.matches || false,
   );
 
-  console.log({ isDarkMode });
-
   useEffect(() => {
     const rootNode = (
       document.getRootNode() as Node & { documentElement: HTMLElement }

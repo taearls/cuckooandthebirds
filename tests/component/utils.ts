@@ -1,8 +1,6 @@
 export const setColorSchemeForTest = (colorScheme: "light" | "dark") => {
   Object.defineProperty(window, "matchMedia", {
     value: vi.fn().mockImplementation((query) => {
-      console.log({ query });
-
       return {
         addEventListener: vi.fn(),
         addListener: vi.fn(), // deprecated
