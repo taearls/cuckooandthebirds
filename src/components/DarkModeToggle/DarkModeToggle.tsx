@@ -5,11 +5,11 @@ import SunIcon from "../icons/SunIcon";
 import RenderIf from "../layout/RenderIf";
 
 export default function DarkModeToggle() {
-  const prefersDarkColorScheme = window?.matchMedia?.(
+  const prefersDarkColorScheme = window.matchMedia(
     "(prefers-color-scheme: dark)",
   );
   const [isDarkMode, setIsDarkMode] = useState<boolean>(
-    prefersDarkColorScheme?.matches || false,
+    prefersDarkColorScheme.matches,
   );
 
   useEffect(() => {

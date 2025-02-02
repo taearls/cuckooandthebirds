@@ -5,8 +5,7 @@
     "vitest.config.*",
     "src/types/globals.d.ts",
     "src/**/*",
-    "tests/**/*",
-    "vitest.setup.ts"
+    "tests/**/*"
   ],
   "exclude": ["tests/integration/**", "cypress.d.ts"],
   "compilerOptions": {
