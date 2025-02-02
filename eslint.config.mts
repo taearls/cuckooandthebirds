@@ -74,6 +74,7 @@ const config: Array<Linter.Config> = [
         "warn",
         { argsIgnorePattern: "_*", varsIgnorePattern: "_*" },
       ],
+      // https://vite.dev/guide/performance#reduce-resolve-operations
       "import/extensions": ["warn", "ignorePackages"],
       "no-unused-vars": [
         "warn",
