@@ -3,8 +3,6 @@
   "include": [
     "vite.config.*",
     "vitest.config.*",
-    "cypress.config.*",
-    "cypress.d.ts",
     "src/types/globals.d.ts",
     "src/**/*",
     "tests/**/*",
@@ -16,7 +14,7 @@
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "types": ["node", "vitest/globals", "vite/client", "cypress"],
+    "types": ["node", "vitest/globals", "vite/client"],
     "jsx": "react-jsx",
     "allowImportingTsExtensions": true,
     "baseUrl": ".",
