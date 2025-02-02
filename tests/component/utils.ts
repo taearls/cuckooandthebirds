@@ -5,8 +5,8 @@ export const setColorSchemeForTest = (colorScheme: "light" | "dark") => {
         addEventListener: vi.fn(),
         addListener: vi.fn(), // deprecated
         dispatchEvent: vi.fn(),
+        // the DarkModeToggle component checks against darkness, so setting matches this way will mock real functionality.
         matches: colorScheme === "dark",
-        // our file checks against darkness
         media: query,
         onchange: null,
         removeEventListener: vi.fn(),
