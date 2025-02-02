@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["es5", "dom"],
+    "types": ["cypress", "node", "mocha"]
+  },
+  "include": ["../../cypress.d.ts", "./specs/*.ts", "./support/*.ts"]
+}

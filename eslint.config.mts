@@ -27,6 +27,8 @@ const config: Array<Linter.Config> = [
       globals: {
         ...globals.browser,
         ...globals.node,
+        // cypress
+        cy: true,
       },
       sourceType: "module",
     },

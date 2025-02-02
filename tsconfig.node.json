@@ -8,6 +8,7 @@
     "tests/**/*",
     "vitest.setup.ts"
   ],
+  "exclude": ["tests/integration/**", "cypress.d.ts"],
   "compilerOptions": {
     "composite": true,
     "noEmit": true,
