@@ -6,9 +6,7 @@
     "src/types/globals.d.ts",
     "src/**/*",
     "tests/**/*",
-    "vitest.setup.ts",
-    "cypress.config.ts",
-    "cypress.d.ts"
+    "vitest.setup.ts"
   ],
   "compilerOptions": {
     "composite": true,
@@ -16,7 +14,7 @@
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "types": ["node", "vitest/globals", "vite/client", "cypress"],
+    "types": ["node", "vitest/globals", "vite/client"],
     "jsx": "react-jsx",
     "allowImportingTsExtensions": true,
     "baseUrl": ".",
