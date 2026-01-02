@@ -20,7 +20,7 @@ _No open issues tracked at this time._
 
 ## Changelog
 
-| Date | Issue | Description |
-|------|-------|-------------|
-| 2026-01-02 | #11 | Updated Browserslist database |
-| 2026-01-02 | #10 | Fixed CVE-2025-15284 security vulnerability |
+| Date       | Issue | Description                                 |
+| ---------- | ----- | ------------------------------------------- |
+| 2026-01-02 | #11   | Updated Browserslist database               |
+| 2026-01-02 | #10   | Fixed CVE-2025-15284 security vulnerability |
