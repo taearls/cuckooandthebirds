@@ -1,3 +1,7 @@
+> **⚠️ This repository has been archived.** Development has moved to the [websites-monorepo](https://github.com/taearls/websites-monorepo). The Cuckoo and the Birds app lives at [`apps/cuckoo/`](https://github.com/taearls/websites-monorepo/tree/main/apps/cuckoo) in the monorepo.
+
+---
+
 # Cuckoo and the Birds
 
 Cuckoo and the Birds is a Chicago rock band who play sad songs that flirt with harmonies. For booking inquiries, please contact [cuckooandthebirds@gmail.com](mailto:cuckooandthebirds@gmail.com).
